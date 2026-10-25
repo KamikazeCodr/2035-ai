@@ -1,0 +1,27 @@
+# Environment secrets & local configurations (strictly protected)
+.env
+.env.local
+.env.*
+!.env.example
+*.env
+
+# Dependency directories
+node_modules/
+.vercel/
+
+# Python cache & compiled binaries
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Local logs & scratch files
+*.log
+scratch/
+tmp/
+temp/
+
+# Operating system artifacts
+.DS_Store
+Thumbs.db
+*.tmp

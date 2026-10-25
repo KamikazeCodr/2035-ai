@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ai2035-feedback-api",
+  "main": "src/index.js",
+  "compatibility_date": "2024-10-01",
+  "observability": {
+    "enabled": true
+  }
+}

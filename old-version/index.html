@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <script data-goatcounter="https://zencoder.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+  <title>AI 2035</title>
+  <meta name="description" content="An evidence-based threat pathway assessment on AI-enabled cybersecurity capabilities, diffusion timelines, and geopolitical branches from 2024 to 2035. By Aditya Singh.">
+  
+  <!-- Font Awesome 6 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="/old-version/css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero-wrapper" id="hero">
+    
+    <!-- Top Hero Header Row: Title on Left, Minimal Navigation on Right -->
+    <div class="hero-header-row">
+      <h1 class="hero-title">AI 2035 (Cybersecurity Standpoint)</h1>
+      <nav class="hero-top-nav" aria-label="Quick Navigation">
+        <a href="#footnotes" class="hero-nav-link" id="nav-footnotes-link">Footnotes</a>
+        <a href="./about.html" class="hero-nav-about-btn" id="nav-about-btn" aria-label="About this project">About</a>
+        <a href="/" class="hero-nav-link" style="margin-left: 14px; font-weight: 600; text-decoration: underline;" title="Return to AI 2035 (New Version)">New Version &rarr;</a>
+      </nav>
+    </div>
+
+    <div class="hero-prose">
+      <div class="hero-author">Aditya Singh</div>
+      
+      <p class="hero-lead-text">
+        I predict that the impact of autonomous AI on cybersecurity and critical infrastructure over the next decade will be severe, fundamentally altering offensive and defensive capabilities.
+      </p>
+      <p class="hero-sublead-text">
+        The critical-infrastructure pathway does not require superintelligence. The decisive capability threshold is reliable autonomous operation across enterprise IT and industrial control networks, allowing offensive capability to scale like parallel cloud software.
+      </p>
+      
+      <!-- 4 Introductory Tabs (Inactive: #FFFFF8 + black text; Active: black + #FFFFF8 text) -->
+      <div class="hero-intro-cards-bar" id="intro-tabs-bar">
+        <button class="intro-card-btn" data-card-id="what-is-this">What is this?</button>
+        <button class="intro-card-btn" data-card-id="how-did-i-build-it">How did I build it?</button>
+        <button class="intro-card-btn" data-card-id="why-a-scenario">Why a scenario?</button>
+        <button class="intro-card-btn" data-card-id="why-these-timelines">Why these timelines?</button>
+      </div>
+
+      <!-- Inline Expandable Content Area -->
+      <div class="intro-expandable-box" id="intro-expandable-box" style="display: none;">
+        <div class="intro-box-content" id="intro-box-content"></div>
+      </div>
+
+      <!-- Metadata Row Directly Below Intro Tabs -->
+      <div class="hero-metadata-row">
+        <span>Published August 27th 2026</span>
+        <span class="meta-separator">|</span>
+        <span>Inspired by <a href="https://europe2031.ai/" target="_blank" rel="noopener noreferrer" class="meta-link">Europe 2031</a></span>
+        <span class="meta-separator">|</span>
+        <a href="https://www.youtube.com/watch?v=C84Lnyv0gTs" target="_blank" rel="noopener noreferrer" class="meta-link meta-yt-link">
+          <i class="fa-brands fa-youtube meta-yt-icon"></i> Hoog video
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main 3-Column Scrollytelling Viewport -->
+  <div class="scrolly-viewport">
+    
+    <!-- Column 1: Left Timeline Rail -->
+    <nav class="left-rail-container" id="left-timeline-rail" aria-label="Timeline Navigation"></nav>
+
+    <!-- Column 2: Center Narrative Story Flow -->
+    <main class="narrative-container" id="narrative-stream"></main>
+
+    <!-- Column 3: Fixed Right Visualization Panel & Refined Threat Dock -->
+    <aside class="fixed-hud-dock">
+      
+      <!-- Dock Header -->
+      <div class="dock-top-header">
+        <div class="dock-header-top-row">
+          <span class="hud-date-pill" id="hud-date-pill">2024</span>
+          <span class="status-pill status-monochrome" id="hud-status-badge">OBSERVED</span>
+        </div>
+        <div class="hud-level-title" id="hud-level-badge">C0 · AI Research Assistant</div>
+      </div>
+
+      <!-- Interactive SVG Chart Container -->
+      <div class="dock-chart-box" id="dock-chart-container" title="Click to view fullscreen graph"></div>
+
+      <!-- Chart Switcher Buttons with Font Awesome 6 Icons -->
+      <div class="chart-switch-buttons-bar">
+        <button class="chart-toggle-btn active" id="btn-toggle-cap">
+          <i class="fa-solid fa-chart-line"></i> Adversarial Capabilities (C0–C7)
+        </button>
+        <button class="chart-toggle-btn" id="btn-toggle-loss">
+          <i class="fa-solid fa-chart-area"></i> Annual Cyber Losses ($B)
+        </button>
+      </div>
+
+      <!-- Live Threat Summary Area -->
+      <div class="threat-summary-card">
+        <div class="threat-card-row">
+          <div class="threat-label">Modelled Annual Loss Exposure</div>
+          <div class="threat-val-loss" id="hud-loss-exposure">$2 Billion / year</div>
+        </div>
+
+        <div class="threat-card-row">
+          <div class="threat-label">Key Capability Threshold</div>
+          <div class="threat-val-milestone" id="hud-key-milestone">
+            AI acts like a high-speed research intern, reading technical manuals in seconds and finding default passwords.
+          </div>
+        </div>
+
+        <div class="threat-status-grid">
+          <div class="status-row us">
+            <span class="status-country-tag">UNITED STATES (CLOSED FRONTIER)</span>
+            <div id="hud-us-status" class="status-desc">GPT-4 class (C0 Frontier)<br><span class="status-sub">Frontier Leader · Fast Assistant</span></div>
+          </div>
+          <div class="status-row cn">
+            <span class="status-country-tag">CHINA (OPEN FRONTIER)</span>
+            <div id="hud-china-status" class="status-desc">GLM-4 / DeepSeek V2 (C0 Assistant Era)<br><span class="status-sub">Narrowing gap · Broad assistant capability</span></div>
+          </div>
+          <div class="status-row eu">
+            <span class="status-country-tag">EUROPE (DOMESTIC FRONTIER)</span>
+            <div id="hud-europe-status" class="status-desc">Mistral-class models (C0 Assistant Era)<br><span class="status-sub">Smaller ecosystem · Relies more on US platforms</span></div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- Floating Live Mini-Graph Bottom Bar (Exact Picture 3 Design) -->
+  <div class="mobile-bottom-dock" id="mobile-bottom-dock" role="button" aria-label="Open Fullscreen Interactive Graph" tabindex="0">
+    <div class="mobile-dock-expand-icon" aria-hidden="true" title="Fullscreen Graph">
+      <svg viewBox="0 0 24 24" width="7" height="7" stroke="#FFFFF8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/>
+      </svg>
+    </div>
+    <div class="mobile-dock-graph-viewport" id="mobile-dock-sparkline"></div>
+  </div>
+
+  <!-- Fullscreen Interactive Graph Modal Overlay -->
+  <div class="fullscreen-graph-modal" id="fullscreen-graph-modal" aria-hidden="true" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-dialog-content">
+      
+      <!-- Top Modal Bar with Exit Button and Date Pill -->
+      <div class="modal-header-bar">
+        <div class="modal-header-left">
+          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close fullscreen graph">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <span class="hud-date-pill modal-date-pill" id="modal-date-pill">2024</span>
+        </div>
+        <div class="modal-header-center">
+          <div class="modal-level-title" id="modal-level-badge">C0 · AI Research Assistant</div>
+          <span class="status-pill status-monochrome modal-status-badge" id="modal-status-badge">OBSERVED</span>
+        </div>
+      </div>
+
+      <!-- Clear 2-Graph Switcher Tabs with Prominent Headings -->
+      <div class="modal-chart-switcher-tabs">
+        <button class="modal-tab-btn active" id="modal-btn-toggle-cap" data-mode="capabilities">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="tab-btn-title">Adversarial Capabilities (C0–C7)</span>
+        </button>
+        <button class="modal-tab-btn" id="modal-btn-toggle-loss" data-mode="losses">
+          <i class="fa-solid fa-chart-area"></i>
+          <span class="tab-btn-title">Annual Cyber Losses ($B)</span>
+        </button>
+      </div>
+
+      <!-- Interactive SVG Chart Container inside Modal -->
+      <div class="modal-chart-box" id="modal-chart-container"></div>
+
+      <!-- Scrubber Instruction Hint -->
+      <div class="modal-scrubber-hint">
+        <i class="fa-solid fa-hand-pointer"></i> Tap or drag across timeline to inspect trajectory and milestones
+      </div>
+
+      <!-- Live Threat Summary & National Capabilities inside Modal -->
+      <div class="modal-threat-content">
+        
+        <div class="modal-metrics-row">
+          <div class="modal-metric-card">
+            <div class="threat-label">Modelled Annual Loss Exposure</div>
+            <div class="threat-val-loss" id="modal-loss-exposure">$2 Billion / year</div>
+          </div>
+          <div class="modal-metric-card">
+            <div class="threat-label">Active Scenario Pathway</div>
+            <div class="modal-branch-tag" id="modal-active-branch-tag">Plan P · Proliferate</div>
+          </div>
+        </div>
+
+        <div class="threat-card-row">
+          <div class="threat-label">Key Capability Threshold</div>
+          <div class="threat-val-milestone" id="modal-key-milestone">
+            AI acts like a high-speed research intern, reading technical manuals in seconds and finding default passwords.
+          </div>
+        </div>
+
+        <!-- Country Status Breakdown in Modal -->
+        <div class="threat-status-grid modal-threat-status-grid">
+          <div class="status-row us">
+            <span class="status-country-tag">UNITED STATES (CLOSED FRONTIER)</span>
+            <div id="modal-us-status" class="status-desc">GPT-4 class (C0 Frontier)<br><span class="status-sub">Frontier Leader · Fast Assistant</span></div>
+          </div>
+          <div class="status-row cn">
+            <span class="status-country-tag">CHINA (OPEN FRONTIER)</span>
+            <div id="modal-china-status" class="status-desc">GLM-4 / DeepSeek V2 (C0 Assistant Era)<br><span class="status-sub">Narrowing gap · Broad assistant capability</span></div>
+          </div>
+          <div class="status-row eu">
+            <span class="status-country-tag">EUROPE (DOMESTIC FRONTIER)</span>
+            <div id="modal-europe-status" class="status-desc">Mistral-class models (C0 Assistant Era)<br><span class="status-sub">Smaller ecosystem · Relies more on US platforms</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footnote Hover Popover Element -->
+  <div class="footnote-popover" id="footnote-popover" role="tooltip" aria-hidden="true" style="display: none;">
+    <div class="footnote-popover-badge" id="footnote-popover-badge">#1</div>
+    <div class="footnote-popover-body">
+      <div class="footnote-popover-type" id="footnote-popover-type">Evidence</div>
+      <div class="footnote-popover-text" id="footnote-popover-text"></div>
+      <div class="footnote-popover-sources" id="footnote-popover-sources"></div>
+    </div>
+  </div>
+
+  <!-- Footnotes Section (Numbered 1-17) -->
+  <section class="footnotes-section" id="footnotes">
+    <div class="footnotes-header">
+      <h2>Footnotes:</h2>
+    </div>
+    <ol class="sources-numbered-list" id="footnotes-list"></ol>
+  </section>
+
+  <!-- Site Footer with Acknowledgement on Left and Contact Icons on Right -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-acknowledgement">
+        I’m grateful to my facilitator and the members of Group 6 of the BlueDot Impact AGI Strategy Course,<br class="desktop-br">whose discussions, questions and feedback helped shape both this project and the way I think about these problems.
+      </div>
+      <div class="footer-icons-group">
+        <a href="https://www.linkedin.com/in/aditya-singh-cybersec/" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="Open LinkedIn profile">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="mailto:the.coder.zen@gmail.com" class="footer-icon-link" aria-label="Send email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

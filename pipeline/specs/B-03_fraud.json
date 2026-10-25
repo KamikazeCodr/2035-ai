@@ -1,0 +1,572 @@
+{
+  "metric": "AI-attributable increment, fraud, branch B-03",
+  "unit": "USD bn per year, constant 2025 prices",
+  "years": [
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035
+  ],
+  "n_samples": 20000,
+  "seed": 7,
+  "rho": 0.3,
+  "factors": {
+    "capable_actors": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 7500.000000000002,
+          "p50": 15000.000000000004,
+          "p90": 30000.000000000007,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2025": {
+          "p10": 12247.448713915897,
+          "p50": 24494.897427831795,
+          "p90": 48989.79485566359,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2026": {
+          "p10": 20000.0,
+          "p50": 40000.0,
+          "p90": 80000.0,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2027": {
+          "p10": 29382.608927607813,
+          "p50": 60000.00000000002,
+          "p90": 122521.45508486325,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2028": {
+          "p10": 43166.8853696369,
+          "p50": 90000.0,
+          "p90": 187643.83695140184,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2029": {
+          "p10": 50126.73264143117,
+          "p50": 106706.79913470178,
+          "p90": 227151.07052803316,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2030": {
+          "p10": 58208.72420582199,
+          "p50": 126514.8997952624,
+          "p90": 274976.30447300506,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2031": {
+          "p10": 67593.78469581228,
+          "p50": 150000.0,
+          "p90": 332870.84162035346,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2032": {
+          "p10": 71139.45739083635,
+          "p50": 161185.48977353118,
+          "p90": 365208.8878158884,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2033": {
+          "p10": 74871.12048300753,
+          "p50": 173205.08075688788,
+          "p90": 400688.5406077066,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2034": {
+          "p10": 78798.53021064935,
+          "p50": 186120.97182042003,
+          "p90": 439615.0037160969,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        },
+        "2035": {
+          "p10": 82931.9545814442,
+          "p50": 200000.00000000006,
+          "p90": 482323.1310763043,
+          "anchor": "Calibrated Prior: AI-using fraud operators; upper bound set by scam-compound workforce 370k-500k (GovAI App. B, USIP); S-36"
+        }
+      }
+    },
+    "campaigns_per_actor": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 1398.8643890038747,
+          "p50": 3497.160972509687,
+          "p90": 10491.482917529062,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2025": {
+          "p10": 2797.7287780077477,
+          "p50": 6994.321945019369,
+          "p90": 20982.96583505811,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2026": {
+          "p10": 5595.457556015499,
+          "p50": 13988.643890038747,
+          "p90": 41965.931670116246,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2027": {
+          "p10": 8607.309308279142,
+          "p50": 22117.98803476021,
+          "p90": 68577.32035561158,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2028": {
+          "p10": 13240.342328884526,
+          "p50": 34971.60972509687,
+          "p90": 112063.49245678865,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2029": {
+          "p10": 17862.843409069916,
+          "p50": 48495.919770172404,
+          "p90": 160608.0718126878,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2030": {
+          "p10": 24099.163505830213,
+          "p50": 67250.38546530581,
+          "p90": 230181.58872155414,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2031": {
+          "p10": 32512.72310800477,
+          "p50": 93257.62593359165,
+          "p90": 329893.53018428443,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2032": {
+          "p10": 37616.002797112385,
+          "p50": 110902.63228848945,
+          "p90": 405457.1234163263,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2033": {
+          "p10": 43520.30624232749,
+          "p50": 131886.19939000197,
+          "p90": 498328.89671163796,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2034": {
+          "p10": 50351.364169171306,
+          "p50": 156840.00668525795,
+          "p90": 612473.3663708506,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        },
+        "2035": {
+          "p10": 58254.6423175381,
+          "p50": 186515.25186718316,
+          "p90": 752763.1389409682,
+          "anchor": "Calibrated Prior: AI-enabled victim approaches per operator-year; calibrated to 2025 IC3 AI-referenced losses (S-37), grows with C1->C3 automation"
+        }
+      }
+    },
+    "exposed_share": {
+      "kind": "fraction",
+      "by_year": {
+        "2024": {
+          "p10": 0.006089265991852821,
+          "p50": 0.010000000000000002,
+          "p90": 0.016380946025790075,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2025": {
+          "p10": 0.006089265991852821,
+          "p50": 0.010000000000000002,
+          "p90": 0.016380946025790075,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2026": {
+          "p10": 0.006089265991852821,
+          "p50": 0.010000000000000002,
+          "p90": 0.016380946025790075,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2027": {
+          "p10": 0.005363819500492967,
+          "p50": 0.008944774898225363,
+          "p90": 0.014880655603166823,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2028": {
+          "p10": 0.0047243884769526566,
+          "p50": 0.007999999999999998,
+          "p90": 0.013515884959526133,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2029": {
+          "p10": 0.00422775704699199,
+          "p50": 0.007268957023242621,
+          "p90": 0.012470420672214322,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2030": {
+          "p10": 0.003783133462429741,
+          "p50": 0.006604272282710305,
+          "p90": 0.011504880748535623,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2031": {
+          "p10": 0.003385110968111153,
+          "p50": 0.006,
+          "p90": 0.010613295665168831,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2032": {
+          "p10": 0.003012864656597665,
+          "p50": 0.005422039087481958,
+          "p90": 0.009738841592027422,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2033": {
+          "p10": 0.0026814425589408728,
+          "p50": 0.004899476895292088,
+          "p90": 0.008935785106026444,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2034": {
+          "p10": 0.002386390396415299,
+          "p50": 0.004427053728071536,
+          "p90": 0.008198399734080309,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        },
+        "2035": {
+          "p10": 0.0021237351233250293,
+          "p50": 0.004000000000000001,
+          "p90": 0.007521401965522034,
+          "anchor": "Calibrated Prior: reachable and susceptible share; AI-related complaints are 4.9% of cyber-enabled fraud complaints, 2025 (S-37: 22,364 of 452,868)"
+        }
+      }
+    },
+    "success_given_exposure": {
+      "kind": "fraction",
+      "by_year": {
+        "2024": {
+          "p10": 0.004406398012833242,
+          "p50": 0.007999999999999998,
+          "p90": 0.014481704947928858,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2025": {
+          "p10": 0.004928888447683626,
+          "p50": 0.008944774898225363,
+          "p90": 0.01617946410618739,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2026": {
+          "p10": 0.0055129903318207035,
+          "p50": 0.010000000000000002,
+          "p90": 0.01807260968198827,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2027": {
+          "p10": 0.005934926959829443,
+          "p50": 0.0109549556741366,
+          "p90": 0.02013514331071298,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2028": {
+          "p10": 0.006388949039491619,
+          "p50": 0.012,
+          "p90": 0.02242768691805846,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2029": {
+          "p10": 0.006275692039086173,
+          "p50": 0.012,
+          "p90": 0.022825742318910176,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2030": {
+          "p10": 0.006164430291353077,
+          "p50": 0.012,
+          "p90": 0.023230694676907394,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2031": {
+          "p10": 0.006055129083675044,
+          "p50": 0.012,
+          "p90": 0.023642657487013097,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2032": {
+          "p10": 0.005681388694423479,
+          "p50": 0.011465715558655165,
+          "p90": 0.02300293124591049,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2033": {
+          "p10": 0.005330592944891984,
+          "p50": 0.0109549556741366,
+          "p90": 0.022380118028224275,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2034": {
+          "p10": 0.005001348033313305,
+          "p50": 0.01046670755338108,
+          "p90": 0.021773791903867083,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        },
+        "2035": {
+          "p10": 0.004692343051243036,
+          "p50": 0.010000000000000002,
+          "p90": 0.021183536532835636,
+          "anchor": "Calibrated Prior: incremental success attributable to AI; IC3 AI-referenced share of investment losses 632M of 8.65B (S-37)"
+        }
+      }
+    },
+    "loss_per_success": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 2.2500000000000008e-05,
+          "p50": 4.5000000000000016e-05,
+          "p90": 0.00013500000000000006,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2025": {
+          "p10": 2.323790007724451e-05,
+          "p50": 4.647580015448902e-05,
+          "p90": 0.00013942740046346704,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2026": {
+          "p10": 2.4e-05,
+          "p50": 4.8e-05,
+          "p90": 0.000144,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2027": {
+          "p10": 2.4465911192084513e-05,
+          "p50": 4.995998398718724e-05,
+          "p90": 0.00015490205625693152,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2028": {
+          "p10": 2.494086710245687e-05,
+          "p50": 5.2e-05,
+          "p90": 0.00016662949328212167,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2029": {
+          "p10": 2.5333130772386775e-05,
+          "p50": 5.3927658044640283e-05,
+          "p90": 0.00017859682251558762,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2030": {
+          "p10": 2.5731563866423542e-05,
+          "p50": 5.592677504191655e-05,
+          "p90": 0.00019142364526464467,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2031": {
+          "p10": 2.6136263415714082e-05,
+          "p50": 5.8e-05,
+          "p90": 0.00020517169034855776,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2032": {
+          "p10": 2.6236179514082114e-05,
+          "p50": 5.9445089966462764e-05,
+          "p90": 0.00021732969436044937,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2033": {
+          "p10": 2.6336477580849945e-05,
+          "p50": 6.0926184846911275e-05,
+          "p90": 0.0002302081538177393,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2034": {
+          "p10": 2.6437159076241242e-05,
+          "p50": 6.244418171617202e-05,
+          "p90": 0.00024384976125847003,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        },
+        "2035": {
+          "p10": 2.6538225466062116e-05,
+          "p50": 6.399999999999996e-05,
+          "p90": 0.0002582997390826166,
+          "anchor": "S-37: IC3 AI-referenced average $39.9k per complaint (893.3M / 22,364), 2025; gross of defense baseline; +3%/yr"
+        }
+      }
+    },
+    "defense_containment": {
+      "kind": "complement",
+      "by_year": {
+        "2024": {
+          "p10": 0.050099460924095195,
+          "p50": 0.08000000000000002,
+          "p90": 0.12539023656802628,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2025": {
+          "p10": 0.06195505853335626,
+          "p50": 0.0981998185116473,
+          "p90": 0.1522078343366146,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2026": {
+          "p10": 0.07639056037280437,
+          "p50": 0.12,
+          "p90": 0.18355725314336843,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2027": {
+          "p10": 0.09369009543128569,
+          "p50": 0.14749449330706219,
+          "p90": 0.22454238714917052,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2028": {
+          "p10": 0.11442196774207207,
+          "p50": 0.17999999999999997,
+          "p90": 0.2716341202530883,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2029": {
+          "p10": 0.13345856605998754,
+          "p50": 0.20986839730161969,
+          "p90": 0.31416497541280675,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2030": {
+          "p10": 0.1551075969414391,
+          "p50": 0.24322293971546166,
+          "p90": 0.36006311110410194,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2031": {
+          "p10": 0.1795408139242052,
+          "p50": 0.2800000000000001,
+          "p90": 0.40867112225549973,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2032": {
+          "p10": 0.18952400845968628,
+          "p50": 0.29669082016141834,
+          "p90": 0.4321447339012373,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2033": {
+          "p10": 0.19992704238232284,
+          "p50": 0.3139427555970189,
+          "p90": 0.4559270772516685,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2034": {
+          "p10": 0.21075261512878113,
+          "p50": 0.33172469951478833,
+          "p90": 0.4799121162497873,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        },
+        "2035": {
+          "p10": 0.2220017157481914,
+          "p50": 0.35,
+          "p90": 0.5039901131930671,
+          "anchor": "S-38 IBM 2026: AI/automation saves $1.93M per breach (about 35%), about one-third of firms use it extensively; adoption path following empirical defense curve"
+        }
+      }
+    },
+    "reporting_multiplier": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 5.0,
+          "p50": 6.999999999999999,
+          "p90": 10.149999999999999,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2025": {
+          "p10": 5.0,
+          "p50": 6.999999999999999,
+          "p90": 10.149999999999999,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2026": {
+          "p10": 5.0,
+          "p50": 7.0,
+          "p90": 10.15,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2027": {
+          "p10": 4.949783040091428,
+          "p50": 6.999999999999999,
+          "p90": 10.263774039166645,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2028": {
+          "p10": 4.900070428795348,
+          "p50": 7.0,
+          "p90": 10.378823401681892,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2029": {
+          "p10": 4.850857100740949,
+          "p50": 6.999999999999999,
+          "p90": 10.495162382983041,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2030": {
+          "p10": 4.802138041430926,
+          "p50": 6.999999999999999,
+          "p90": 10.612805438748737,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2031": {
+          "p10": 4.753908286730534,
+          "p50": 7.0,
+          "p90": 10.731767186695162,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2032": {
+          "p10": 4.706162922361778,
+          "p50": 6.999999999999999,
+          "p90": 10.85206240839234,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2033": {
+          "p10": 4.658897083402688,
+          "p50": 6.999999999999999,
+          "p90": 10.973706051100846,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2034": {
+          "p10": 4.612105953791609,
+          "p50": 6.999999999999999,
+          "p90": 11.096713229629042,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        },
+        "2035": {
+          "p10": 4.565784765836481,
+          "p50": 6.999999999999999,
+          "p90": 11.221099228211196,
+          "anchor": "S-39 GovAI: reporting rate 10-18% (IC3 head 10-12%, NCA 14%); multiplier 5-10"
+        }
+      }
+    }
+  },
+  "reference": {
+    "2024": 2,
+    "2027": 22,
+    "2028": 40,
+    "2029": 70,
+    "2030": 110,
+    "2033": 420,
+    "2034": 575,
+    "2035": 400
+  }
+}

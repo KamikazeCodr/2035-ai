@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Supplements & Methodology | AI 2035</title>
+  <meta name="description" content="Technical supplements, formal mathematical models, empirical backtesting suites, and semiconductor supply chain analysis supporting the AI 2035 threat pathway scenario.">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function renderMath() {
+        if (window.renderMathInElement) {
+          window.renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '\\[', right: '\\]', display: true},
+              {left: '\\(', right: '\\)'', display: false}
+            ],
+            throwOnError: false
+          });
+        } else {
+          setTimeout(renderMath, 100);
+        }
+      }
+      renderMath();
+    });
+  </script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>.katex .katex-mathml { display: none !important; }</style>
+</head>
+<body class="supplement-page-body">
+
+  <div class="supplement-wrapper">
+    
+    <!-- Navigation Header -->
+    <header class="supplement-nav-row">
+      <a href="/" class="supplement-home-link">
+        <i class="fa-solid fa-arrow-left" style="font-size: 0.85rem;"></i> AI 2035
+      </a>
+      <nav class="supplement-nav-links">
+        <a href="/" class="supplement-nav-link">Main Scenario</a>
+        <a href="/supplements/" class="supplement-nav-pill">Technical Supplements</a>
+        <a href="/about" class="supplement-nav-link">About</a>
+      </nav>
+    </header>
+
+    <!-- Header Content -->
+    <header class="supplement-header">
+      <span class="supplement-tag-pill">Methodology & Formal Models</span>
+      <h1 class="supplement-title">Technical Supplements: Evidence, Econometrics & Simulation Code</h1>
+      <div class="supplement-meta-row">
+        <span>Independent Research</span>
+        <span>•</span>
+        <span>Published October 2026</span>
+        <span>•</span>
+        <span>6 Self-Contained Modules</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="supplement-article">
+      <p class="supplement-lead-text">
+        This scenario report is supported by six self-contained technical supplements. Rather than relying on ungrounded heuristic guesses, every projection in AI 2035 is derived from an empirical evidence ledger, an 800,000-sample probabilistic Monte Carlo simulation, and micro-architectural hardware dependencies in the Taiwan Strait.
+      </p>
+
+      <p class="supplement-p">
+        Each supplement is mathematically rigorous, fully documented, and paired with standalone executable Python code to enable independent scientific replication:
+      </p>
+
+      <!-- Supplements Grid -->
+      <div class="supplements-grid">
+        
+        <!-- Supplement 1 -->
+        <a href="/supplements/baseline-counterfactual.html" class="supp-card">
+          <span class="supp-card-tag">Supplement 1</span>
+          <h2 class="supp-card-title">The Non-AI Baseline Counterfactual & 10-Year Historical Backtest</h2>
+          <p class="supp-card-desc">
+            Fitting an empirical log-linear growth trajectory to 2015–2024 FBI IC3 breach telemetry. Proves that global loss would expand at 8.8%–14.1% annualized due to digital GDP expansion even if frontier AI never existed.
+          </p>
+          <div class="supp-card-meta">
+            <span>Read Technical Whitepaper</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
+          </div>
+        </a>
+
+        <!-- Supplement 2 -->
+        <a href="/supplements/loss-model-and-incrementality.html" class="supp-card">
+          <span class="supp-card-tag">Supplement 2</span>
+          <h2 class="supp-card-title">The 3-Sector Factor Model & The Forensic Attribution Problem</h2>
+          <p class="supp-card-desc">
+            Disaggregating losses into Consumer Fraud, Enterprise IT, and Industrial OT/ICS. Formulates the econometric incrementality haircut (<em>P</em><sub>33</sub> &isin; [0.10, 0.60]) to solve the forensic root-cause attribution problem.
+          </p>
+          <div class="supp-card-meta">
+            <span>Read Technical Whitepaper</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
+          </div>
+        </a>
+
+        <!-- Supplement 3 -->
+        <a href="/supplements/monte-carlo-simulation.html" class="supp-card">
+          <span class="supp-card-tag">Supplement 3</span>
+          <h2 class="supp-card-title">The 800,000-Sample Monte Carlo Engine & Geopolitical Shock Covariance</h2>
+          <p class="supp-card-desc">
+            Correlated standard normal sampling (&rho; = 0.30) and Bayesian Sequential Importance Resampling (SIR) conditioning. Evaluates quantiles (<em>p</em><sub>10</sub>, <em>p</em><sub>50</sub>, <em>p</em><sub>90</sub>) under macroeconomic GDP ceilings.
+          </p>
+          <div class="supp-card-meta">
+            <span>Read Technical Whitepaper</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
+          </div>
+        </a>
+
+        <!-- Supplement 4 -->
+        <a href="/supplements/threat-actor-diffusion.html" class="supp-card">
+          <span class="supp-card-tag">Supplement 4</span>
+          <h2 class="supp-card-title">Threat Actor Diffusion & Malware Tooling Adoption Rates</h2>
+          <p class="supp-card-desc">
+            Why general consumer API traffic is an invalid proxy for offensive cyber adoption. Calibrates diffusion parameter <em>k</em> &asymp; 0.75 against historical Cobalt Strike/Metasploit timelines and UK AISI synthetic CTF benchmarks.
+          </p>
+          <div class="supp-card-meta">
+            <span>Read Technical Whitepaper</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
+          </div>
+        </a>
+
+        <!-- Supplement 5 -->
+        <a href="/supplements/taiwan-semiconductor-chokepoint.html" class="supp-card">
+          <span class="supp-card-tag">Supplement 5</span>
+          <h2 class="supp-card-title">Taiwan Semiconductor Geography & Physical Compute Shocks</h2>
+          <p class="supp-card-desc">
+            Hardware dependency analysis of TSMC Fab 18/20, ASML EUV vs. DUV immersion multi-patterning defect limits, Sparse Mixture of Experts (MoE) memory-wall chokepoints, and the 2031 Plan P vs. Plan C bifurcation.
+          </p>
+          <div class="supp-card-meta">
+            <span>Read Technical Whitepaper</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
+          </div>
+        </a>
+
+        <!-- Supplement 6 -->
+        <a href="/supplements/code-and-replication.html" class="supp-card">
+          <span class="supp-card-tag">Supplement 6</span>
+          <h2 class="supp-card-title">Codebase, Production Pipeline & Scientific Replication Guide</h2>
+          <p class="supp-card-desc">
+            Complete production pipeline runner (<code>final_headline_run.py</code>), automated diagnostic test gates (<em>T</em><sub>1</sub> &hellip; <em>T</em><sub>13</sub>), deterministic random seeds (<code>seed=42</code>), runtime benchmarks, and data download endpoints.
+          </p>
+          <div class="supp-card-meta">
+            <span>Read Technical Whitepaper</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="sources-directory-card">
+        <div class="sources-card-title">Core Research Philosophy</div>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: #333; margin: 0;">
+          All models are designed to be reproducible, empirical, and falsifiable. I do not claim deterministic foresight into 2035, but rather provide a structured computational scaffolding that explicitly separates verified empirical observations from probabilistic bounds and geopolitical assumptions.
+        </p>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

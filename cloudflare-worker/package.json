@@ -1,0 +1,14 @@
+{
+  "name": "ai2035-feedback-api",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker backend for AI 2035 Feedback Form",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^3.80.0"
+  }
+}

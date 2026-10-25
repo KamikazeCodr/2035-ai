@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <script data-goatcounter="https://zencoder.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+  <title>AI 2035</title>
+  <meta name="description" content="An evidence-based threat pathway assessment on AI-enabled cybersecurity capabilities, diffusion timelines, and geopolitical branches from 2024 to 2035. By Aditya Singh.">
+  
+  <!-- Font Awesome 6 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts Preconnect & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/styles.css?v=2035.3">
+  <style id="feedback-critical-css">
+    /* Source Ledger Evidentiary Note */
+    .timeline-ledger-note-wrapper {
+      max-width: 1400px;
+      width: 100%;
+      margin: 1.5rem auto 0.75rem;
+      padding: 0 3rem;
+      box-sizing: border-box;
+    }
+
+    .timeline-source-ledger-note {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.775rem;
+      line-height: 1.5;
+      color: #666660;
+      margin: 0;
+    }
+
+    .ledger-note-star {
+      font-weight: 600;
+      color: #777770;
+      margin-right: 2px;
+    }
+
+    .timeline-ledger-link {
+      color: #333330;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.12s ease;
+    }
+
+    .timeline-ledger-link:hover {
+      color: #000000;
+    }
+    /* Timeline to Feedback Divider */
+    .timeline-feedback-divider {
+      max-width: 1400px;
+      width: 100%;
+      margin: 4.5rem auto 0;
+      border: none;
+      border-top: 1px solid #000000;
+      padding: 0;
+      display: block;
+      box-sizing: border-box;
+    }
+
+    /* Native Feedback Section */
+    .feedback-section {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.75rem 3rem 2.5rem;
+      background-color: #FFFFF8;
+      box-sizing: border-box;
+    }
+
+    .feedback-container {
+      max-width: 640px;
+      margin: 0;
+    }
+
+    .feedback-header {
+      margin-bottom: 1.75rem;
+    }
+
+    .feedback-title {
+      font-family: "Newsreader", "Charter", "Merriweather", Georgia, serif;
+      font-size: 2.35rem;
+      font-weight: 500;
+      color: #000000;
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .feedback-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .feedback-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .feedback-label {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #000000;
+      letter-spacing: 0.01em;
+      display: block;
+    }
+
+    .feedback-sublabel {
+      font-size: 0.775rem;
+      font-weight: 500;
+      color: #222222;
+    }
+
+    .feedback-req {
+      color: #777770;
+      font-weight: 400;
+    }
+
+    /* Input and Textarea: #FFFFF8 parchment background, thin 1px black border, black caret */
+    .feedback-input,
+    .feedback-textarea {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.875rem;
+      color: #000000 !important;
+      background-color: #FFFFF8 !important;
+      border: 1px solid #000000 !important;
+      border-radius: 4px;
+      padding: 0.6rem 0.75rem;
+      outline: none !important;
+      box-shadow: none !important;
+      caret-color: #000000 !important;
+      transition: border-color 0.12s ease;
+    }
+
+    .feedback-input::placeholder,
+    .feedback-textarea::placeholder {
+      color: #888880;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.875rem;
+    }
+
+    /* Only blinking straight line shown when inside box - zero blue glow or outlines */
+    .feedback-input:focus,
+    .feedback-textarea:focus {
+      outline: none !important;
+      box-shadow: none !important;
+      border: 1px solid #000000 !important;
+      border-color: #000000 !important;
+      caret-color: #000000 !important;
+    }
+
+    .feedback-input.input-invalid,
+    .feedback-textarea.input-invalid {
+      border-color: #b00020 !important;
+    }
+
+    /* Fixed window textarea: typing slides/scrolls inside this window only */
+    .feedback-textarea {
+      height: 120px !important;
+      min-height: 120px !important;
+      max-height: 120px !important;
+      overflow-y: auto !important;
+      resize: none !important;
+      line-height: 1.55;
+    }
+
+    .feedback-textarea::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .feedback-textarea::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .feedback-textarea::-webkit-scrollbar-thumb {
+      background: #ccc6b8;
+      border-radius: 3px;
+    }
+
+    .feedback-textarea::-webkit-scrollbar-thumb:hover {
+      background: #999488;
+    }
+
+    .feedback-review-group {
+      margin-top: 0.25rem;
+      gap: 0.5rem;
+    }
+
+    .feedback-question-label {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #000000 !important;
+      margin-bottom: 0.45rem;
+      display: block;
+    }
+
+    .feedback-seg-control {
+      display: inline-flex;
+      gap: 8px;
+    }
+
+    .feedback-seg-btn {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.35rem 1.25rem;
+      background-color: #FFFFF8 !important;
+      border: 1px solid #000000 !important;
+      border-radius: 4px;
+      color: #000000;
+      cursor: pointer;
+      transition: background-color 0.12s ease, color 0.12s ease;
+      outline: none !important;
+    }
+
+    .feedback-seg-btn:hover {
+      background-color: #f2efe4 !important;
+    }
+
+    .feedback-seg-btn.active {
+      background-color: #000000 !important;
+      color: #FFFFF8 !important;
+      border-color: #000000 !important;
+    }
+
+        .feedback-optional {
+      font-weight: 400;
+      color: #777770;
+      font-size: 0.75rem;
+      margin-left: 3px;
+    }
+    .feedback-toggle-wrapper {
+      margin: 0.25rem 0 0.25rem;
+      padding: 0.65rem 0.85rem;
+      background-color: #FFFFF8;
+      border: 1px solid #000000;
+      border-radius: 4px;
+      max-width: 640px;
+      box-sizing: border-box;
+    }
+
+    .feedback-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 100%; width: 100%;
+    }
+
+    .feedback-toggle-label {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #000000;
+    }
+
+    .feedback-switch {
+      width: 36px;
+      height: 20px;
+      background: #000000;
+      border: 1px solid #000000;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      outline: none !important;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .feedback-switch[aria-checked="false"] {
+      background: #e2dccf;
+      border-color: #b0aaa0;
+    }
+
+    .feedback-switch-thumb {
+      width: 14px;
+      height: 14px;
+      background: #FFFFF8;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 18px;
+      transition: left 0.15s ease;
+    }
+
+    .feedback-switch[aria-checked="false"] .feedback-switch-thumb {
+      left: 2px;
+    }
+
+    .feedback-contact-fields {
+      margin-top: -0.25rem;
+    }
+
+    .feedback-field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+
+    .feedback-field-subgroup {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .feedback-action-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .feedback-submit-btn {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.5rem 1.4rem;
+      background: #000000;
+      color: #FFFFF8;
+      border: 1px solid #000000;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.12s ease;
+      letter-spacing: 0.01em;
+      outline: none !important;
+    }
+
+    .feedback-submit-btn:hover:not(:disabled) {
+      opacity: 0.82;
+    }
+
+    .feedback-submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .feedback-field-error {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.75rem;
+      color: #b00020;
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    .feedback-field-error.is-visible {
+      display: block;
+    }
+
+    .feedback-status-msg {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.775rem;
+      color: #555550;
+      line-height: 1.4;
+    }
+
+    .feedback-status-info {
+      color: #2b5d34;
+    }
+
+    .feedback-status-success {
+      color: #1b6329;
+      font-weight: 500;
+    }
+
+    .feedback-status-error {
+      color: #b00020;
+      font-weight: 500;
+    }
+
+    #feedback-turnstile-container {
+      margin: 0.25rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-ledger-note-wrapper {
+        padding: 0 1.25rem;
+        margin: 1.25rem auto 0.5rem;
+      }
+      .timeline-feedback-divider {
+        margin: 2.5rem auto 0;
+        width: calc(100% - 2.5rem);
+      }
+      .feedback-section {
+        padding: 2rem 1.25rem 2rem;
+      }
+      .feedback-field-row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .timeline-ledger-note-wrapper {
+        padding: 0 1rem;
+      }
+      .feedback-title {
+        font-size: 1.85rem;
+      }
+      .timeline-feedback-divider {
+        margin: 2rem auto 0;
+        width: calc(100% - 2rem);
+      }
+      .feedback-section {
+        padding: 1.75rem 1rem 1.75rem;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero-wrapper" id="hero">
+    
+    <!-- Top Hero Header Row: Title on Left, Minimal Navigation on Right -->
+    <div class="hero-header-row">
+      <div class="hero-eyebrow">AI 2035</div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hero-top-nav desktop-nav" aria-label="Quick Navigation">
+        <button class="hero-nav-icon-btn" id="nav-audio-btn" aria-label="Listen to Audio Briefing" title="Executive Audio Briefing">
+          <svg class="nav-headset-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+          </svg>
+        </button>
+        <a href="/AI-2035.pdf" class="hero-nav-link" target="_blank" rel="noopener noreferrer" title="View Complete 22-Page Research Report (PDF)">PDF</a>
+        <div class="nav-dropdown-wrapper" id="supplements-dropdown-wrapper">
+          <a href="/supplements.html" class="hero-nav-link nav-dropdown-trigger" id="nav-supplements-link" title="Explore all 6 Standalone Technical Supplements">
+            <span>Supplements</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 1l4 4 4-4"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown-menu" id="supplements-dropdown-menu">
+            <div class="dropdown-category-tag">TECHNICAL SUPPLEMENTS</div>
+            <ul class="dropdown-list">
+              <li>
+                <a href="/supplements/baseline-counterfactual.html" class="dropdown-item">
+                  <span class="dropdown-item-title">1. Baseline Counterfactual</span>
+                  <span class="dropdown-item-desc">FBI IC3 backtest and organic digital growth</span>
+                </a>
+              </li>
+              <li>
+                <a href="/supplements/loss-model-and-incrementality.html" class="dropdown-item">
+                  <span class="dropdown-item-title">2. Loss Model & Incrementality</span>
+                  <span class="dropdown-item-desc">Econometric decomposition and net AI increment</span>
+                </a>
+              </li>
+              <li>
+                <a href="/supplements/monte-carlo-simulation.html" class="dropdown-item">
+                  <span class="dropdown-item-title">3. Monte Carlo Simulation</span>
+                  <span class="dropdown-item-desc">800,000-sample probabilistic engine & parameters</span>
+                </a>
+              </li>
+              <li>
+                <a href="/supplements/threat-actor-diffusion.html" class="dropdown-item">
+                  <span class="dropdown-item-title">4. Threat Actor Diffusion</span>
+                  <span class="dropdown-item-desc">Tooling diffusion from APTs to novice actors</span>
+                </a>
+              </li>
+              <li>
+                <a href="/supplements/taiwan-semiconductor-chokepoint.html" class="dropdown-item">
+                  <span class="dropdown-item-title">5. Taiwan Semiconductor Chokepoint</span>
+                  <span class="dropdown-item-desc">TSMC Fab 18/20 physical supply-chain choke point</span>
+                </a>
+              </li>
+              <li>
+                <a href="/supplements/code-and-replication.html" class="dropdown-item">
+                  <span class="dropdown-item-title">6. Code & Replication Pipeline</span>
+                  <span class="dropdown-item-desc">Production environment, scripts, and verification</span>
+                </a>
+              </li>
+            </ul>
+            <div class="dropdown-footer">
+              <a href="/supplements.html" class="dropdown-footer-link">
+                <span>View All 6 Simulation Supplements</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="/about.html" class="hero-nav-link" id="nav-about-btn" title="About the Author and Project Methodology">About</a>
+
+        <!-- Open Book Gateway to Old Generation Version -->
+        <div class="nav-book-tooltip-wrapper">
+          <button class="hero-nav-icon-btn nav-transition-trigger nav-open-book-btn" id="nav-old-version-btn" aria-label="Old Generation Version" title="Old Generation Version">
+            <svg viewBox="0 0 54 39" width="54" height="39" class="open-book-svg" aria-hidden="true">
+              <!-- Cover / Spine base underneath -->
+              <path d="M 3 29.5 L 3 32 C 11 30, 20 31, 27 35 C 34 31, 43 30, 51 32 L 51 29.5 Z" fill="#142119" stroke="#0d1611" stroke-width="1"/>
+              <path d="M 3 5.5 L 3 30.5 C 11 28.5, 20 29.5, 27 33.5 C 34 29.5, 43 28.5, 51 30.5 L 51 5.5" fill="none" stroke="#142119" stroke-width="1.6" stroke-linejoin="round"/>
+              
+              <!-- Left Open Page -->
+              <path d="M 27 4.5 C 19 2.5, 10 3, 3.5 5.5 L 3.5 29 C 10 26.5, 19 27, 27 32 Z" fill="#FFFFF8" stroke="#1b2a22" stroke-width="1.3" stroke-linejoin="round"/>
+              <path d="M 4.5 29.7 C 10.5 27.5, 19 27.8, 26 32.3" fill="none" stroke="rgba(27,42,34,0.4)" stroke-width="0.8"/>
+              
+              <!-- Right Open Page -->
+              <path d="M 27 4.5 C 35 2.5, 44 3, 50.5 5.5 L 50.5 29 C 44 26.5, 35 27, 27 32 Z" fill="#FFFFF8" stroke="#1b2a22" stroke-width="1.3" stroke-linejoin="round"/>
+              <path d="M 49.5 29.7 C 43.5 27.5, 35 27.8, 28 32.3" fill="none" stroke="rgba(27,42,34,0.4)" stroke-width="0.8"/>
+              
+              <!-- Center Spine Line -->
+              <line x1="27" y1="4.5" x2="27" y2="32.5" stroke="#1b2a22" stroke-width="1.4" stroke-linecap="round"/>
+              
+              <!-- Lettering OG Ver. -->
+              <text x="15" y="19.5" font-family="'JetBrains Mono', 'SF Mono', Consolas, monospace" font-size="9" font-weight="900" text-anchor="middle" fill="#1b2a22" letter-spacing="0.2">OG</text>
+              <text x="39" y="19.5" font-family="'JetBrains Mono', 'SF Mono', Consolas, monospace" font-size="9" font-weight="900" text-anchor="middle" fill="#1b2a22" letter-spacing="0.1">Ver.</text>
+            </svg>
+          </button>
+          <div class="nav-book-tooltip">Old Generation Version</div>
+        </div>
+      </nav>
+
+      <!-- Mobile Right Navigation Controls (Headset + Burger Menu matching Edit Mobile) -->
+      <div class="hero-mobile-nav-group">
+        <button class="hero-nav-icon-btn mobile-audio-btn" id="nav-audio-btn-mobile" aria-label="Listen to Audio Briefing" title="Executive Audio Briefing">
+          <svg class="nav-headset-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+          </svg>
+        </button>
+        <button class="hero-burger-btn" id="hero-burger-btn" aria-label="Toggle Navigation Menu">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay Menu (Contains options & all 6 supplements already laid out) -->
+    <div class="mobile-drawer-overlay" id="mobile-drawer-overlay">
+      <div class="mobile-drawer-panel" id="mobile-drawer-panel">
+        <div class="mobile-drawer-header">
+          <span class="mobile-drawer-logo">AI 2035</span>
+          <button class="mobile-drawer-close-btn" id="mobile-drawer-close-btn" aria-label="Close Navigation Menu">&times;</button>
+        </div>
+        <div class="mobile-drawer-body">
+          <div class="mobile-primary-links">
+            <a href="/AI-2035.pdf" target="_blank" rel="noopener noreferrer" class="mobile-nav-action-link" title="View Complete 22-Page Research Report (PDF)">
+              <i class="fa-regular fa-file-pdf"></i>
+              <span>View Report (PDF)</span>
+            </a>
+            <a href="/about.html" class="mobile-nav-action-link">
+              <i class="fa-regular fa-user"></i>
+              <span>About the Project</span>
+            </a>
+            <button class="mobile-nav-action-link nav-transition-trigger" id="nav-old-version-btn-mobile">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Old Generation Version (OG Ver.)</span>
+            </button>
+          </div>
+
+          <div class="mobile-drawer-divider"></div>
+          
+          <div class="mobile-supplements-heading">
+            <span>6 TECHNICAL SUPPLEMENTS</span>
+          </div>
+          <div class="mobile-supplements-list">
+            <a href="/supplements/baseline-counterfactual.html" class="mobile-supp-item">
+              <span class="mobile-supp-num">1</span>
+              <div class="mobile-supp-meta">
+                <div class="mobile-supp-title">Baseline Counterfactual</div>
+                <div class="mobile-supp-desc">FBI IC3 backtest and organic digital growth</div>
+              </div>
+            </a>
+            <a href="/supplements/loss-model-and-incrementality.html" class="mobile-supp-item">
+              <span class="mobile-supp-num">2</span>
+              <div class="mobile-supp-meta">
+                <div class="mobile-supp-title">Loss Model & Incrementality</div>
+                <div class="mobile-supp-desc">Econometric decomposition and net AI increment</div>
+              </div>
+            </a>
+            <a href="/supplements/monte-carlo-simulation.html" class="mobile-supp-item">
+              <span class="mobile-supp-num">3</span>
+              <div class="mobile-supp-meta">
+                <div class="mobile-supp-title">Monte Carlo Simulation</div>
+                <div class="mobile-supp-desc">800,000-sample probabilistic engine & parameters</div>
+              </div>
+            </a>
+            <a href="/supplements/threat-actor-diffusion.html" class="mobile-supp-item">
+              <span class="mobile-supp-num">4</span>
+              <div class="mobile-supp-meta">
+                <div class="mobile-supp-title">Threat Actor Diffusion</div>
+                <div class="mobile-supp-desc">Tooling diffusion from APTs to novice actors</div>
+              </div>
+            </a>
+            <a href="/supplements/taiwan-semiconductor-chokepoint.html" class="mobile-supp-item">
+              <span class="mobile-supp-num">5</span>
+              <div class="mobile-supp-meta">
+                <div class="mobile-supp-title">Taiwan Semiconductor Chokepoint</div>
+                <div class="mobile-supp-desc">TSMC Fab 18/20 physical supply-chain choke point</div>
+              </div>
+            </a>
+            <a href="/supplements/code-and-replication.html" class="mobile-supp-item">
+              <span class="mobile-supp-num">6</span>
+              <div class="mobile-supp-meta">
+                <div class="mobile-supp-title">Code & Replication Pipeline</div>
+                <div class="mobile-supp-desc">Production environment, scripts, and verification</div>
+              </div>
+            </a>
+            <a href="/supplements.html" class="mobile-view-all-supps">
+              <span>View All 6 Simulation Supplements</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Restored Foreword & 4 Intro Tabs -->
+    <div class="hero-prose">
+      <h1 class="hero-title">Plan P & C</h1>
+      <div class="hero-author">Aditya Singh</div>
+      
+      <p class="hero-lead-text">
+        Most people worried about AI focus on ASI, that is, future systems that are smarter than human experts at everything. In AI 2035, I instead look at a crisis that arrives much earlier, &ldquo;What happens when a single operator can spin up thousands of AI agents to find zero-days, break into enterprise networks, and shut down power grids and water systems ?&rdquo;
+      </p>
+      <p class="hero-sublead-text">
+        Plan P & C are the two paths the world can take when machine-speed cyber warfare collides with a global chip shortage.
+      </p>
+      <p class="hero-third-text">
+        In these competing scenarios, AI agents automate interdependent cross-sector cascades by 2030: offensive models no longer target utilities in isolation, as they understand how telecommunications backbones, electrical grids, municipal water distribution, and maritime logistics depend on one another. A 2031 blockade of Taiwan cuts off the world’s supply of advanced chips, and superpowers are forced to choose between secretly hardening their own grids while dumping open-source cyber weapons onto the internet (Plan P) or signing an emergency treaty that locks every frontier model like nuclear warheads in a silo (Plan C).
+      </p>
+      
+      <!-- 4 Introductory Tabs (Inactive: #FFFFF8 + black text; Active: black + #FFFFF8 text) -->
+      <div class="hero-intro-cards-bar" id="intro-tabs-bar">
+        <button class="intro-card-btn" data-card-id="what-is-this">What is Plan P & C?</button>
+        <button class="intro-card-btn" data-card-id="how-did-i-build-it">How did I build it?</button>
+        <button class="intro-card-btn" data-card-id="why-a-scenario">Why a scenario?</button>
+        <button class="intro-card-btn" data-card-id="why-these-timelines">Why these timelines?</button>
+      </div>
+
+      <!-- Inline Expandable Content Area -->
+      <div class="intro-expandable-box" id="intro-expandable-box" style="display: none;">
+        <div class="intro-box-content" id="intro-box-content"></div>
+      </div>
+
+      <!-- Metadata Row Directly Below Intro Tabs -->
+      <div class="hero-metadata-row">
+        <span>Published August 27th 2026</span>
+        <span class="meta-separator">|</span>
+        <span>Inspired by <a href="https://europe2031.ai/" target="_blank" rel="noopener noreferrer" class="meta-link">Europe 2031</a></span>
+        <span class="meta-separator">|</span>
+        <a href="https://www.youtube.com/watch?v=C84Lnyv0gTs" target="_blank" rel="noopener noreferrer" class="meta-link meta-yt-link">
+          <i class="fa-brands fa-youtube meta-yt-icon"></i> Hoog video
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main 3-Column Scrollytelling Viewport -->
+  <div class="scrolly-viewport">
+    
+    <!-- Column 1: Left Timeline Rail -->
+    <nav class="left-rail-container" id="left-timeline-rail" aria-label="Timeline Navigation"></nav>
+
+    <!-- Column 2: Center Narrative Story Flow -->
+    <main class="narrative-container" id="narrative-stream"></main>
+
+    <!-- Column 3: Fixed Right Visualization Panel & Refined Threat Dock -->
+    <div class="fixed-right-column" id="fixed-right-column">
+      <aside class="fixed-hud-dock">
+        
+        <!-- Dock Header -->
+        <div class="dock-top-header">
+          <div class="dock-header-top-row">
+            <span class="hud-date-pill" id="hud-date-pill">2024</span>
+            <span class="status-pill status-monochrome" id="hud-status-badge">OBSERVED</span>
+          </div>
+          <div class="hud-level-title" id="hud-level-badge">C0 · AI Research Assistant</div>
+        </div>
+
+        <!-- Interactive SVG Chart Container -->
+        <div class="dock-chart-box" id="dock-chart-container" title="Click to view fullscreen graph"></div>
+
+        <!-- Chart Switcher Buttons with Font Awesome 6 Icons -->
+        <div class="chart-switch-buttons-bar">
+          <button class="chart-toggle-btn" id="btn-toggle-cap">
+            <i class="fa-solid fa-chart-line"></i> Adversarial Capabilities (C0 - C7)
+          </button>
+          <button class="chart-toggle-btn active" id="btn-toggle-loss">
+            <i class="fa-solid fa-chart-area"></i> Annual Cyber Losses ($B)
+          </button>
+        </div>
+
+        <!-- Dual-Lens Switcher Bar (Active in Annual Cyber Losses View) -->
+        <div class="lens-switcher-bar" id="lens-switcher-bar" style="display: flex;">
+          <button class="lens-toggle-btn" id="btn-lens-operational" data-lens="operational" title="Total loss across campaigns where autonomous AI is an operational driver">
+            <span class="lens-btn-main"><i class="fa-solid fa-crosshairs"></i> Attacks Involving AI (3.2%)</span>
+          </button>
+          <button class="lens-toggle-btn active" id="btn-lens-econometric" data-lens="econometric" title="Net economic damage strictly caused by autonomous AI speed and persistence">
+            <span class="lens-btn-main"><i class="fa-solid fa-scale-balanced"></i> Extra Damage from AI (+$0B)</span>
+            <span class="lens-btn-baseline">Baseline</span>
+          </button>
+        </div>
+
+        <!-- Live Threat Summary Area -->
+        <div class="threat-summary-card">
+          <div class="threat-card-row">
+            <div class="threat-label" id="hud-loss-label">Total Loss (AI-Driven Attacks)</div>
+            <div class="threat-val-loss" id="hud-loss-exposure">$440 Billion / year</div>
+          </div>
+          <div class="threat-card-subrow" id="hud-loss-subrow">
+            <span class="hud-pill-tag" id="hud-loss-tag" style="display:none;"></span>
+          </div>
+
+          <div class="threat-card-row">
+            <div class="threat-label milestone-label">Key Capability Threshold</div>
+            <div class="threat-val-milestone" id="hud-key-milestone">
+              AI acts like a high-speed research intern, reading technical manuals in seconds and finding default passwords.
+            </div>
+          </div>
+
+          <div class="threat-status-grid">
+            <div class="status-row us">
+              <span class="status-country-tag">UNITED STATES (CLOSED FRONTIER)</span>
+              <div id="hud-us-status" class="status-desc">GPT-4 class (C0 Frontier)<br><span class="status-sub">Frontier Leader · Fast Assistant</span></div>
+            </div>
+            <div class="status-row cn">
+              <span class="status-country-tag">CHINA (OPEN FRONTIER)</span>
+              <div id="hud-china-status" class="status-desc">GLM-4 / DeepSeek V2 (C0 Assistant Era)<br><span class="status-sub">Narrowing gap · Broad assistant capability</span></div>
+            </div>
+            <div class="status-row eu">
+              <span class="status-country-tag">EUROPE (DOMESTIC FRONTIER)</span>
+              <div id="hud-europe-status" class="status-desc">Mistral-class models (C0 Assistant Era)<br><span class="status-sub">Smaller ecosystem · Relies more on US platforms</span></div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- In-Browser Podcast Player (Outside graphs card, appears just below it when headphone is clicked) -->
+      <div class="inbuilt-podcast-player" id="inbuilt-podcast-player" aria-label="In-Browser Podcast Audio Player" style="display: none;">
+        <button class="podcast-close-btn" id="podcast-close-btn" aria-label="Close podcast player" title="Close player">&times;</button>
+        <audio id="podcast-audio" preload="metadata">
+          <source src="audio/AI_2035_Full_Podcast.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Segmented Timeline Progress Bar with Hover Section Dividers -->
+        <div class="podcast-track-wrapper" id="podcast-track-wrapper" title="Click or drag to seek / Hover to view chapters">
+          <div class="podcast-track-bg"></div>
+          <div class="podcast-track-fill" id="podcast-track-fill"></div>
+          <div class="podcast-track-dividers" id="podcast-track-dividers"></div>
+          <div class="podcast-hover-tooltip" id="podcast-hover-tooltip"></div>
+        </div>
+
+        <!-- Primary Media Controls Row -->
+        <div class="podcast-controls-row">
+          <div class="podcast-controls-left">
+            <button class="podcast-play-btn" id="podcast-play-btn" aria-label="Play / Pause" title="Play / Pause">
+              <svg class="podcast-play-icon" id="podcast-play-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <polygon points="6,4 20,12 6,20"/>
+              </svg>
+            </button>
+            <span class="podcast-chapter-name" id="podcast-chapter-name" title="Current chapter (Click to jump to next chapter)">Introduction</span>
+          </div>
+
+          <div class="podcast-controls-right">
+            <button class="podcast-skip-btn" id="podcast-rewind-btn" aria-label="Rewind 10 seconds" title="Rewind 10s">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/>
+                <path d="M3 3v5h5"/>
+                <text x="12" y="15.5" font-size="7.5" font-family="monospace" font-weight="700" fill="currentColor" stroke="none" text-anchor="middle">10</text>
+              </svg>
+            </button>
+            <button class="podcast-speed-btn" id="podcast-speed-btn" aria-label="Toggle Playback Speed" title="Playback Speed">1x</button>
+            <button class="podcast-skip-btn" id="podcast-forward-btn" aria-label="Forward 10 seconds" title="Forward 10s">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 1 1-3-6.7L21 8"/>
+                <path d="M21 3v5h-5"/>
+                <text x="12" y="15.5" font-size="7.5" font-family="monospace" font-weight="700" fill="currentColor" stroke="none" text-anchor="middle">10</text>
+              </svg>
+            </button>
+            <span class="podcast-time-readout" id="podcast-time-readout">0:00 / 16:21</span>
+          </div>
+        </div>
+
+        <!-- Platform Availability Links -->
+        <div class="podcast-platforms-row">
+          <span class="podcast-available-label">also available on</span>
+          <div class="podcast-platform-links">
+            <a href="https://open.spotify.com/episode/4KZn62TiEdh95sh589PWgk?si=qubbmvhsTRegWQvIXUPFlQ" target="_blank" rel="noopener noreferrer" class="podcast-platform-btn" title="Listen on Spotify" aria-label="Listen on Spotify">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.435-5.308-1.76-8.793-.964-.335.077-.67-.133-.746-.468-.077-.334.132-.67.467-.746 3.809-.87 7.076-.496 9.722 1.115.294.18.386.562.207.856zm1.224-2.723c-.226.367-.706.482-1.072.257-2.687-1.652-6.785-2.131-9.965-1.166-.413.126-.849-.107-.974-.52-.125-.414.108-.85.52-.975 3.633-1.103 8.147-.568 11.234 1.332.366.226.482.707.257 1.072zm.105-2.835C14.692 8.95 8.085 8.724 4.248 9.89c-.495.15-1.022-.13-1.172-.625-.15-.494.13-1.022.625-1.172 4.436-1.346 11.73-1.082 16.104 1.512.446.265.592.846.327 1.291-.265.446-.846.592-1.291.328z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Floating Live Mini-Graph Bottom Bar (Exact Picture 3 Design) -->
+  <div class="mobile-bottom-dock" id="mobile-bottom-dock" role="button" aria-label="Open Fullscreen Interactive Graph" tabindex="0">
+    <div class="mobile-dock-expand-icon" aria-hidden="true" title="Fullscreen Graph">
+      <svg viewBox="0 0 24 24" width="7" height="7" stroke="#FFFFF8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/>
+      </svg>
+    </div>
+    <div class="mobile-dock-graph-viewport" id="mobile-dock-sparkline"></div>
+  </div>
+
+  <!-- Fullscreen Interactive Graph Modal Overlay -->
+  <div class="fullscreen-graph-modal" id="fullscreen-graph-modal" aria-hidden="true" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-dialog-content">
+      
+      <!-- Top Modal Bar with Exit Button and Date Pill -->
+      <div class="modal-header-bar">
+        <div class="modal-header-left">
+          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close fullscreen graph">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <span class="hud-date-pill modal-date-pill" id="modal-date-pill">2024</span>
+        </div>
+        <div class="modal-header-center">
+          <div class="modal-level-title" id="modal-level-badge">C0 · AI Research Assistant</div>
+          <span class="status-pill status-monochrome modal-status-badge" id="modal-status-badge">OBSERVED</span>
+        </div>
+      </div>
+
+      <!-- Clear 2-Graph Switcher Tabs with Prominent Headings -->
+      <div class="modal-chart-switcher-tabs">
+        <button class="modal-tab-btn" id="modal-btn-toggle-cap" data-mode="capabilities">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="tab-btn-title">Adversarial Capabilities (C0 - C7)</span>
+        </button>
+        <button class="modal-tab-btn active" id="modal-btn-toggle-loss" data-mode="losses">
+          <i class="fa-solid fa-chart-area"></i>
+          <span class="tab-btn-title">Annual Cyber Losses ($B)</span>
+        </button>
+      </div>
+
+      <!-- Modal Dual-Lens Switcher Bar (Active in Annual Cyber Losses View) -->
+      <div class="modal-lens-switcher-bar" id="modal-lens-switcher-bar" style="display: flex;">
+        <button class="lens-toggle-btn" id="modal-btn-lens-operational" data-lens="operational">
+          <span class="lens-btn-main"><i class="fa-solid fa-crosshairs"></i> Attacks Involving AI (3.2%)</span>
+        </button>
+        <button class="lens-toggle-btn active" id="modal-btn-lens-econometric" data-lens="econometric">
+          <span class="lens-btn-main"><i class="fa-solid fa-scale-balanced"></i> Extra Damage from AI (+$0B)</span>
+          <span class="lens-btn-baseline">Baseline</span>
+        </button>
+      </div>
+
+      <!-- Interactive SVG Chart Container inside Modal -->
+      <div class="modal-chart-box" id="modal-chart-container"></div>
+
+      <!-- Scrubber Instruction Hint -->
+      <div class="modal-scrubber-hint">
+        <i class="fa-solid fa-hand-pointer"></i> Tap or drag across timeline to inspect trajectory and milestones
+      </div>
+
+      <!-- Live Threat Summary & National Capabilities inside Modal -->
+      <div class="modal-threat-content">
+        
+        <div class="modal-metrics-row">
+          <div class="modal-metric-card">
+            <div class="threat-label" id="modal-loss-label">Total Loss (AI-Driven Attacks)</div>
+            <div class="threat-val-loss" id="modal-loss-exposure">$440 Billion / year</div>
+            <div class="threat-card-subrow" id="modal-loss-subrow" style="margin-top: 4px; display: flex; gap: 8px; font-size: 0.78rem;">
+              <span class="hud-pill-tag" id="modal-loss-tag" style="display:none;"></span>
+            </div>
+          </div>
+          <div class="modal-metric-card">
+            <div class="threat-label">Active Scenario Pathway</div>
+            <div class="modal-branch-tag" id="modal-active-branch-tag">Plan P · Proliferate</div>
+          </div>
+        </div>
+
+        <div class="threat-card-row">
+          <div class="threat-label milestone-label">Key Capability Threshold</div>
+          <div class="threat-val-milestone" id="modal-key-milestone">
+            AI acts like a high-speed research intern, reading technical manuals in seconds and finding default passwords.
+          </div>
+        </div>
+
+        <!-- Country Status Breakdown in Modal -->
+        <div class="threat-status-grid modal-threat-status-grid">
+          <div class="status-row us">
+            <span class="status-country-tag">UNITED STATES (CLOSED FRONTIER)</span>
+            <div id="modal-us-status" class="status-desc">GPT-4 class (C0 Frontier)<br><span class="status-sub">Frontier Leader · Fast Assistant</span></div>
+          </div>
+          <div class="status-row cn">
+            <span class="status-country-tag">CHINA (OPEN FRONTIER)</span>
+            <div id="modal-china-status" class="status-desc">GLM-4 / DeepSeek V2 (C0 Assistant Era)<br><span class="status-sub">Narrowing gap · Broad assistant capability</span></div>
+          </div>
+          <div class="status-row eu">
+            <span class="status-country-tag">EUROPE (DOMESTIC FRONTIER)</span>
+            <div id="modal-europe-status" class="status-desc">Mistral-class models (C0 Assistant Era)<br><span class="status-sub">Smaller ecosystem · Relies more on US platforms</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footnote Hover Popover Element -->
+  
+
+  <!-- Straight horizontal line separating timeline from feedback (matching Edit 15 layout) -->
+    <!-- Source Ledger Evidentiary Note (matching 2033(P) size and muted color) -->
+  <div class="timeline-ledger-note-wrapper">
+    <p class="timeline-source-ledger-note">
+      <span class="ledger-note-star">*</span> All empirical citations, methodology anchors, and source ledger references are detailed in the <a href="/AI-2035.pdf" target="_blank" rel="noopener noreferrer" class="timeline-ledger-link">full research report (PDF)</a>.
+    </p>
+  </div>
+  <hr class="timeline-feedback-divider" aria-hidden="true">
+
+  <!-- Feedback Section (Directly below timeline, matching Edit 15 layout) -->
+  <section class="feedback-section" id="feedback" aria-label="Reader Feedback">
+    <div class="feedback-container">
+      <div class="feedback-header">
+        <h2 class="feedback-title">Feedback</h2>
+      </div>
+
+      <form class="feedback-form" id="native-feedback-form" novalidate>
+        <!-- Field 1: Name (or Alias) -->
+        <div class="feedback-field-group">
+          <label for="feedback-name" class="feedback-label">Your Name (or Alias) <span class="feedback-req">*</span></label>
+          <input type="text" id="feedback-name" name="name" class="feedback-input" placeholder="Your Name (or Alias)" required maxlength="100" autocomplete="name">
+          <div class="feedback-field-error" id="feedback-name-error" aria-live="polite"></div>
+        </div>
+
+        <!-- Field 2: Feedback Textarea -->
+        <div class="feedback-field-group">
+          <label for="feedback-message" class="feedback-label">Your Feedback <span class="feedback-req">*</span></label>
+          <textarea id="feedback-message" name="feedback" class="feedback-textarea" placeholder="Criticism, corrections, questions, or suggestions..." rows="4" required maxlength="5000"></textarea>
+          <div class="feedback-field-error" id="feedback-message-error" aria-live="polite"></div>
+        </div>
+
+        <!-- Field 3: Future Paper Review (arXiv) -->
+        <div class="feedback-field-group feedback-review-group">
+          <label class="feedback-label feedback-question-label">
+            “Would you be willing to review a future paper version of AI 2035, once it is written, for potential submission to arXiv?”
+          </label>
+          <div class="feedback-seg-control" role="radiogroup" aria-label="Review future paper version">
+            <button type="button" class="feedback-seg-btn" id="feedback-paper-yes" data-val="yes" role="radio" aria-checked="false">Yes</button>
+            <button type="button" class="feedback-seg-btn" id="feedback-paper-no" data-val="no" role="radio" aria-checked="false">No</button>
+          </div>
+          <input type="hidden" id="feedback-paper-review-val" name="paperReview" value="">
+        </div>
+
+        <!-- Field 4: Conditional Contact Details Toggle (Only visible if Yes) -->
+        <div class="feedback-toggle-wrapper" id="feedback-contact-toggle-wrapper" style="display: none;">
+          <div class="feedback-toggle-row">
+            <span class="feedback-toggle-label">Contact details</span>
+            <button type="button" class="feedback-switch" id="feedback-contact-toggle" role="switch" aria-checked="true" aria-label="Toggle contact details">
+              <span class="feedback-switch-thumb"></span>
+            </button>
+            <input type="hidden" id="feedback-contact-toggle-val" value="true">
+          </div>
+        </div>
+
+        <!-- Field 5: Conditional Contact Fields (Only visible if Yes AND Toggle ON) -->
+        <div class="feedback-contact-fields" id="feedback-contact-fields" style="display: none;">
+          <div class="feedback-field-row">
+            <div class="feedback-field-subgroup">
+              <label for="feedback-email" class="feedback-label feedback-sublabel">Email</label>
+              <input type="email" id="feedback-email" name="email" class="feedback-input" placeholder="Email address" maxlength="120" autocomplete="email">
+            </div>
+            <div class="feedback-field-subgroup">
+              <label for="feedback-social" class="feedback-label feedback-sublabel">Social profile <span class="feedback-optional">(optional)</span></label>
+              <input type="text" id="feedback-social" name="social" class="feedback-input" placeholder="LinkedIn or social profile URL" maxlength="200" autocomplete="url">
+            </div>
+          </div>
+          <div class="feedback-field-error" id="feedback-contact-error" aria-live="polite"></div>
+        </div>
+
+        <!-- Cloudflare Turnstile Invisible Container -->
+          <div id="feedback-turnstile-container"></div>
+
+          <!-- Field 6: Submission Button & Status -->
+          <div class="feedback-action-row">
+          <button type="submit" class="feedback-submit-btn" id="feedback-submit-btn">Submit</button>
+          <div class="feedback-status-msg" id="feedback-status-msg" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Site Footer with Acknowledgement on Left and Contact Icons on Right -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-acknowledgement">
+        I’m grateful to my facilitator and the members of Group 6 of the BlueDot I'mpact AGI Strategy Course,<br class="desktop-br">whose discussions, questions and feedback helped shape both this project and the way I think about these problems.
+      </div>
+      <div class="footer-icons-group">
+        <a href="https://www.linkedin.com/in/aditya-singh-cybersec/" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="Open LinkedIn profile">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="mailto:the.coder.zen@gmail.com" class="footer-icon-link" aria-label="Send email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cloudflare Turnstile Explicit Script -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/feedback.js"></script>
+
+
+</body>
+</html>

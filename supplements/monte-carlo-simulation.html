@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 800,000-Sample Monte Carlo Engine | AI 2035 Technical Supplement</title>
+  <meta name="description" content="Technical formulation of the correlated 800,000-sample Monte Carlo simulation engine, Cholesky macro-shock covariance, and Bayesian SIR conditioning filter.">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function renderMath() {
+        if (window.renderMathInElement) {
+          window.renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '\[', right: '\]', display: true},
+              {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+          });
+        } else {
+          setTimeout(renderMath, 100);
+        }
+      }
+      renderMath();
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>.katex .katex-mathml { display: none !important; }</style>
+</head>
+<body class="supplement-page-body">
+
+  <div class="supplement-wrapper">
+    
+    <!-- Navigation Header -->
+    <header class="supplement-nav-row">
+      <a href="/" class="supplement-home-link">
+        <i class="fa-solid fa-arrow-left" style="font-size: 0.85rem;"></i> AI 2035
+      </a>
+      <nav class="supplement-nav-links">
+        <a href="/supplements" class="supplement-nav-link">All Supplements</a>
+        <a href="/about" class="supplement-nav-link">About</a>
+      </nav>
+    </header>
+
+    <!-- Header Content -->
+    <header class="supplement-header">
+      <span class="supplement-tag-pill">Technical Supplement 3</span>
+      <h1 class="supplement-title">The 800,000-Sample Monte Carlo Engine & Geopolitical Shock Covariance</h1>
+      <div class="supplement-meta-row">
+        <span>Probabilistic Simulation & Bayesian SIR</span>
+        <span>•</span>
+        <span>N = 800,000 Iterations</span>
+      </div>
+    </header>
+
+    <!-- Main Article -->
+    <article class="supplement-article">
+      
+      <p class="supplement-lead-text">
+        Forecasting a complex decade-long socio-technical transition cannot be done through point estimates. Deterministic point forecasts either underestimate systemic fragility or produce hysterical worst-case scenarios without assigned probabilities.
+      </p>
+
+      <p class="supplement-p">
+        To capture the non-linear interactions of threat actor scaling, defense deployment, and geopolitical conflict, I built an <strong>800,000-sample probabilistic Monte Carlo simulation</strong>. The engine models parameter uncertainty over lognormal and logit margins, introduces a correlated macroeconomic shock covariance matrix, and conditions prior distributions against audited 2024–2025 observations using Bayesian Sequential Importance Resampling (SIR).
+      </p>
+
+      <div class="supplement-callout">
+        <strong>The Simulation Principle:</strong> Real-world crises do not happen independently. If a severe geopolitical conflict erupts in the Taiwan Strait, semiconductor hardware output drops, nation-state cyber commands mobilize offensive swarms, and enterprise SOC analyst triage exhausts simultaneously. The engine enforces an empirical macro-shock correlation parameter (\(\rho = 0.30\)) so that bad-world factors cluster realistically rather than artificially cancelling each other out.
+      </div>
+
+      <h2 class="supplement-section-h2">1. Correlated Normal Shock & Quantile Mapping</h2>
+      
+      <p class="supplement-p">
+        In standard independent sampling (\(\rho = 0\)), drawing 45 parameters independently causes the Law of Large Numbers to smooth out all tail risk: an extreme draw in actor concurrency is negated by an extreme draw in defensive patching, producing an artificially narrow distribution.
+      </p>
+
+      <p class="supplement-p">
+        I resolve this by formulating a shared macroeconomic crisis shock vector \(\mathbf{z}\) using a one-factor Cholesky decomposition:
+      </p>
+
+      <div class="math-display-card">
+        $$z_i = \sqrt{\rho}\,\epsilon_{\text{macro}} + \sqrt{1 - \rho}\,\epsilon_i, \quad \rho = 0.30, \quad \epsilon_{\text{macro}}, \epsilon_i \overset{\text{iid}}{\sim} \mathcal{N}(0, 1)$$
+      </div>
+
+      <p class="supplement-p">
+        Where \(\epsilon_{\text{macro}}\) is a common global crisis shock and \(\epsilon_i\) is an idiosyncratic factor shock. The resulting correlated standard normal score \(z_i\) is mapped into bounded parameter space via explicit quantile inverse transforms:
+      </p>
+
+      <ul style="margin-left: 20pt; margin-bottom: 24pt; line-height: 1.8;">
+        <li><strong>Lognormal Positive Quantities</strong> (e.g., Operator Pool Size, Campaigns per Year, Unit Loss):
+          $$\theta_i = \exp\left( \mu_i + \sigma_i \cdot z_i \right)$$
+        </li>
+        <li><strong>Bounded Fractions & Defense Elasticities</strong> (e.g., Exploit Yield, Unpatched Exposed Surface):
+          $$\theta_i = \frac{1}{1 + \exp\left( -(\mu_i + \sigma_i \cdot z_i) \right)}$$
+        </li>
+      </ul>
+
+      <!-- Interactive SVG Chart: Monte Carlo Fan -->
+      <div class="chart-card-wrap">
+        <div class="chart-card-title">Monte Carlo Quantile Fan Distribution (2024–2035, $B USD)</div>
+        <div class="chart-card-sub">800,000 Calibrated Trajectories under Plan P: \(p_{10}\) (Low Impact), \(p_{50}\) (Median), and \(p_{90}\) (Severe Tail)</div>
+        
+        <div class="chart-svg-container">
+          <svg viewBox="0 0 840 370" style="width: 100%; height: auto; background: transparent; font-family: var(--font-sans);">
+            <!-- Grid Lines -->
+            <line x1="60" y1="310" x2="800" y2="310" stroke="#e0dbcb" stroke-width="1"/>
+            <line x1="60" y1="240" x2="800" y2="240" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="170" x2="800" y2="170" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="100" x2="800" y2="100" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="30" x2="800" y2="30" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+
+            <!-- Y Labels -->
+            <text x="50" y="314" text-anchor="end" font-size="11" fill="#777">$0</text>
+            <text x="50" y="244" text-anchor="end" font-size="11" fill="#777">$1,000B</text>
+            <text x="50" y="174" text-anchor="end" font-size="11" fill="#777">$2,000B</text>
+            <text x="50" y="104" text-anchor="end" font-size="11" fill="#777">$3,000B</text>
+            <text x="50" y="34" text-anchor="end" font-size="11" fill="#777">$4,000B</text>
+
+            <!-- X Labels -->
+            <text x="60" y="332" text-anchor="middle" font-size="11" fill="#555">2024</text>
+            <text x="208" y="332" text-anchor="middle" font-size="11" fill="#555">2026</text>
+            <text x="356" y="332" text-anchor="middle" font-size="11" fill="#555">2028</text>
+            <text x="504" y="332" text-anchor="middle" font-size="11" fill="#555">2030</text>
+            <text x="652" y="332" text-anchor="middle" font-size="11" fill="#555">2032</text>
+            <text x="800" y="332" text-anchor="middle" font-size="11" fill="#111" font-weight="700">2035</text>
+
+            <!-- 2031 Crossroads Line -->
+            <line x1="578" y1="30" x2="578" y2="310" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,4"/>
+            <text x="582" y="44" font-size="10" font-weight="700" fill="#000000">2031 CROSSROADS</text>
+
+            <!-- 80% Confidence Fan (p10 to p90) -->
+            <!-- 2024: $440B -> y=279 -->
+            <!-- 2035: p10 $1,580B -> y=199; p90 $3,850B -> y=40 -->
+            <polygon points="60,279 208,265 356,236 504,183 652,115 800,40 800,199 652,222 504,244 356,262 208,273 60,279" fill="#9e1b1b" fill-opacity="0.15"/>
+
+            <!-- 50% Median Curve -->
+            <!-- 2024: $440B (279), 2026: $575B (270), 2028: $825B (252), 2030: $1270B (221), 2032: $1820B (183), 2035: $2425B (140) -->
+            <path d="M 60,279 C 208,270 356,252 504,221 C 652,183 800,140 800,140" fill="none" stroke="#9e1b1b" stroke-width="3"/>
+
+            <!-- p90 Upper Boundary -->
+            <path d="M 60,279 C 208,265 356,236 504,183 C 652,115 800,40 800,40" fill="none" stroke="#9e1b1b" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+            <!-- p10 Lower Boundary -->
+            <path d="M 60,279 C 208,273 356,262 504,244 C 652,222 800,199 800,199" fill="none" stroke="#9e1b1b" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+            <!-- Macro Ceiling Line: $3,450B * 1.03^(t-2025) -->
+            <!-- 2025: $3450B (68), 2035: $4636B (y=-14 clampled) -->
+            <path d="M 134,68 C 356,58 578,42 800,20" fill="none" stroke="#555" stroke-width="1.2" stroke-dasharray="2,2"/>
+            <text x="650" y="24" font-size="9" fill="#555">Global Real GDP Ceiling ($3.45T + 3%/yr)</text>
+
+            <!-- Key Quantile Dots -->
+            <circle cx="800" cy="40" r="4.5" fill="#9e1b1b"/>
+            <circle cx="800" cy="140" r="5" fill="#9e1b1b"/>
+            <circle cx="800" cy="199" r="4.5" fill="#9e1b1b"/>
+
+            <!-- Labels on Endpoints -->
+            <text x="808" y="44" font-size="11" font-weight="700" fill="#9e1b1b">p90: $3,850 Billion</text>
+            <text x="808" y="144" font-size="11" font-weight="700" fill="#9e1b1b">p50: $2,425 Billion (Median)</text>
+            <text x="808" y="203" font-size="11" font-weight="700" fill="#9e1b1b">p10: $1,580 Billion</text>
+
+            <!-- Legend -->
+            <g transform="translate(70, 40)">
+              <rect x="0" y="0" width="16" height="10" fill="#9e1b1b" fill-opacity="0.25"/>
+              <text x="24" y="9" font-size="11" fill="#111">80% Confidence Interval (\(p_{10}\)–\(p_{90}\))</text>
+
+              <line x1="0" y1="20" x2="16" y2="20" stroke="#9e1b1b" stroke-width="3"/>
+              <text x="24" y="24" font-size="11" fill="#9e1b1b">Median Projection (\(p_{50}\))</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="supplement-section-h2">2. Bayesian SIR Conditioning Filter</h2>
+      
+      <p class="supplement-p">
+        To prevent uncalibrated priors from distorting near-term projections, my pipeline applies a <strong>Bayesian Sequential Importance Resampling (SIR)</strong> filter. Prior parameter particles (\(N = 100,000\)) are reweighted by comparing simulated near-term losses against audited observations from the 2024 FBI IC3 complaint index and the 2024 IBM Cost of a Data Breach audit:
+      </p>
+
+      <div class="math-display-card">
+        $$w_m \propto \exp\left( -\frac{1}{2} \sum_{t=2024}^{2025} \left( \frac{L_{\text{sim}}(t) - L_{\text{obs}}(t)}{\sigma_{\text{obs}}} \right)^2 \right)$$
+      </div>
+
+      <p class="supplement-p">
+        Conditioning maintains an Effective Sample Size (\(\text{ESS}\)) of <strong>84,797 surviving particles</strong> out of 100,000 (an 84.8% survival efficiency), ensuring that the Monte Carlo distribution is strictly anchored to current real-world baseline telemetry before branching into 2026–2035.
+      </p>
+
+      <h2 class="supplement-section-h2">3. Code Modules: `model2.py` & `calib_run.py`</h2>
+
+      <p class="supplement-p">
+        Below is the core correlated sampling engine (`model2.py`) executing Cholesky factor draws and logit margin mappings:
+      </p>
+
+      <div class="code-editor-card">
+        <div class="code-editor-header">
+          <span class="code-filename-badge">model2.py (Correlated Sampling Engine)</span>
+          <button class="code-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-model2').innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy Code', 2000);">Copy Code</button>
+        </div>
+        <div class="code-editor-window">
+          <pre class="code-editor-pre"><code id="code-model2" class="vscode-dark-code"><span class="tok-str">&quot;&quot;&quot;
+Disaggregated Correlated Factor Sampling Engine (2024-2035)
+Author: Aditya Singh (refined with Sonnet)
+
+Executes correlated normal-shock sampling across disaggregated sectors, mapping
+shock vectors through lognormal and logit marginal distributions with GDP ceilings
+and empirical incrementality haircuts.
+&quot;&quot;&quot;</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">math</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">numpy</span> <span class="tok-kw">as</span> <span class="tok-var">np</span>
+
+
+
+<span class="tok-kw">import</span> <span class="tok-var">params</span> <span class="tok-kw">as</span> <span class="tok-var">P</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">run_model</span> <span class="tok-kw">as</span> <span class="tok-var">R</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">loss_mc</span> <span class="tok-kw">as</span> <span class="tok-var">M</span>
+
+
+
+<span class="tok-var">Z</span> <span class="tok-op">=</span> <span class="tok-var">M</span><span class="tok-op">.</span><span class="tok-var">Z90</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">logit</span><span class="tok-op">(</span><span class="tok-var">p</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Logit transform: mapping (0, 1) to real line.&quot;&quot;&quot;</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">p</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">p</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">inv_logit</span><span class="tok-op">(</span><span class="tok-var">x</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Inverse logit (logistic sigmoid): mapping real line to (0, 1).&quot;&quot;&quot;</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">+</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-op">-</span><span class="tok-var">x</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-var">SECT</span> <span class="tok-op">=</span> <span class="tok-builtin">list</span><span class="tok-op">(</span><span class="tok-var">P</span><span class="tok-op">.</span><span class="tok-var">SECTORS</span><span class="tok-op">)</span>
+
+<span class="tok-var">YEARS</span> <span class="tok-op">=</span> <span class="tok-var">P</span><span class="tok-op">.</span><span class="tok-var">YEARS</span>
+
+<span class="tok-var">CODES</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+    <span class="tok-str">&quot;B-03&quot;</span><span class="tok-op">:</span> <span class="tok-num">0</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;B-04&quot;</span><span class="tok-op">:</span> <span class="tok-num">1</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;B-01&quot;</span><span class="tok-op">:</span> <span class="tok-num">2</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;B-05&quot;</span><span class="tok-op">:</span> <span class="tok-num">3</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;B-02&quot;</span><span class="tok-op">:</span> <span class="tok-num">4</span><span class="tok-op">,</span>
+
+<span class="tok-op">}</span>
+
+
+
+<span class="tok-cmt"># Sensitivity &amp; Mechanism Ablation Switches:</span>
+
+<span class="tok-cmt"># S1: cross-sector correlated shocks; S5: dynamic geopolitical onset &amp; compute chokepoints;</span>
+
+<span class="tok-cmt"># S7: empirical incrementality haircuts; S4dep: target surface depletion; S4def: adaptive defense.</span>
+
+<span class="tok-var">SW_ALL_OFF</span> <span class="tok-op">=</span> <span class="tok-builtin">dict</span><span class="tok-op">(</span>
+
+    <span class="tok-var">S1</span><span class="tok-op">=</span><span class="tok-kw">False</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S5</span><span class="tok-op">=</span><span class="tok-kw">False</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S6</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S7</span><span class="tok-op">=</span><span class="tok-kw">False</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S4dep</span><span class="tok-op">=</span><span class="tok-kw">False</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S4def</span><span class="tok-op">=</span><span class="tok-kw">False</span><span class="tok-op">,</span>
+
+<span class="tok-op">)</span>
+
+<span class="tok-var">SW_ALL_ON</span> <span class="tok-op">=</span> <span class="tok-builtin">dict</span><span class="tok-op">(</span>
+
+    <span class="tok-var">S1</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S5</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S6</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S7</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S4dep</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S4def</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+<span class="tok-op">)</span>
+
+
+
+<span class="tok-var">PHI_CHOICES</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-num">0.8</span><span class="tok-op">,</span> <span class="tok-num">0.9</span><span class="tok-op">,</span> <span class="tok-num">0.95</span><span class="tok-op">)</span>
+
+<span class="tok-var">PHI_OFFSET</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+    <span class="tok-str">&quot;capable_actors&quot;</span><span class="tok-op">:</span> <span class="tok-num">0.0</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;defense_containment&quot;</span><span class="tok-op">:</span> <span class="tok-num">0.0</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;exposed_share&quot;</span><span class="tok-op">:</span> <span class="tok-num">0.0</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;campaigns_per_actor&quot;</span><span class="tok-op">:</span> <span class="tok-op">-</span><span class="tok-num">0.05</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;success_given_exposure&quot;</span><span class="tok-op">:</span> <span class="tok-op">-</span><span class="tok-num">0.05</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;reporting_multiplier&quot;</span><span class="tok-op">:</span> <span class="tok-op">-</span><span class="tok-num">0.05</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;loss_per_success&quot;</span><span class="tok-op">:</span> <span class="tok-op">-</span><span class="tok-num">0.10</span><span class="tok-op">,</span>
+
+<span class="tok-op">}</span>
+
+
+
+<span class="tok-var">HYP</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+    <span class="tok-str">&quot;hazard&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.02</span><span class="tok-op">,</span> <span class="tok-num">0.04</span><span class="tok-op">,</span> <span class="tok-num">0.08</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;tp&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.08</span><span class="tok-op">,</span> <span class="tok-num">0.15</span><span class="tok-op">,</span> <span class="tok-num">0.25</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;recov&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">,</span> <span class="tok-num">3</span><span class="tok-op">,</span> <span class="tok-num">6</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;split&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-num">0.15</span><span class="tok-op">,</span> <span class="tok-num">0.30</span><span class="tok-op">,</span> <span class="tok-num">0.45</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-num">0.20</span><span class="tok-op">,</span> <span class="tok-num">0.35</span><span class="tok-op">,</span> <span class="tok-num">0.50</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-num">0.20</span><span class="tok-op">,</span> <span class="tok-num">0.35</span><span class="tok-op">,</span> <span class="tok-num">0.45</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;d10&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.05</span><span class="tok-op">,</span> <span class="tok-num">0.15</span><span class="tok-op">,</span> <span class="tok-num">0.30</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;us_share&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">1</span> <span class="tok-op">/</span> <span class="tok-num">3.8</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">1.5</span> <span class="tok-op">**</span> <span class="tok-num">0.5</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-num">1</span> <span class="tok-op">/</span> <span class="tok-num">3.8</span><span class="tok-op">,</span> <span class="tok-num">1</span> <span class="tok-op">/</span> <span class="tok-num">3.8</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-num">1.5</span> <span class="tok-op">**</span> <span class="tok-num">0.5</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+<span class="tok-op">}</span>
+
+
+
+<span class="tok-var">D07_SD</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+    <span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">:</span> <span class="tok-num">0.0</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;it&quot;</span><span class="tok-op">:</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-var">Z</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;ics&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">40</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+<span class="tok-op">}</span>
+
+
+
+<span class="tok-var">INCR</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+    <span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.15</span><span class="tok-op">,</span> <span class="tok-num">0.30</span><span class="tok-op">,</span> <span class="tok-num">0.60</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;it&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.10</span><span class="tok-op">,</span> <span class="tok-num">0.30</span><span class="tok-op">,</span> <span class="tok-num">0.60</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;ics&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.20</span><span class="tok-op">,</span> <span class="tok-num">0.50</span><span class="tok-op">,</span> <span class="tok-num">0.90</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+<span class="tok-op">}</span>
+
+
+
+<span class="tok-var">VPOOL</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+    <span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">1e8</span><span class="tok-op">,</span> <span class="tok-num">3e8</span><span class="tok-op">,</span> <span class="tok-num">1e9</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;it&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">1e7</span><span class="tok-op">,</span> <span class="tok-num">3e7</span><span class="tok-op">,</span> <span class="tok-num">1e8</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;ics&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">3e4</span><span class="tok-op">,</span> <span class="tok-num">1e5</span><span class="tok-op">,</span> <span class="tok-num">3e5</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+<span class="tok-op">}</span>
+
+
+
+<span class="tok-var">BETA</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-num">0.03</span><span class="tok-op">,</span> <span class="tok-num">0.10</span><span class="tok-op">,</span> <span class="tok-num">0.30</span><span class="tok-op">)</span>
+
+<span class="tok-var">L0</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">:</span> <span class="tok-num">10.0</span><span class="tok-op">,</span> <span class="tok-str">&quot;it&quot;</span><span class="tok-op">:</span> <span class="tok-num">10.0</span><span class="tok-op">,</span> <span class="tok-str">&quot;ics&quot;</span><span class="tok-op">:</span> <span class="tok-num">1.0</span><span class="tok-op">}</span>
+
+<span class="tok-var">CAPM</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+    <span class="tok-str">&quot;ics&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.25</span><span class="tok-op">,</span> <span class="tok-num">0.55</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;it&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.40</span><span class="tok-op">,</span> <span class="tok-num">0.70</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-num">0.70</span><span class="tok-op">,</span> <span class="tok-num">0.90</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+<span class="tok-op">}</span>
+
+<span class="tok-var">CAMP_CAP</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-num">0.6</span><span class="tok-op">,</span> <span class="tok-num">0.8</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">)</span>
+
+<span class="tok-var">SUCC_CAP</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-op">-</span><span class="tok-num">0.4</span><span class="tok-op">,</span> <span class="tok-op">-</span><span class="tok-num">0.2</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">)</span>
+
+<span class="tok-var">PROLIF_ACT</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-str">&quot;ics&quot;</span><span class="tok-op">:</span> <span class="tok-num">3.0</span><span class="tok-op">,</span> <span class="tok-str">&quot;it&quot;</span><span class="tok-op">:</span> <span class="tok-num">2.5</span><span class="tok-op">,</span> <span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">:</span> <span class="tok-num">1.6</span><span class="tok-op">}</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">lnorm</span><span class="tok-op">(</span><span class="tok-var">rng</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">q</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Sample from lognormal distribution specified by p10, p50, p90 quantiles.&quot;&quot;&quot;</span>
+
+    <span class="tok-var">lo</span><span class="tok-op">,</span> <span class="tok-var">mid</span><span class="tok-op">,</span> <span class="tok-var">hi</span> <span class="tok-op">=</span> <span class="tok-var">q</span>
+
+    <span class="tok-var">scale</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">hi</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">lo</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">mid</span> <span class="tok-op">*</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-var">scale</span> <span class="tok-op">*</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">lgnorm</span><span class="tok-op">(</span><span class="tok-var">rng</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">q</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Sample from logit-normal distribution specified by p10, p50, p90 quantiles.&quot;&quot;&quot;</span>
+
+    <span class="tok-var">lo</span><span class="tok-op">,</span> <span class="tok-var">mid</span><span class="tok-op">,</span> <span class="tok-var">hi</span> <span class="tok-op">=</span> <span class="tok-var">q</span>
+
+    <span class="tok-var">scale</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-var">hi</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-var">lo</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">inv_logit</span><span class="tok-op">(</span><span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-var">mid</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-var">scale</span> <span class="tok-op">*</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">assign_branches</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">rng_s5</span><span class="tok-op">,</span> <span class="tok-var">S5</span><span class="tok-op">,</span> <span class="tok-var">h_independent</span><span class="tok-op">=</span><span class="tok-num">0.0</span><span class="tok-op">,</span> <span class="tok-var">seed</span><span class="tok-op">=</span><span class="tok-num">7</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;
+    Assign per-sample geopolitical branch, conflict onset year W, and recovery duration R.
+    When S5 is disabled, reproduces baseline allocation (weights: B-02 = 0.7 cap / 0.3 B-01).
+    &quot;&quot;&quot;</span>
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-kw">not</span> <span class="tok-var">S5</span><span class="tok-op">:</span>
+
+        <span class="tok-var">weights</span> <span class="tok-op">=</span> <span class="tok-var">P</span><span class="tok-op">.</span><span class="tok-var">BRANCH_WEIGHTS</span>
+
+        <span class="tok-var">order</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-str">&quot;B-03&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;B-04&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;B-01&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;B-05&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;B-02&quot;</span><span class="tok-op">]</span>
+
+        <span class="tok-var">probs</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-var">weights</span><span class="tok-op">[</span><span class="tok-var">b</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">b</span> <span class="tok-kw">in</span> <span class="tok-var">order</span><span class="tok-op">]</span>
+
+        <span class="tok-var">br</span> <span class="tok-op">=</span> <span class="tok-var">rng_s5</span><span class="tok-op">.</span><span class="tok-var">choice</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">,</span> <span class="tok-var">size</span><span class="tok-op">=</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">p</span><span class="tok-op">=</span><span class="tok-var">probs</span><span class="tok-op">)</span>
+
+        <span class="tok-var">capfail</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">br</span> <span class="tok-op">==</span> <span class="tok-num">4</span><span class="tok-op">)</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">rng_s5</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-op">&gt;</span> <span class="tok-num">0.7</span><span class="tok-op">)</span>
+
+        <span class="tok-var">br</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">capfail</span><span class="tok-op">,</span> <span class="tok-num">2</span><span class="tok-op">,</span> <span class="tok-var">br</span><span class="tok-op">)</span>
+
+        <span class="tok-kw-ctrl">return</span> <span class="tok-var">br</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">full</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-num">2032</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">full</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-num">4.0</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">{</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">h</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">minimum</span><span class="tok-op">(</span><span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">rng_s5</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">HYP</span><span class="tok-op">[</span><span class="tok-str">&quot;hazard&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-num">0.5</span><span class="tok-op">)</span>
+
+    <span class="tok-var">hit</span> <span class="tok-op">=</span> <span class="tok-var">rng_s5</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-num">9</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">&lt;</span> <span class="tok-var">h</span><span class="tok-op">[</span><span class="tok-op">:</span><span class="tok-op">,</span> <span class="tok-kw">None</span><span class="tok-op">]</span>
+
+    <span class="tok-var">has</span> <span class="tok-op">=</span> <span class="tok-var">hit</span><span class="tok-op">.</span><span class="tok-builtin">any</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">)</span>
+
+    <span class="tok-var">W</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">has</span><span class="tok-op">,</span> <span class="tok-num">2027</span> <span class="tok-op">+</span> <span class="tok-var">hit</span><span class="tok-op">.</span><span class="tok-var">argmax</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-num">9999</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">plateau</span> <span class="tok-op">=</span> <span class="tok-var">rng_s5</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-op">&lt;</span> <span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">rng_s5</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">HYP</span><span class="tok-op">[</span><span class="tok-str">&quot;tp&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">sp</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">vstack</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">rng_s5</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">q</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">q</span> <span class="tok-kw">in</span> <span class="tok-var">HYP</span><span class="tok-op">[</span><span class="tok-str">&quot;split&quot;</span><span class="tok-op">]</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">sp</span> <span class="tok-op">=</span> <span class="tok-var">sp</span> <span class="tok-op">/</span> <span class="tok-var">sp</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">u</span> <span class="tok-op">=</span> <span class="tok-var">rng_s5</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span>
+
+    <span class="tok-var">cat</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">u</span> <span class="tok-op">&lt;</span> <span class="tok-var">sp</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">u</span> <span class="tok-op">&lt;</span> <span class="tok-var">sp</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-var">sp</span><span class="tok-op">[</span><span class="tok-num">1</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-num">1</span><span class="tok-op">,</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">d10</span> <span class="tok-op">=</span> <span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">rng_s5</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">HYP</span><span class="tok-op">[</span><span class="tok-str">&quot;d10&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">pcap</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">interp</span><span class="tok-op">(</span><span class="tok-var">d10</span><span class="tok-op">,</span> <span class="tok-op">[</span><span class="tok-num">0.05</span><span class="tok-op">,</span> <span class="tok-num">0.15</span><span class="tok-op">,</span> <span class="tok-num">0.30</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-op">[</span><span class="tok-num">0.9</span><span class="tok-op">,</span> <span class="tok-num">0.7</span><span class="tok-op">,</span> <span class="tok-num">0.5</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">holds</span> <span class="tok-op">=</span> <span class="tok-var">rng_s5</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-op">&lt;</span> <span class="tok-var">pcap</span>
+
+    <span class="tok-var">R_</span> <span class="tok-op">=</span> <span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">rng_s5</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">HYP</span><span class="tok-op">[</span><span class="tok-str">&quot;recov&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">br</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">zeros</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">dtype</span><span class="tok-op">=</span><span class="tok-builtin">int</span><span class="tok-op">)</span>
+
+    <span class="tok-var">war</span> <span class="tok-op">=</span> <span class="tok-var">has</span> <span class="tok-op">&amp;</span> <span class="tok-op">~</span><span class="tok-var">plateau</span>
+
+
+
+    <span class="tok-var">br</span><span class="tok-op">[</span><span class="tok-var">plateau</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-num">1</span>
+
+    <span class="tok-var">br</span><span class="tok-op">[</span><span class="tok-var">war</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">0</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-num">2</span>
+
+    <span class="tok-var">br</span><span class="tok-op">[</span><span class="tok-var">war</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-num">3</span>
+
+    <span class="tok-var">br</span><span class="tok-op">[</span><span class="tok-var">war</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">holds</span><span class="tok-op">[</span><span class="tok-var">war</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-num">4</span><span class="tok-op">,</span> <span class="tok-num">2</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-cmt"># Sovereign containment failure dynamics: early reversion profile</span>
+
+    <span class="tok-var">late</span> <span class="tok-op">=</span> <span class="tok-var">rng_s5</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-op">&gt;</span> <span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">-</span> <span class="tok-var">d10</span><span class="tok-op">)</span>
+
+    <span class="tok-var">failcap</span> <span class="tok-op">=</span> <span class="tok-var">war</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span> <span class="tok-op">&amp;</span> <span class="tok-op">~</span><span class="tok-var">holds</span>
+
+
+
+    <span class="tok-cmt"># Autonomous diffusion hazard: independent state release/cap probability</span>
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-var">h_independent</span> <span class="tok-op">&gt;</span> <span class="tok-num">0.0</span><span class="tok-op">:</span>
+
+        <span class="tok-var">r_ind</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">.</span><span class="tok-var">default_rng</span><span class="tok-op">(</span><span class="tok-var">seed</span> <span class="tok-op">+</span> <span class="tok-num">8888</span><span class="tok-op">)</span>
+
+        <span class="tok-var">hit_ind</span> <span class="tok-op">=</span> <span class="tok-var">r_ind</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-num">9</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">&lt;</span> <span class="tok-var">h_independent</span>
+
+        <span class="tok-var">has_ind</span> <span class="tok-op">=</span> <span class="tok-var">hit_ind</span><span class="tok-op">.</span><span class="tok-builtin">any</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">)</span> <span class="tok-op">&amp;</span> <span class="tok-op">~</span><span class="tok-var">has</span> <span class="tok-op">&amp;</span> <span class="tok-op">~</span><span class="tok-var">plateau</span>
+
+        <span class="tok-var">W_ind</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">has_ind</span><span class="tok-op">,</span> <span class="tok-num">2027</span> <span class="tok-op">+</span> <span class="tok-var">hit_ind</span><span class="tok-op">.</span><span class="tok-var">argmax</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-num">9999</span><span class="tok-op">)</span>
+
+        <span class="tok-var">W</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">has_ind</span><span class="tok-op">,</span> <span class="tok-var">W_ind</span><span class="tok-op">,</span> <span class="tok-var">W</span><span class="tok-op">)</span>
+
+        <span class="tok-var">br</span><span class="tok-op">[</span><span class="tok-var">has_ind</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">0</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-num">2</span>
+
+        <span class="tok-var">br</span><span class="tok-op">[</span><span class="tok-var">has_ind</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">holds</span><span class="tok-op">[</span><span class="tok-var">has_ind</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-num">4</span><span class="tok-op">,</span> <span class="tok-num">2</span><span class="tok-op">)</span>
+
+        <span class="tok-var">ind_late</span> <span class="tok-op">=</span> <span class="tok-var">r_ind</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-op">&gt;</span> <span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">-</span> <span class="tok-var">d10</span><span class="tok-op">)</span>
+
+        <span class="tok-var">failcap_ind</span> <span class="tok-op">=</span> <span class="tok-var">has_ind</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">cat</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span> <span class="tok-op">&amp;</span> <span class="tok-op">~</span><span class="tok-var">holds</span>
+
+        <span class="tok-var">late</span> <span class="tok-op">=</span> <span class="tok-var">late</span> <span class="tok-op">|</span> <span class="tok-op">(</span><span class="tok-var">ind_late</span> <span class="tok-op">&amp;</span> <span class="tok-var">failcap_ind</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">br</span><span class="tok-op">,</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-var">R_</span><span class="tok-op">,</span> <span class="tok-op">{</span>
+
+        <span class="tok-str">&quot;h&quot;</span><span class="tok-op">:</span> <span class="tok-var">h</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;plateau&quot;</span><span class="tok-op">:</span> <span class="tok-var">plateau</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;has_war&quot;</span><span class="tok-op">:</span> <span class="tok-var">has</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;cat&quot;</span><span class="tok-op">:</span> <span class="tok-var">cat</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;holds&quot;</span><span class="tok-op">:</span> <span class="tok-var">holds</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;d10&quot;</span><span class="tok-op">:</span> <span class="tok-var">d10</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;late&quot;</span><span class="tok-op">:</span> <span class="tok-var">late</span> <span class="tok-op">&amp;</span> <span class="tok-var">failcap</span><span class="tok-op">,</span>
+
+    <span class="tok-op">}</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">weights_year</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">,</span> <span class="tok-var">br</span><span class="tok-op">,</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-var">Rr</span><span class="tok-op">,</span> <span class="tok-var">S5</span><span class="tok-op">,</span> <span class="tok-var">late</span><span class="tok-op">=</span><span class="tok-kw">None</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;
+    Calculate time-dependent weights for conflict, proliferation, and sovereign containment.
+    &quot;&quot;&quot;</span>
+
+    <span class="tok-var">war</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">&gt;=</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">clip</span><span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">-</span> <span class="tok-var">W</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-var">Rr</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-var">S5</span><span class="tok-op">:</span>
+
+        <span class="tok-cmt"># Dynamic onset: compute shock starts at W; policy response manifests with one-year lag</span>
+
+        <span class="tok-var">prolif</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">==</span> <span class="tok-var">W</span> <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">,</span> <span class="tok-num">0.3</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">&gt;</span> <span class="tok-var">W</span> <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+        <span class="tok-var">cap</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">==</span> <span class="tok-var">W</span> <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">,</span> <span class="tok-num">0.5</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">&gt;</span> <span class="tok-var">W</span> <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+        <span class="tok-var">lateyr</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">==</span> <span class="tok-var">W</span> <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">)</span> <span class="tok-op">&amp;</span> <span class="tok-op">(</span><span class="tok-var">late</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">late</span> <span class="tok-kw">is</span> <span class="tok-kw">not</span> <span class="tok-kw">None</span> <span class="tok-kw-ctrl">else</span> <span class="tok-kw">False</span><span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">else</span><span class="tok-op">:</span>
+
+        <span class="tok-cmt"># Baseline profile</span>
+
+        <span class="tok-var">prolif</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">==</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-num">0.3</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">&gt;</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+        <span class="tok-var">cap</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">==</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-num">0.5</span><span class="tok-op">,</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">where</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">&gt;</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-num">1.0</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+        <span class="tok-var">lateyr</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">zeros</span><span class="tok-op">(</span><span class="tok-builtin">len</span><span class="tok-op">(</span><span class="tok-var">br</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-var">dtype</span><span class="tok-op">=</span><span class="tok-builtin">bool</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">slow</span> <span class="tok-op">=</span> <span class="tok-builtin">min</span><span class="tok-op">(</span><span class="tok-num">1.0</span><span class="tok-op">,</span> <span class="tok-builtin">max</span><span class="tok-op">(</span><span class="tok-num">0.0</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">-</span> <span class="tok-num">2026</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-num">5.0</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">war</span><span class="tok-op">,</span> <span class="tok-var">prolif</span><span class="tok-op">,</span> <span class="tok-var">cap</span><span class="tok-op">,</span> <span class="tok-var">slow</span><span class="tok-op">,</span> <span class="tok-var">lateyr</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">modifiers</span><span class="tok-op">(</span><span class="tok-var">sector</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">,</span> <span class="tok-var">kind</span><span class="tok-op">,</span> <span class="tok-var">br</span><span class="tok-op">,</span> <span class="tok-var">war</span><span class="tok-op">,</span> <span class="tok-var">prolif</span><span class="tok-op">,</span> <span class="tok-var">cap</span><span class="tok-op">,</span> <span class="tok-var">slow</span><span class="tok-op">,</span> <span class="tok-var">lateyr</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;
+    Calculate location shift (log multiplier or logit shift) and spread addition per sample world.
+    &quot;&quot;&quot;</span>
+
+    <span class="tok-var">n</span> <span class="tok-op">=</span> <span class="tok-builtin">len</span><span class="tok-op">(</span><span class="tok-var">br</span><span class="tok-op">)</span>
+
+    <span class="tok-var">m</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">zeros</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">_</span> <span class="tok-kw">in</span> <span class="tok-builtin">range</span><span class="tok-op">(</span><span class="tok-num">3</span><span class="tok-op">)</span><span class="tok-op">]</span>
+
+    <span class="tok-var">isw</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">br</span> <span class="tok-op">&gt;=</span> <span class="tok-num">2</span><span class="tok-op">)</span>
+
+    <span class="tok-var">b4</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">br</span> <span class="tok-op">==</span> <span class="tok-num">1</span><span class="tok-op">)</span>
+
+    <span class="tok-var">b1</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">br</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span> <span class="tok-op">&amp;</span> <span class="tok-op">~</span><span class="tok-var">lateyr</span>
+
+    <span class="tok-var">b2</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-var">br</span> <span class="tok-op">==</span> <span class="tok-num">4</span><span class="tok-op">)</span> <span class="tok-op">|</span> <span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">br</span> <span class="tok-op">==</span> <span class="tok-num">2</span><span class="tok-op">)</span> <span class="tok-op">&amp;</span> <span class="tok-var">lateyr</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-var">kind</span> <span class="tok-op">==</span> <span class="tok-str">&quot;lognormal&quot;</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">if</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;capable_actors&quot;</span><span class="tok-op">:</span>
+
+            <span class="tok-kw-ctrl">for</span> <span class="tok-var">i</span> <span class="tok-kw">in</span> <span class="tok-builtin">range</span><span class="tok-op">(</span><span class="tok-num">3</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+                <span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span> <span class="tok-op">+=</span> <span class="tok-var">b4</span> <span class="tok-op">*</span> <span class="tok-var">slow</span> <span class="tok-op">*</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">0.4</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">sector</span> <span class="tok-op">==</span> <span class="tok-str">&quot;ics&quot;</span> <span class="tok-kw-ctrl">else</span> <span class="tok-num">0.6</span><span class="tok-op">)</span>
+
+                <span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span> <span class="tok-op">+=</span> <span class="tok-var">b1</span> <span class="tok-op">*</span> <span class="tok-var">prolif</span> <span class="tok-op">*</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">PROLIF_ACT</span><span class="tok-op">[</span><span class="tok-var">sector</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-var">b2</span> <span class="tok-op">*</span> <span class="tok-var">cap</span> <span class="tok-op">*</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">CAPM</span><span class="tok-op">[</span><span class="tok-var">sector</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+        <span class="tok-kw-ctrl">if</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;campaigns_per_actor&quot;</span><span class="tok-op">:</span>
+
+            <span class="tok-kw-ctrl">for</span> <span class="tok-var">i</span> <span class="tok-kw">in</span> <span class="tok-builtin">range</span><span class="tok-op">(</span><span class="tok-num">3</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+                <span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span> <span class="tok-op">+=</span> <span class="tok-op">(</span>
+
+                    <span class="tok-var">b4</span> <span class="tok-op">*</span> <span class="tok-var">slow</span> <span class="tok-op">*</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">0.5</span><span class="tok-op">)</span>
+
+                    <span class="tok-op">+</span> <span class="tok-var">isw</span> <span class="tok-op">*</span> <span class="tok-var">war</span> <span class="tok-op">*</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">0.75</span><span class="tok-op">)</span>
+
+                    <span class="tok-op">+</span> <span class="tok-var">b1</span> <span class="tok-op">*</span> <span class="tok-var">prolif</span> <span class="tok-op">*</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">1.3</span><span class="tok-op">)</span>
+
+                    <span class="tok-op">+</span> <span class="tok-var">b2</span> <span class="tok-op">*</span> <span class="tok-var">cap</span> <span class="tok-op">*</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">CAMP_CAP</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+                <span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">else</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">if</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;success_given_exposure&quot;</span><span class="tok-op">:</span>
+
+            <span class="tok-kw-ctrl">for</span> <span class="tok-var">i</span> <span class="tok-kw">in</span> <span class="tok-builtin">range</span><span class="tok-op">(</span><span class="tok-num">3</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+                <span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span> <span class="tok-op">+=</span> <span class="tok-op">-</span><span class="tok-num">0.5</span> <span class="tok-op">*</span> <span class="tok-var">slow</span> <span class="tok-op">*</span> <span class="tok-var">b4</span> <span class="tok-op">-</span> <span class="tok-num">0.25</span> <span class="tok-op">*</span> <span class="tok-var">isw</span> <span class="tok-op">*</span> <span class="tok-var">war</span> <span class="tok-op">+</span> <span class="tok-num">0.4</span> <span class="tok-op">*</span> <span class="tok-var">prolif</span> <span class="tok-op">*</span> <span class="tok-var">b1</span> <span class="tok-op">+</span> <span class="tok-var">SUCC_CAP</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-var">cap</span> <span class="tok-op">*</span> <span class="tok-var">b2</span>
+
+        <span class="tok-kw-ctrl">if</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;defense_containment&quot;</span><span class="tok-op">:</span>
+
+            <span class="tok-kw-ctrl">for</span> <span class="tok-var">i</span> <span class="tok-kw">in</span> <span class="tok-builtin">range</span><span class="tok-op">(</span><span class="tok-num">3</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+                <span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-var">i</span><span class="tok-op">]</span> <span class="tok-op">+=</span> <span class="tok-op">-</span><span class="tok-num">0.2</span> <span class="tok-op">*</span> <span class="tok-var">slow</span> <span class="tok-op">*</span> <span class="tok-var">b4</span> <span class="tok-op">-</span> <span class="tok-num">0.25</span> <span class="tok-op">*</span> <span class="tok-var">isw</span> <span class="tok-op">*</span> <span class="tok-var">war</span>
+
+
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-num">1</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-num">2</span><span class="tok-op">]</span> <span class="tok-op">-</span> <span class="tok-var">m</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">base_ms</span><span class="tok-op">(</span><span class="tok-var">sector</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">,</span> <span class="tok-var">cal</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Compute base distribution parameters (mu, sigma) and factor distribution kind.&quot;&quot;&quot;</span>
+
+    <span class="tok-var">fac</span> <span class="tok-op">=</span> <span class="tok-var">P</span><span class="tok-op">.</span><span class="tok-var">SECTORS</span><span class="tok-op">[</span><span class="tok-var">sector</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">name</span><span class="tok-op">]</span>
+
+    <span class="tok-var">q</span><span class="tok-op">,</span> <span class="tok-var">kind</span> <span class="tok-op">=</span> <span class="tok-var">R</span><span class="tok-op">.</span><span class="tok-var">base_q</span><span class="tok-op">(</span><span class="tok-var">fac</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">,</span> <span class="tok-var">cal</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-var">kind</span> <span class="tok-op">==</span> <span class="tok-str">&quot;lognormal&quot;</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">return</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">q</span><span class="tok-op">[</span><span class="tok-num">1</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">q</span><span class="tok-op">[</span><span class="tok-num">2</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">q</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-var">kind</span>
+
+
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-var">q</span><span class="tok-op">[</span><span class="tok-num">1</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-var">q</span><span class="tok-op">[</span><span class="tok-num">2</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-var">q</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-var">kind</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">run</span><span class="tok-op">(</span>
+
+    <span class="tok-var">n</span><span class="tok-op">,</span>
+
+    <span class="tok-var">seed</span><span class="tok-op">=</span><span class="tok-num">7</span><span class="tok-op">,</span>
+
+    <span class="tok-var">SW</span><span class="tok-op">=</span><span class="tok-kw">None</span><span class="tok-op">,</span>
+
+    <span class="tok-var">ref</span><span class="tok-op">=</span><span class="tok-kw">None</span><span class="tok-op">,</span>
+
+    <span class="tok-var">cal</span><span class="tok-op">=</span><span class="tok-kw">None</span><span class="tok-op">,</span>
+
+    <span class="tok-var">keep</span><span class="tok-op">=</span><span class="tok-op">(</span><span class="tok-num">2025</span><span class="tok-op">,</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-var">diffusion_uplift</span><span class="tok-op">=</span><span class="tok-num">1.0</span><span class="tok-op">,</span>
+
+    <span class="tok-var">defender_uplift</span><span class="tok-op">=</span><span class="tok-num">1.0</span><span class="tok-op">,</span>
+
+    <span class="tok-var">patch_lag_factor</span><span class="tok-op">=</span><span class="tok-num">1.0</span><span class="tok-op">,</span>
+
+    <span class="tok-var">h_independent</span><span class="tok-op">=</span><span class="tok-num">0.0</span><span class="tok-op">,</span>
+
+<span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;
+    Main Monte Carlo sampler. Returns loss trajectories and quantile decompositions.
+    &quot;&quot;&quot;</span>
+
+    <span class="tok-var">SW</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-op">**</span><span class="tok-var">SW_ALL_OFF</span><span class="tok-op">,</span> <span class="tok-op">**</span><span class="tok-op">(</span><span class="tok-var">SW</span> <span class="tok-kw">or</span> <span class="tok-op">{</span><span class="tok-op">}</span><span class="tok-op">)</span><span class="tok-op">}</span>
+
+    <span class="tok-var">cal</span> <span class="tok-op">=</span> <span class="tok-var">cal</span> <span class="tok-kw">or</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-num">1.0</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">ss</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">.</span><span class="tok-var">SeedSequence</span><span class="tok-op">(</span><span class="tok-var">seed</span><span class="tok-op">)</span>
+
+    <span class="tok-var">st</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">.</span><span class="tok-var">default_rng</span><span class="tok-op">(</span><span class="tok-var">x</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">x</span> <span class="tok-kw">in</span> <span class="tok-var">ss</span><span class="tok-op">.</span><span class="tok-var">spawn</span><span class="tok-op">(</span><span class="tok-num">6</span><span class="tok-op">)</span><span class="tok-op">]</span>
+
+    <span class="tok-var">rng</span><span class="tok-op">,</span> <span class="tok-var">r5</span><span class="tok-op">,</span> <span class="tok-var">r7</span><span class="tok-op">,</span> <span class="tok-var">r4</span><span class="tok-op">,</span> <span class="tok-var">rus</span><span class="tok-op">,</span> <span class="tok-var">rd7</span> <span class="tok-op">=</span> <span class="tok-var">st</span>
+
+
+
+    <span class="tok-var">br</span><span class="tok-op">,</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-var">Rr</span><span class="tok-op">,</span> <span class="tok-var">h5</span> <span class="tok-op">=</span> <span class="tok-var">assign_branches</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">r5</span><span class="tok-op">,</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S5&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-var">h_independent</span><span class="tok-op">=</span><span class="tok-var">h_independent</span><span class="tok-op">,</span> <span class="tok-var">seed</span><span class="tok-op">=</span><span class="tok-var">seed</span><span class="tok-op">)</span>
+
+    <span class="tok-var">incr</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-op">(</span><span class="tok-var">lgnorm</span><span class="tok-op">(</span><span class="tok-var">r7</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">INCR</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S7&quot;</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">else</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">ones</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span>
+
+    <span class="tok-var">us</span> <span class="tok-op">=</span> <span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">rus</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">HYP</span><span class="tok-op">[</span><span class="tok-str">&quot;us_share&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">zD</span> <span class="tok-op">=</span> <span class="tok-var">rd7</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span>
+
+    <span class="tok-var">Vp</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">r4</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">VPOOL</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span>
+
+    <span class="tok-var">beta</span> <span class="tok-op">=</span> <span class="tok-var">lnorm</span><span class="tok-op">(</span><span class="tok-var">r4</span><span class="tok-op">,</span> <span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">BETA</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">phi_w</span> <span class="tok-op">=</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">choice</span><span class="tok-op">(</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">array</span><span class="tok-op">(</span><span class="tok-var">PHI_CHOICES</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-var">size</span><span class="tok-op">=</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S1&quot;</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">else</span> <span class="tok-kw">None</span>
+
+    <span class="tok-var">c</span> <span class="tok-op">=</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S1&quot;</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">else</span> <span class="tok-kw">None</span>
+
+    <span class="tok-var">idio</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">f</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">f</span> <span class="tok-kw">in</span> <span class="tok-var">P</span><span class="tok-op">.</span><span class="tok-var">SECTORS</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">}</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S1&quot;</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">else</span> <span class="tok-op">{</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">out</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+        <span class="tok-str">&quot;L&quot;</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-op">}</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;b&quot;</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-op">}</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;rep&quot;</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-op">}</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;parts&quot;</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-op">}</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;br&quot;</span><span class="tok-op">:</span> <span class="tok-var">br</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;W&quot;</span><span class="tok-op">:</span> <span class="tok-var">W</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;us&quot;</span><span class="tok-op">:</span> <span class="tok-var">us</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;incr&quot;</span><span class="tok-op">:</span> <span class="tok-var">incr</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;hyper&quot;</span><span class="tok-op">:</span> <span class="tok-var">h5</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;zD&quot;</span><span class="tok-op">:</span> <span class="tok-var">zD</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;phi&quot;</span><span class="tok-op">:</span> <span class="tok-var">phi_w</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;beta&quot;</span><span class="tok-op">:</span> <span class="tok-var">beta</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;Vp&quot;</span><span class="tok-op">:</span> <span class="tok-var">Vp</span><span class="tok-op">,</span>
+
+    <span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">cumS</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">zeros</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span>
+
+    <span class="tok-var">Lprev</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-kw">None</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-kw-ctrl">for</span> <span class="tok-var">k</span><span class="tok-op">,</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-builtin">enumerate</span><span class="tok-op">(</span><span class="tok-var">YEARS</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S1&quot;</span><span class="tok-op">]</span><span class="tok-op">:</span>
+
+            <span class="tok-kw-ctrl">if</span> <span class="tok-var">k</span> <span class="tok-op">&gt;</span> <span class="tok-num">0</span><span class="tok-op">:</span>
+
+                <span class="tok-var">c</span> <span class="tok-op">=</span> <span class="tok-var">phi_w</span> <span class="tok-op">*</span> <span class="tok-var">c</span> <span class="tok-op">+</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">sqrt</span><span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">phi_w</span> <span class="tok-op">**</span> <span class="tok-num">2</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span>
+
+        <span class="tok-kw-ctrl">else</span><span class="tok-op">:</span>
+
+            <span class="tok-var">c</span> <span class="tok-op">=</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span>
+
+
+
+        <span class="tok-var">war</span><span class="tok-op">,</span> <span class="tok-var">prolif</span><span class="tok-op">,</span> <span class="tok-var">cap</span><span class="tok-op">,</span> <span class="tok-var">slow</span><span class="tok-op">,</span> <span class="tok-var">lateyr</span> <span class="tok-op">=</span> <span class="tok-var">weights_year</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">,</span> <span class="tok-var">br</span><span class="tok-op">,</span> <span class="tok-var">W</span><span class="tok-op">,</span> <span class="tok-var">Rr</span><span class="tok-op">,</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S5&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-var">h5</span><span class="tok-op">.</span><span class="tok-var">get</span><span class="tok-op">(</span><span class="tok-str">&quot;late&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+        <span class="tok-var">itact</span> <span class="tok-op">=</span> <span class="tok-kw">None</span>
+
+
+
+        <span class="tok-var">sector_order</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-var">x</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">x</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">x</span> <span class="tok-op">!=</span> <span class="tok-str">&quot;ics&quot;</span><span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-op">[</span><span class="tok-var">x</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">x</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">x</span> <span class="tok-op">==</span> <span class="tok-str">&quot;ics&quot;</span><span class="tok-op">]</span>
+
+        <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">sector_order</span><span class="tok-op">:</span>
+
+            <span class="tok-var">tot</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">ones</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span>
+
+            <span class="tok-var">d</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-op">}</span>
+
+
+
+            <span class="tok-kw-ctrl">for</span> <span class="tok-var">name</span> <span class="tok-kw">in</span> <span class="tok-var">P</span><span class="tok-op">.</span><span class="tok-var">SECTORS</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">:</span>
+
+                <span class="tok-var">mu</span><span class="tok-op">,</span> <span class="tok-var">sg</span><span class="tok-op">,</span> <span class="tok-var">kind</span> <span class="tok-op">=</span> <span class="tok-var">base_ms</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">,</span> <span class="tok-var">cal</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+                <span class="tok-var">loc</span><span class="tok-op">,</span> <span class="tok-var">spr</span> <span class="tok-op">=</span> <span class="tok-var">modifiers</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">,</span> <span class="tok-var">kind</span><span class="tok-op">,</span> <span class="tok-var">br</span><span class="tok-op">,</span> <span class="tok-var">war</span><span class="tok-op">,</span> <span class="tok-var">prolif</span><span class="tok-op">,</span> <span class="tok-var">cap</span><span class="tok-op">,</span> <span class="tok-var">slow</span><span class="tok-op">,</span> <span class="tok-var">lateyr</span><span class="tok-op">)</span>
+
+                <span class="tok-var">mu</span> <span class="tok-op">=</span> <span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">loc</span>
+
+                <span class="tok-var">sg</span> <span class="tok-op">=</span> <span class="tok-var">sg</span> <span class="tok-op">+</span> <span class="tok-var">spr</span>
+
+
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S1&quot;</span><span class="tok-op">]</span><span class="tok-op">:</span>
+
+                    <span class="tok-kw-ctrl">if</span> <span class="tok-var">k</span> <span class="tok-op">&gt;</span> <span class="tok-num">0</span><span class="tok-op">:</span>
+
+                        <span class="tok-var">ph</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">clip</span><span class="tok-op">(</span><span class="tok-var">phi_w</span> <span class="tok-op">+</span> <span class="tok-var">PHI_OFFSET</span><span class="tok-op">[</span><span class="tok-var">name</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">,</span> <span class="tok-num">0.999</span><span class="tok-op">)</span>
+
+                        <span class="tok-var">idio</span><span class="tok-op">[</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">ph</span> <span class="tok-op">*</span> <span class="tok-var">idio</span><span class="tok-op">[</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">sqrt</span><span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">ph</span> <span class="tok-op">**</span> <span class="tok-num">2</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span>
+
+                    <span class="tok-var">zi</span> <span class="tok-op">=</span> <span class="tok-var">idio</span><span class="tok-op">[</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">name</span><span class="tok-op">)</span><span class="tok-op">]</span>
+
+                <span class="tok-kw-ctrl">else</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">zi</span> <span class="tok-op">=</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">)</span>
+
+
+
+                <span class="tok-var">z</span> <span class="tok-op">=</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">sqrt</span><span class="tok-op">(</span><span class="tok-var">R</span><span class="tok-op">.</span><span class="tok-var">RHO</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">c</span> <span class="tok-op">+</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">sqrt</span><span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">R</span><span class="tok-op">.</span><span class="tok-var">RHO</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">zi</span>
+
+
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S5&quot;</span><span class="tok-op">]</span> <span class="tok-kw">and</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;capable_actors&quot;</span> <span class="tok-kw">and</span> <span class="tok-var">D07_SD</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">&gt;</span> <span class="tok-num">0</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">sdy</span> <span class="tok-op">=</span> <span class="tok-var">D07_SD</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-builtin">min</span><span class="tok-op">(</span><span class="tok-num">1.0</span><span class="tok-op">,</span> <span class="tok-builtin">max</span><span class="tok-op">(</span><span class="tok-num">0.0</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">-</span> <span class="tok-num">2025</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-num">2.0</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+                    <span class="tok-var">extra</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">sqrt</span><span class="tok-op">(</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">maximum</span><span class="tok-op">(</span><span class="tok-num">0.0</span><span class="tok-op">,</span> <span class="tok-var">sdy</span> <span class="tok-op">**</span> <span class="tok-num">2</span> <span class="tok-op">-</span> <span class="tok-var">sg</span> <span class="tok-op">**</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">if</span> <span class="tok-var">sdy</span> <span class="tok-op">&gt;</span> <span class="tok-num">0</span> <span class="tok-kw-ctrl">else</span> <span class="tok-num">0.0</span>
+
+                    <span class="tok-var">mu</span> <span class="tok-op">=</span> <span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">extra</span> <span class="tok-op">*</span> <span class="tok-var">zD</span>
+
+
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;defense_containment&quot;</span> <span class="tok-kw">and</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S4def&quot;</span><span class="tok-op">]</span> <span class="tok-kw">and</span> <span class="tok-var">k</span> <span class="tok-op">&gt;</span> <span class="tok-num">0</span> <span class="tok-kw">and</span> <span class="tok-var">ref</span> <span class="tok-kw">is</span> <span class="tok-kw">not</span> <span class="tok-kw">None</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">sh</span> <span class="tok-op">=</span> <span class="tok-var">beta</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log1p</span><span class="tok-op">(</span><span class="tok-var">Lprev</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">/</span> <span class="tok-var">L0</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log1p</span><span class="tok-op">(</span><span class="tok-var">ref</span><span class="tok-op">[</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">y</span> <span class="tok-op">-</span> <span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">/</span> <span class="tok-var">L0</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+                    <span class="tok-var">mu</span> <span class="tok-op">=</span> <span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">clip</span><span class="tok-op">(</span><span class="tok-var">sh</span><span class="tok-op">,</span> <span class="tok-op">-</span><span class="tok-num">1.5</span><span class="tok-op">,</span> <span class="tok-num">1.5</span><span class="tok-op">)</span>
+
+
+
+                <span class="tok-cmt"># Scenario perturbation parameters for defense uplift and exploit diffusion</span>
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">diffusion_uplift</span> <span class="tok-op">!=</span> <span class="tok-num">1.0</span> <span class="tok-kw">and</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;capable_actors&quot;</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">mu</span> <span class="tok-op">=</span> <span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">diffusion_uplift</span><span class="tok-op">)</span>
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">defender_uplift</span> <span class="tok-op">!=</span> <span class="tok-num">1.0</span> <span class="tok-kw">and</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;defense_containment&quot;</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">mu</span> <span class="tok-op">=</span> <span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">defender_uplift</span><span class="tok-op">)</span>
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">patch_lag_factor</span> <span class="tok-op">!=</span> <span class="tok-num">1.0</span> <span class="tok-kw">and</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;success_given_exposure&quot;</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">mu</span> <span class="tok-op">=</span> <span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">patch_lag_factor</span><span class="tok-op">)</span>
+
+
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">kind</span> <span class="tok-op">==</span> <span class="tok-str">&quot;lognormal&quot;</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">part</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">sg</span> <span class="tok-op">*</span> <span class="tok-var">z</span><span class="tok-op">)</span>
+
+                <span class="tok-kw-ctrl">elif</span> <span class="tok-var">kind</span> <span class="tok-op">==</span> <span class="tok-str">&quot;fraction&quot;</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">part</span> <span class="tok-op">=</span> <span class="tok-var">inv_logit</span><span class="tok-op">(</span><span class="tok-var">mu</span> <span class="tok-op">+</span> <span class="tok-var">sg</span> <span class="tok-op">*</span> <span class="tok-var">z</span><span class="tok-op">)</span>
+
+                    <span class="tok-kw-ctrl">if</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;exposed_share&quot;</span> <span class="tok-kw">and</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S4dep&quot;</span><span class="tok-op">]</span><span class="tok-op">:</span>
+
+                        <span class="tok-var">part</span> <span class="tok-op">=</span> <span class="tok-var">part</span> <span class="tok-op">*</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-op">-</span><span class="tok-var">cumS</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">/</span> <span class="tok-var">Vp</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+                <span class="tok-kw-ctrl">else</span><span class="tok-op">:</span>
+
+                    <span class="tok-var">part</span> <span class="tok-op">=</span> <span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">inv_logit</span><span class="tok-op">(</span><span class="tok-var">mu</span> <span class="tok-op">-</span> <span class="tok-var">sg</span> <span class="tok-op">*</span> <span class="tok-var">z</span><span class="tok-op">)</span>
+
+
+
+                <span class="tok-cmt"># Consistency hierarchy: ICS operators are bounded by general IT operators</span>
+
+                <span class="tok-kw-ctrl">if</span> <span class="tok-var">SW</span><span class="tok-op">[</span><span class="tok-str">&quot;S5&quot;</span><span class="tok-op">]</span> <span class="tok-kw">and</span> <span class="tok-var">name</span> <span class="tok-op">==</span> <span class="tok-str">&quot;capable_actors&quot;</span><span class="tok-op">:</span>
+
+                    <span class="tok-kw-ctrl">if</span> <span class="tok-var">s</span> <span class="tok-op">==</span> <span class="tok-str">&quot;it&quot;</span><span class="tok-op">:</span>
+
+                        <span class="tok-var">itact</span> <span class="tok-op">=</span> <span class="tok-var">part</span>
+
+                    <span class="tok-kw-ctrl">elif</span> <span class="tok-var">s</span> <span class="tok-op">==</span> <span class="tok-str">&quot;ics&quot;</span> <span class="tok-kw">and</span> <span class="tok-var">itact</span> <span class="tok-kw">is</span> <span class="tok-kw">not</span> <span class="tok-kw">None</span><span class="tok-op">:</span>
+
+                        <span class="tok-var">part</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">minimum</span><span class="tok-op">(</span><span class="tok-var">part</span><span class="tok-op">,</span> <span class="tok-var">itact</span><span class="tok-op">)</span>
+
+
+
+                <span class="tok-var">d</span><span class="tok-op">[</span><span class="tok-var">name</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">part</span>
+
+                <span class="tok-var">tot</span> <span class="tok-op">=</span> <span class="tok-var">tot</span> <span class="tok-op">*</span> <span class="tok-var">part</span>
+
+
+
+            <span class="tok-var">cnt</span> <span class="tok-op">=</span> <span class="tok-var">d</span><span class="tok-op">[</span><span class="tok-str">&quot;capable_actors&quot;</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-var">d</span><span class="tok-op">[</span><span class="tok-str">&quot;campaigns_per_actor&quot;</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-var">d</span><span class="tok-op">[</span><span class="tok-str">&quot;exposed_share&quot;</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-var">d</span><span class="tok-op">[</span><span class="tok-str">&quot;success_given_exposure&quot;</span><span class="tok-op">]</span>
+
+            <span class="tok-var">cumS</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">cumS</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-var">cnt</span>
+
+            <span class="tok-var">L</span> <span class="tok-op">=</span> <span class="tok-var">tot</span>
+
+            <span class="tok-var">Lprev</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">L</span>
+
+
+
+            <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;L&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">L</span>
+
+            <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;b&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">L</span> <span class="tok-op">*</span> <span class="tok-var">incr</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span>
+
+            <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;rep&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">L</span> <span class="tok-op">/</span> <span class="tok-var">d</span><span class="tok-op">[</span><span class="tok-str">&quot;reporting_multiplier&quot;</span><span class="tok-op">]</span>
+
+
+
+            <span class="tok-kw-ctrl">if</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">keep</span><span class="tok-op">:</span>
+
+                <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;parts&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-var">d</span>
+
+
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">out</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">total</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-var">key</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Aggregate total across all sectors for a specified metric and year.&quot;&quot;&quot;</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-var">key</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">wq</span><span class="tok-op">(</span><span class="tok-var">a</span><span class="tok-op">,</span> <span class="tok-var">w</span><span class="tok-op">,</span> <span class="tok-var">qs</span><span class="tok-op">=</span><span class="tok-op">(</span><span class="tok-num">0.1</span><span class="tok-op">,</span> <span class="tok-num">0.25</span><span class="tok-op">,</span> <span class="tok-num">0.5</span><span class="tok-op">,</span> <span class="tok-num">0.75</span><span class="tok-op">,</span> <span class="tok-num">0.9</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Calculate weighted quantiles.&quot;&quot;&quot;</span>
+
+    <span class="tok-var">idx</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">argsort</span><span class="tok-op">(</span><span class="tok-var">a</span><span class="tok-op">)</span>
+
+    <span class="tok-var">cw</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">cumsum</span><span class="tok-op">(</span><span class="tok-var">w</span><span class="tok-op">[</span><span class="tok-var">idx</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">cw</span> <span class="tok-op">=</span> <span class="tok-var">cw</span> <span class="tok-op">/</span> <span class="tok-var">cw</span><span class="tok-op">[</span><span class="tok-op">-</span><span class="tok-num">1</span><span class="tok-op">]</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-op">[</span><span class="tok-builtin">float</span><span class="tok-op">(</span><span class="tok-var">a</span><span class="tok-op">[</span><span class="tok-var">idx</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">searchsorted</span><span class="tok-op">(</span><span class="tok-var">cw</span><span class="tok-op">,</span> <span class="tok-var">q</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">q</span> <span class="tok-kw">in</span> <span class="tok-var">qs</span><span class="tok-op">]</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">ess</span><span class="tok-op">(</span><span class="tok-var">w</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Compute Kish effective sample size.&quot;&quot;&quot;</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-builtin">float</span><span class="tok-op">(</span><span class="tok-var">w</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">**</span> <span class="tok-num">2</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-var">w</span> <span class="tok-op">**</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span>
+</code></pre>
+        </div>
+      </div>
+
+      <p class="supplement-p">
+        Below is the Bayesian sequential importance resampling filter (`calib_run.py`) conditioning prior particles against empirical observations:
+      </p>
+
+      <div class="code-editor-card">
+        <div class="code-editor-header">
+          <span class="code-filename-badge">calib_run.py (Bayesian SIR Calibration Filter)</span>
+          <button class="code-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-calib').innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy Code', 2000);">Copy Code</button>
+        </div>
+        <div class="code-editor-window">
+          <pre class="code-editor-pre"><code id="code-calib" class="vscode-dark-code"><span class="tok-str">&quot;&quot;&quot;
+Bayesian Sequential Importance Resampling (SIR) Calibration Filter
+Author: Aditya Singh (refined with Sonnet)
+
+Conditions 800,000 prior Monte Carlo trajectories against audited 2024-2025 FBI IC3 
+and IBM Cost of a Data Breach observations, computing posterior particle weights.
+&quot;&quot;&quot;</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">sys</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">json</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">math</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">numpy</span> <span class="tok-kw">as</span> <span class="tok-var">np</span>
+
+
+
+<span class="tok-kw">import</span> <span class="tok-var">params</span> <span class="tok-kw">as</span> <span class="tok-var">P</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">run_model</span> <span class="tok-kw">as</span> <span class="tok-var">R</span>
+
+<span class="tok-kw">import</span> <span class="tok-var">model2</span> <span class="tok-kw">as</span> <span class="tok-var">V</span>
+
+<span class="tok-kw">from</span> <span class="tok-var">model2</span> <span class="tok-kw">import</span> <span class="tok-var">wq</span><span class="tok-op">,</span> <span class="tok-var">ess</span><span class="tok-op">,</span> <span class="tok-var">SECT</span><span class="tok-op">,</span> <span class="tok-var">YEARS</span>
+
+
+
+<span class="tok-var">N</span> <span class="tok-op">=</span> <span class="tok-builtin">int</span><span class="tok-op">(</span><span class="tok-var">sys</span><span class="tok-op">.</span><span class="tok-var">argv</span><span class="tok-op">[</span><span class="tok-num">1</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">if</span> <span class="tok-builtin">len</span><span class="tok-op">(</span><span class="tok-var">sys</span><span class="tok-op">.</span><span class="tok-var">argv</span><span class="tok-op">)</span> <span class="tok-op">&gt;</span> <span class="tok-num">1</span> <span class="tok-kw-ctrl">else</span> <span class="tok-num">200_000</span>
+
+<span class="tok-var">SEED</span> <span class="tok-op">=</span> <span class="tok-builtin">int</span><span class="tok-op">(</span><span class="tok-var">sys</span><span class="tok-op">.</span><span class="tok-var">argv</span><span class="tok-op">[</span><span class="tok-num">2</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">if</span> <span class="tok-builtin">len</span><span class="tok-op">(</span><span class="tok-var">sys</span><span class="tok-op">.</span><span class="tok-var">argv</span><span class="tok-op">)</span> <span class="tok-op">&gt;</span> <span class="tok-num">2</span> <span class="tok-kw-ctrl">else</span> <span class="tok-num">7</span>
+
+<span class="tok-var">OUT</span> <span class="tok-op">=</span> <span class="tok-var">sys</span><span class="tok-op">.</span><span class="tok-var">argv</span><span class="tok-op">[</span><span class="tok-num">3</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">if</span> <span class="tok-builtin">len</span><span class="tok-op">(</span><span class="tok-var">sys</span><span class="tok-op">.</span><span class="tok-var">argv</span><span class="tok-op">)</span> <span class="tok-op">&gt;</span> <span class="tok-num">3</span> <span class="tok-kw-ctrl">else</span> <span class="tok-str">&quot;v2_results.json&quot;</span>
+
+
+
+<span class="tok-cmt"># Standard mechanism switches:</span>
+
+<span class="tok-cmt"># S1: Correlated macro-shocks</span>
+
+<span class="tok-cmt"># S5: Geopolitical dynamics &amp; chokepoints</span>
+
+<span class="tok-cmt"># S6: Branch taxonomy alignment</span>
+
+<span class="tok-cmt"># S7: Incrementality haircuts</span>
+
+<span class="tok-cmt"># S4dep: Surface depletion</span>
+
+<span class="tok-cmt"># S4def: Adaptive defense</span>
+
+<span class="tok-var">SW</span> <span class="tok-op">=</span> <span class="tok-builtin">dict</span><span class="tok-op">(</span>
+
+    <span class="tok-var">S1</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S5</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S6</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S7</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S4dep</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+    <span class="tok-var">S4def</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+
+<span class="tok-op">)</span>
+
+
+
+<span class="tok-var">O2</span> <span class="tok-op">=</span> <span class="tok-num">0.8933</span>
+
+<span class="tok-var">AS35</span> <span class="tok-op">=</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">sqrt</span><span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">*</span> <span class="tok-num">10.0</span><span class="tok-op">)</span>
+
+<span class="tok-var">O5C</span> <span class="tok-op">=</span> <span class="tok-num">0.13</span>
+
+
+
+<span class="tok-cmt"># Global GDP ceiling constraint: $3,450B baseline scaling at 3.0% real growth</span>
+
+<span class="tok-var">ceiling</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">y</span><span class="tok-op">:</span> <span class="tok-num">3450.0</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-num">1.03</span> <span class="tok-op">**</span> <span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">-</span> <span class="tok-num">2025</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">weights</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-var">use_as35</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> <span class="tok-var">use_o5</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> <span class="tok-var">use_o2</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> <span class="tok-var">normalise</span><span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Compute Bayesian importance weights based on empirical observation likelihoods.&quot;&quot;&quot;</span>
+
+    <span class="tok-var">lw</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">zeros</span><span class="tok-op">(</span><span class="tok-builtin">len</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;us&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+    <span class="tok-var">pf</span> <span class="tok-op">=</span> <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;parts&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-op">(</span><span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">,</span> <span class="tok-num">2025</span><span class="tok-op">)</span><span class="tok-op">]</span>
+
+    <span class="tok-var">Lf</span> <span class="tok-op">=</span> <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;L&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-str">&quot;fraud&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-num">2025</span><span class="tok-op">]</span>
+
+    <span class="tok-var">usrep</span> <span class="tok-op">=</span> <span class="tok-var">Lf</span> <span class="tok-op">/</span> <span class="tok-var">pf</span><span class="tok-op">[</span><span class="tok-str">&quot;reporting_multiplier&quot;</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;us&quot;</span><span class="tok-op">]</span>
+
+
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-var">use_o2</span><span class="tok-op">:</span>
+
+        <span class="tok-var">lw</span> <span class="tok-op">+=</span> <span class="tok-op">-</span><span class="tok-num">0.5</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">O2</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">usrep</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-num">0.7</span><span class="tok-op">)</span> <span class="tok-op">**</span> <span class="tok-num">2</span>
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-var">use_as35</span><span class="tok-op">:</span>
+
+        <span class="tok-var">lw</span> <span class="tok-op">+=</span> <span class="tok-op">-</span><span class="tok-num">0.5</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">AS35</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;b&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-str">&quot;it&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-num">2025</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-num">0.9</span><span class="tok-op">)</span> <span class="tok-op">**</span> <span class="tok-num">2</span>
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-var">use_o5</span><span class="tok-op">:</span>
+
+        <span class="tok-var">lw</span> <span class="tok-op">+=</span> <span class="tok-op">-</span><span class="tok-num">0.5</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">O5C</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;parts&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-op">(</span><span class="tok-str">&quot;it&quot;</span><span class="tok-op">,</span> <span class="tok-num">2025</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-str">&quot;defense_containment&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-num">0.5</span><span class="tok-op">)</span> <span class="tok-op">**</span> <span class="tok-num">2</span>
+
+
+
+    <span class="tok-kw-ctrl">if</span> <span class="tok-kw">not</span> <span class="tok-var">normalise</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">return</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-var">lw</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">w</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-var">lw</span> <span class="tok-op">-</span> <span class="tok-var">lw</span><span class="tok-op">.</span><span class="tok-builtin">max</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">w</span> <span class="tok-op">/</span> <span class="tok-var">w</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">baseline_post</span><span class="tok-op">(</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">seed</span><span class="tok-op">,</span> <span class="tok-var">growth_discount</span><span class="tok-op">=</span><span class="tok-num">0.0</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;
+    Resample the baseline posterior distribution fit to historical FBI IC3 data (2015-2022).
+    Returns real global non-AI counterfactual baseline per year.
+    &quot;&quot;&quot;</span>
+
+    <span class="tok-var">rng</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">.</span><span class="tok-var">default_rng</span><span class="tok-op">(</span><span class="tok-var">seed</span> <span class="tok-op">+</span> <span class="tok-num">1000</span><span class="tok-op">)</span>
+
+    <span class="tok-var">M</span> <span class="tok-op">=</span> <span class="tok-num">2_000_000</span>
+
+    <span class="tok-var">Z</span> <span class="tok-op">=</span> <span class="tok-var">V</span><span class="tok-op">.</span><span class="tok-var">Z</span>
+
+
+
+    <span class="tok-kw">def</span> <span class="tok-fn-def">logit</span><span class="tok-op">(</span><span class="tok-var">p</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">return</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">p</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">p</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-kw">def</span> <span class="tok-fn-def">inv_logit</span><span class="tok-op">(</span><span class="tok-var">x</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">return</span> <span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">+</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-op">-</span><span class="tok-var">x</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">r</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">random</span><span class="tok-op">.</span><span class="tok-var">default_rng</span><span class="tok-op">(</span><span class="tok-num">2026</span><span class="tok-op">)</span>
+
+    <span class="tok-var">A0</span> <span class="tok-op">=</span> <span class="tok-num">360.0</span> <span class="tok-op">*</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">800.0</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">150.0</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">r</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">M</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+    <span class="tok-var">g</span> <span class="tok-op">=</span> <span class="tok-num">0.08</span> <span class="tok-op">+</span> <span class="tok-op">(</span><span class="tok-num">0.14</span> <span class="tok-op">-</span> <span class="tok-num">0.02</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">r</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">M</span><span class="tok-op">)</span>
+
+    <span class="tok-var">us</span> <span class="tok-op">=</span> <span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-num">3.8</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-var">math</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-num">1.5</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">r</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">M</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+    <span class="tok-var">c</span> <span class="tok-op">=</span> <span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-num">0.14</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-op">(</span><span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-num">0.25</span><span class="tok-op">)</span> <span class="tok-op">-</span> <span class="tok-var">logit</span><span class="tok-op">(</span><span class="tok-num">0.08</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-op">(</span><span class="tok-num">2.0</span> <span class="tok-op">*</span> <span class="tok-var">Z</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">r</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">M</span><span class="tok-op">)</span>
+
+    <span class="tok-var">d</span> <span class="tok-op">=</span> <span class="tok-num">0.15</span> <span class="tok-op">+</span> <span class="tok-num">0.15</span> <span class="tok-op">*</span> <span class="tok-var">r</span><span class="tok-op">.</span><span class="tok-var">standard_normal</span><span class="tok-op">(</span><span class="tok-var">M</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">YRb</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">arange</span><span class="tok-op">(</span><span class="tok-num">2015</span><span class="tok-op">,</span> <span class="tok-num">2023</span><span class="tok-op">)</span>
+
+    <span class="tok-var">NOM</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">array</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-num">1.1</span><span class="tok-op">,</span> <span class="tok-num">1.45</span><span class="tok-op">,</span> <span class="tok-num">1.4</span><span class="tok-op">,</span> <span class="tok-num">2.7</span><span class="tok-op">,</span> <span class="tok-num">3.5</span><span class="tok-op">,</span> <span class="tok-num">4.2</span><span class="tok-op">,</span> <span class="tok-num">6.9</span><span class="tok-op">,</span> <span class="tok-num">10.3</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">CPI</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">array</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-num">237.0</span><span class="tok-op">,</span> <span class="tok-num">240.0</span><span class="tok-op">,</span> <span class="tok-num">245.1</span><span class="tok-op">,</span> <span class="tok-num">251.1</span><span class="tok-op">,</span> <span class="tok-num">255.7</span><span class="tok-op">,</span> <span class="tok-num">258.8</span><span class="tok-op">,</span> <span class="tok-num">271.0</span><span class="tok-op">,</span> <span class="tok-num">292.7</span><span class="tok-op">]</span><span class="tok-op">)</span>
+
+    <span class="tok-var">LR</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">NOM</span> <span class="tok-op">*</span> <span class="tok-num">322.0</span> <span class="tok-op">/</span> <span class="tok-var">CPI</span><span class="tok-op">)</span>
+
+    <span class="tok-var">ll</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">zeros</span><span class="tok-op">(</span><span class="tok-var">M</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-kw-ctrl">for</span> <span class="tok-var">t</span><span class="tok-op">,</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-builtin">zip</span><span class="tok-op">(</span><span class="tok-var">YRb</span><span class="tok-op">,</span> <span class="tok-var">LR</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+        <span class="tok-var">mu_pred</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">A0</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-var">g</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-var">t</span> <span class="tok-op">-</span> <span class="tok-num">2024</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">us</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">log</span><span class="tok-op">(</span><span class="tok-var">inv_logit</span><span class="tok-op">(</span><span class="tok-var">c</span> <span class="tok-op">+</span> <span class="tok-var">d</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-var">t</span> <span class="tok-op">-</span> <span class="tok-num">2024</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+        <span class="tok-var">ll</span> <span class="tok-op">+=</span> <span class="tok-op">-</span><span class="tok-num">0.5</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">-</span> <span class="tok-var">mu_pred</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-num">0.20</span><span class="tok-op">)</span> <span class="tok-op">**</span> <span class="tok-num">2</span>
+
+
+
+    <span class="tok-var">w</span> <span class="tok-op">=</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-var">ll</span> <span class="tok-op">-</span> <span class="tok-var">ll</span><span class="tok-op">.</span><span class="tok-builtin">max</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+    <span class="tok-var">w</span> <span class="tok-op">=</span> <span class="tok-var">w</span> <span class="tok-op">/</span> <span class="tok-var">w</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span>
+
+    <span class="tok-var">idx</span> <span class="tok-op">=</span> <span class="tok-var">rng</span><span class="tok-op">.</span><span class="tok-var">choice</span><span class="tok-op">(</span><span class="tok-var">M</span><span class="tok-op">,</span> <span class="tok-var">size</span><span class="tok-op">=</span><span class="tok-var">n</span><span class="tok-op">,</span> <span class="tok-var">p</span><span class="tok-op">=</span><span class="tok-var">w</span><span class="tok-op">)</span>
+
+    <span class="tok-var">g_eff</span> <span class="tok-op">=</span> <span class="tok-var">g</span><span class="tok-op">[</span><span class="tok-var">idx</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> <span class="tok-var">growth_discount</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-op">{</span><span class="tok-var">y</span><span class="tok-op">:</span> <span class="tok-var">A0</span><span class="tok-op">[</span><span class="tok-var">idx</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-var">np</span><span class="tok-op">.</span><span class="tok-var">exp</span><span class="tok-op">(</span><span class="tok-var">g_eff</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-var">y</span> <span class="tok-op">-</span> <span class="tok-num">2024</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span><span class="tok-op">,</span> <span class="tok-var">ess</span><span class="tok-op">(</span><span class="tok-var">w</span><span class="tok-op">)</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">summarize</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-var">w</span><span class="tok-op">,</span> <span class="tok-var">base</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Summarize quantiles and risk metrics from calibrated simulation draws.&quot;&quot;&quot;</span>
+
+    <span class="tok-var">res</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+        <span class="tok-str">&quot;ess&quot;</span><span class="tok-op">:</span> <span class="tok-var">ess</span><span class="tok-op">(</span><span class="tok-var">w</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+        <span class="tok-str">&quot;n&quot;</span><span class="tok-op">:</span> <span class="tok-builtin">len</span><span class="tok-op">(</span><span class="tok-var">w</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+    <span class="tok-op">}</span>
+
+
+
+    <span class="tok-kw">def</span> <span class="tok-fn-def">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">arr</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+        <span class="tok-kw-ctrl">return</span> <span class="tok-builtin">dict</span><span class="tok-op">(</span><span class="tok-builtin">zip</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-str">&quot;p10&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;p25&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;p50&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;p75&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;p90&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-var">wq</span><span class="tok-op">(</span><span class="tok-var">arr</span><span class="tok-op">,</span> <span class="tok-var">w</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">tb</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">y</span><span class="tok-op">:</span> <span class="tok-var">V</span><span class="tok-op">.</span><span class="tok-var">total</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-str">&quot;b&quot;</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+    <span class="tok-var">ta</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">y</span><span class="tok-op">:</span> <span class="tok-var">base</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-var">tb</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;b&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-op">**</span><span class="tok-var">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">tb</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-str">&quot;mean&quot;</span><span class="tok-op">:</span> <span class="tok-builtin">float</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">w</span> <span class="tok-op">*</span> <span class="tok-var">tb</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">}</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;a&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">ta</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;L&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">V</span><span class="tok-op">.</span><span class="tok-var">total</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-str">&quot;L&quot;</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;rep_global&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">V</span><span class="tok-op">.</span><span class="tok-var">total</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-str">&quot;rep&quot;</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;rep_us&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">V</span><span class="tok-op">.</span><span class="tok-var">total</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-str">&quot;rep&quot;</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">)</span> <span class="tok-op">*</span> <span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;us&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;sector_b&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;b&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-op">(</span><span class="tok-num">2025</span><span class="tok-op">,</span> <span class="tok-num">2030</span><span class="tok-op">,</span> <span class="tok-num">2035</span><span class="tok-op">)</span><span class="tok-op">}</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span><span class="tok-op">}</span>
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;baseline&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">calc_quantiles</span><span class="tok-op">(</span><span class="tok-var">base</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;ai_share&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+        <span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-builtin">dict</span><span class="tok-op">(</span>
+
+            <span class="tok-var">ratio_of_medians</span><span class="tok-op">=</span><span class="tok-builtin">float</span><span class="tok-op">(</span><span class="tok-var">wq</span><span class="tok-op">(</span><span class="tok-var">tb</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-var">w</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-num">0.5</span><span class="tok-op">,</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span> <span class="tok-op">/</span> <span class="tok-var">wq</span><span class="tok-op">(</span><span class="tok-var">ta</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-var">w</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-num">0.5</span><span class="tok-op">,</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+            <span class="tok-var">frac_worlds_gt_50</span><span class="tok-op">=</span><span class="tok-builtin">float</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">w</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-var">tb</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">/</span> <span class="tok-var">ta</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">&gt;</span> <span class="tok-num">0.5</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">,</span>
+
+        <span class="tok-op">)</span>
+
+        <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span>
+
+    <span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;p_a_above_ceiling&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-builtin">float</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">w</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-var">ta</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">&gt;</span> <span class="tok-var">ceiling</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">bshare</span> <span class="tok-op">=</span> <span class="tok-builtin">dict</span><span class="tok-op">(</span><span class="tok-var">fraud</span><span class="tok-op">=</span><span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-num">3.0</span><span class="tok-op">,</span> <span class="tok-var">it</span><span class="tok-op">=</span><span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-num">2.0</span><span class="tok-op">,</span> <span class="tok-var">ics</span><span class="tok-op">=</span><span class="tok-num">1.0</span> <span class="tok-op">/</span> <span class="tok-num">3.0</span><span class="tok-op">)</span>
+
+    <span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&quot;p_sector_above_bound&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">{</span>
+
+        <span class="tok-var">s</span><span class="tok-op">:</span> <span class="tok-op">{</span><span class="tok-builtin">str</span><span class="tok-op">(</span><span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-builtin">float</span><span class="tok-op">(</span><span class="tok-op">(</span><span class="tok-var">w</span> <span class="tok-op">*</span> <span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">[</span><span class="tok-str">&quot;L&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span> <span class="tok-op">&gt;</span> <span class="tok-var">bshare</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span> <span class="tok-op">*</span> <span class="tok-var">ceiling</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">.</span><span class="tok-builtin">sum</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-op">(</span><span class="tok-num">2030</span><span class="tok-op">,</span> <span class="tok-num">2035</span><span class="tok-op">)</span><span class="tok-op">}</span>
+
+        <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span>
+
+    <span class="tok-op">}</span>
+
+
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-var">res</span>
+
+
+
+
+
+<span class="tok-kw">def</span> <span class="tok-fn-def">main</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">:</span>
+
+    <span class="tok-str">&quot;&quot;&quot;Execute calibration filter and write posterior summary JSON.&quot;&quot;&quot;</span>
+
+    <span class="tok-var">pilot</span> <span class="tok-op">=</span> <span class="tok-var">V</span><span class="tok-op">.</span><span class="tok-var">run</span><span class="tok-op">(</span><span class="tok-var">N</span><span class="tok-op">,</span> <span class="tok-var">SEED</span><span class="tok-op">,</span> <span class="tok-op">{</span><span class="tok-op">**</span><span class="tok-var">SW</span><span class="tok-op">,</span> <span class="tok-str">&quot;S4def&quot;</span><span class="tok-op">:</span> <span class="tok-kw">False</span><span class="tok-op">,</span> <span class="tok-str">&quot;S4dep&quot;</span><span class="tok-op">:</span> <span class="tok-kw">False</span><span class="tok-op">}</span><span class="tok-op">)</span>
+
+    <span class="tok-var">w0</span> <span class="tok-op">=</span> <span class="tok-var">weights</span><span class="tok-op">(</span><span class="tok-var">pilot</span><span class="tok-op">)</span>
+
+    <span class="tok-var">ref</span> <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-op">(</span><span class="tok-var">s</span><span class="tok-op">,</span> <span class="tok-var">y</span><span class="tok-op">)</span><span class="tok-op">:</span> <span class="tok-var">wq</span><span class="tok-op">(</span><span class="tok-var">pilot</span><span class="tok-op">[</span><span class="tok-str">&quot;L&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">s</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-var">y</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-var">w0</span><span class="tok-op">,</span> <span class="tok-op">(</span><span class="tok-num">0.5</span><span class="tok-op">,</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">s</span> <span class="tok-kw">in</span> <span class="tok-var">SECT</span> <span class="tok-kw-ctrl">for</span> <span class="tok-var">y</span> <span class="tok-kw">in</span> <span class="tok-var">YEARS</span><span class="tok-op">}</span>
+
+
+
+    <span class="tok-var">out</span> <span class="tok-op">=</span> <span class="tok-var">V</span><span class="tok-op">.</span><span class="tok-var">run</span><span class="tok-op">(</span><span class="tok-var">N</span><span class="tok-op">,</span> <span class="tok-var">SEED</span><span class="tok-op">,</span> <span class="tok-var">SW</span><span class="tok-op">,</span> <span class="tok-var">ref</span><span class="tok-op">=</span><span class="tok-var">ref</span><span class="tok-op">,</span> <span class="tok-var">keep</span><span class="tok-op">=</span><span class="tok-op">(</span><span class="tok-num">2025</span><span class="tok-op">,</span> <span class="tok-num">2026</span><span class="tok-op">,</span> <span class="tok-num">2030</span><span class="tok-op">,</span> <span class="tok-num">2035</span><span class="tok-op">)</span><span class="tok-op">)</span>
+
+    <span class="tok-var">w</span> <span class="tok-op">=</span> <span class="tok-var">weights</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">)</span>
+
+    <span class="tok-var">base</span><span class="tok-op">,</span> <span class="tok-var">bess</span> <span class="tok-op">=</span> <span class="tok-var">baseline_post</span><span class="tok-op">(</span><span class="tok-var">N</span><span class="tok-op">,</span> <span class="tok-var">SEED</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-var">res</span> <span class="tok-op">=</span> <span class="tok-var">summarize</span><span class="tok-op">(</span><span class="tok-var">out</span><span class="tok-op">,</span> <span class="tok-var">w</span><span class="tok-op">,</span> <span class="tok-var">base</span><span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">with</span> <span class="tok-builtin">open</span><span class="tok-op">(</span><span class="tok-var">OUT</span><span class="tok-op">,</span> <span class="tok-str">&quot;w&quot;</span><span class="tok-op">,</span> <span class="tok-var">encoding</span><span class="tok-op">=</span><span class="tok-str">&quot;utf-8&quot;</span><span class="tok-op">)</span> <span class="tok-kw">as</span> <span class="tok-var">f</span><span class="tok-op">:</span>
+
+        <span class="tok-var">json</span><span class="tok-op">.</span><span class="tok-var">dump</span><span class="tok-op">(</span><span class="tok-var">res</span><span class="tok-op">,</span> <span class="tok-var">f</span><span class="tok-op">,</span> <span class="tok-var">indent</span><span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span>
+
+
+
+    <span class="tok-builtin">print</span><span class="tok-op">(</span>f&quot;Calibration completed: ESS = <span class="tok-op">{</span><span class="tok-var">res</span><span class="tok-op">[</span><span class="tok-str">&#x27;ess&#x27;</span><span class="tok-op">]</span><span class="tok-op">:</span>.0f<span class="tok-op">}</span>, output saved to <span class="tok-op">{</span><span class="tok-var">OUT</span><span class="tok-op">}</span>&quot;<span class="tok-op">)</span>
+
+    <span class="tok-kw-ctrl">return</span> <span class="tok-num">0</span>
+
+
+
+
+
+<span class="tok-kw-ctrl">if</span> <span class="tok-var">__name__</span> <span class="tok-op">==</span> <span class="tok-str">&quot;__main__&quot;</span><span class="tok-op">:</span>
+
+    <span class="tok-var">sys</span><span class="tok-op">.</span><span class="tok-var">exit</span><span class="tok-op">(</span><span class="tok-var">main</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span>
+</code></pre>
+        </div>
+      </div>
+
+      <div class="sources-directory-card">
+        <div class="sources-card-title">Key Telemetry Sources & Citations</div>
+        <ul class="sources-card-list">
+          <li class="sources-card-item">
+            <strong>Federal Reserve Bank of St. Louis (FRED):</strong> <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer" class="sources-card-link">Real Global GDP Growth Trajectories (Anchor S-37 Ceiling Formulation)</a>.
+          </li>
+          <li class="sources-card-item">
+            <strong>Stanford Institute for Human-Centered AI (HAI):</strong> <a href="https://hai.stanford.edu/ai-index/2025-ai-index-report" target="_blank" rel="noopener noreferrer" class="sources-card-link">The 2025 AI Index Report: Computational Scaling Trends</a>.
+          </li>
+          <li class="sources-card-item">
+            <strong>Rubin, D. B. (1987):</strong> <a href="https://www.jstor.org/stable/2289444" target="_blank" rel="noopener noreferrer" class="sources-card-link">A Noniterative Sampling/Importance Resampling Alternative to Data Augmentation (SIR Methodology)</a>.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="supplement-pagination-bar">
+        <a href="/supplements/loss-model-and-incrementality.html" class="supp-page-card supp-prev-card">
+          <span class="supp-page-label">Back to</span>
+          <span class="supp-page-title">Supplement 2: 3-Sector Factor Model & Incrementality</span>
+        </a>
+        <a href="/supplements/threat-actor-diffusion.html" class="supp-page-card supp-next-card">
+          <span class="supp-page-label">Next Module</span>
+          <span class="supp-page-title">Supplement 4: Threat Actor Diffusion & Tooling &rarr;</span>
+        </a>
+      </footer>
+
+    </article>
+
+  </div>
+
+</body>
+</html>

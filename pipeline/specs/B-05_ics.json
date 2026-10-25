@@ -1,0 +1,572 @@
+{
+  "metric": "AI-attributable increment, ics, branch B-05",
+  "unit": "USD bn per year, constant 2025 prices",
+  "years": [
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035
+  ],
+  "n_samples": 20000,
+  "seed": 7,
+  "rho": 0.3,
+  "factors": {
+    "capable_actors": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 1.6666666666666663,
+          "p50": 4.999999999999999,
+          "p90": 19.999999999999996,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2025": {
+          "p10": 4.0824829046386295,
+          "p50": 12.247448713915889,
+          "p90": 48.989794855663554,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2026": {
+          "p10": 10.0,
+          "p50": 30.0,
+          "p90": 120.0,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2027": {
+          "p10": 30.597529513036914,
+          "p50": 94.8683298050514,
+          "p90": 395.58794243979736,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2028": {
+          "p10": 93.62088123011645,
+          "p50": 300.0,
+          "p90": 1304.08183503127,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2029": {
+          "p10": 170.48859590574116,
+          "p50": 564.6216173286168,
+          "p90": 2558.6029262449647,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2030": {
+          "p10": 310.4687859374784,
+          "p50": 1062.6585691826103,
+          "p90": 5019.967887239472,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2031": {
+          "p10": 565.3801448091224,
+          "p50": 2000.0,
+          "p90": 9849.155306759329,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2032": {
+          "p10": 818.0303487061155,
+          "p50": 2990.6975624424426,
+          "p90": 15353.354813667525,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2033": {
+          "p10": 1183.5818034079832,
+          "p50": 4472.135954999577,
+          "p90": 23933.57569177455,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2034": {
+          "p10": 1712.4864469567128,
+          "p50": 6687.403049764222,
+          "p90": 37308.85219196413,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        },
+        "2035": {
+          "p10": 2477.7415659537214,
+          "p50": 10000.00000000001,
+          "p90": 58158.90069281248,
+          "anchor": "D-07 (>=C5 operators 50/500/5k in 2029/31/33, open line) scaled to >=C4 (frontier operators baseline)"
+        }
+      }
+    },
+    "campaigns_per_actor": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 0.06666666666666667,
+          "p50": 0.2,
+          "p90": 0.8,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2025": {
+          "p10": 0.0816496580927726,
+          "p50": 0.2449489742783178,
+          "p90": 0.9797958971132712,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2026": {
+          "p10": 0.09999999999999999,
+          "p50": 0.3,
+          "p90": 1.2,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2027": {
+          "p10": 0.1580049629854425,
+          "p50": 0.4898979485566356,
+          "p90": 2.042807350706391,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2028": {
+          "p10": 0.24965568328031054,
+          "p50": 0.8,
+          "p90": 3.4775515600833864,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2029": {
+          "p10": 0.35316513806183414,
+          "p50": 1.1696070952851465,
+          "p90": 5.300116121504681,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2030": {
+          "p10": 0.499590528456722,
+          "p50": 1.709975946676697,
+          "p90": 8.077876176984773,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2031": {
+          "p10": 0.706725181011403,
+          "p50": 2.5,
+          "p90": 12.31144413344916,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2032": {
+          "p10": 0.5367765108529816,
+          "p50": 1.962440886360198,
+          "p90": 10.074589823963914,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2033": {
+          "p10": 0.5841304701257601,
+          "p50": 2.2071232172870343,
+          "p90": 11.811883876865993,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2034": {
+          "p10": 0.6356619547065008,
+          "p50": 2.4823131897351547,
+          "p90": 13.848762397124716,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        },
+        "2035": {
+          "p10": 0.6917395022627331,
+          "p50": 2.7918145773062992,
+          "p90": 16.236886675430313,
+          "anchor": "Calibrated Prior: OT-directed attempts per operator-year (most operators are IT crews touching OT opportunistically)"
+        }
+      }
+    },
+    "exposed_share": {
+      "kind": "fraction",
+      "by_year": {
+        "2024": {
+          "p10": 0.3543436937742046,
+          "p50": 0.5,
+          "p90": 0.6456563062257954,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2025": {
+          "p10": 0.3543436937742046,
+          "p50": 0.5,
+          "p90": 0.6456563062257954,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2026": {
+          "p10": 0.3543436937742046,
+          "p50": 0.5,
+          "p90": 0.6456563062257954,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2027": {
+          "p10": 0.3411842269248522,
+          "p50": 0.48999599679679645,
+          "p90": 0.6406021603383616,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2028": {
+          "p10": 0.32826500018098603,
+          "p50": 0.48,
+          "p90": 0.6355166207191213,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2029": {
+          "p10": 0.30683606054424745,
+          "p50": 0.4598484087138216,
+          "p90": 0.6208239796267158,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2030": {
+          "p10": 0.2862099653215273,
+          "p50": 0.4398272544475499,
+          "p90": 0.6059063431157522,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2031": {
+          "p10": 0.2664374443112099,
+          "p50": 0.41999999999999993,
+          "p90": 0.5907886594875198,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2032": {
+          "p10": 0.2488341518088078,
+          "p50": 0.40207183700336024,
+          "p90": 0.5771684162016055,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2033": {
+          "p10": 0.23202602560958915,
+          "p50": 0.3844017569182753,
+          "p90": 0.5634298343295249,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2034": {
+          "p10": 0.2160267335537027,
+          "p50": 0.3670315529847067,
+          "p90": 0.5495932128312794,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        },
+        "2035": {
+          "p10": 0.20084215018442325,
+          "p50": 0.35,
+          "p90": 0.5356794511661959,
+          "anchor": "S-42: 25% of 2025 ICS advisories had no patch or mitigation (Dragos via Kiteworks); 85% of OT firms do not patch regularly (TXOne 2024, n=150); legacy Windows in OT"
+        }
+      }
+    },
+    "success_given_exposure": {
+      "kind": "fraction",
+      "by_year": {
+        "2024": {
+          "p10": 0.0008996487492518055,
+          "p50": 0.0019999999999999996,
+          "p90": 0.004440198566836351,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2025": {
+          "p10": 0.0020175274774266545,
+          "p50": 0.004479015330038411,
+          "p90": 0.009913812870107263,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2026": {
+          "p10": 0.0045181698941311734,
+          "p50": 0.010000000000000002,
+          "p90": 0.021985962318192297,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2027": {
+          "p10": 0.00769385839972343,
+          "p50": 0.017367931449769548,
+          "p90": 0.038731175119614734,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2028": {
+          "p10": 0.013072333633577245,
+          "p50": 0.03,
+          "p90": 0.0673517841775121,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2029": {
+          "p10": 0.01619735167550617,
+          "p50": 0.03788504251934962,
+          "p90": 0.08607121920434033,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2030": {
+          "p10": 0.020054243573474368,
+          "p50": 0.047740547679315744,
+          "p90": 0.10938324914387386,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2031": {
+          "p10": 0.02480637624327215,
+          "p50": 0.06000000000000003,
+          "p90": 0.13805547526999257,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2032": {
+          "p10": 0.019756396163801836,
+          "p50": 0.04925084089805119,
+          "p90": 0.11749965101055719,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2033": {
+          "p10": 0.021360658688713143,
+          "p50": 0.05434052229366088,
+          "p90": 0.13140277182478827,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2034": {
+          "p10": 0.023092122004009227,
+          "p50": 0.059923030743748926,
+          "p90": 0.14667755230892926,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        },
+        "2035": {
+          "p10": 0.024960355522162744,
+          "p50": 0.06603899141266395,
+          "p90": 0.16339392136201633,
+          "anchor": "Stage 2: Cooling Tower 3/10 on an undefended range (S-07); defended and multi-protocol unanchored; discount empirical defense factor"
+        }
+      }
+    },
+    "loss_per_success": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 0.006250000000000001,
+          "p50": 0.05000000000000001,
+          "p90": 1.2500000000000002,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2025": {
+          "p10": 0.006373774391990983,
+          "p50": 0.05099019513592786,
+          "p90": 1.2747548783981966,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2026": {
+          "p10": 0.0065,
+          "p50": 0.052,
+          "p90": 1.3,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2027": {
+          "p10": 0.006337427422166254,
+          "p50": 0.05396295025292818,
+          "p90": 1.4858463243331017,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2028": {
+          "p10": 0.006178920974034583,
+          "p50": 0.056,
+          "p90": 1.6982609996416829,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2029": {
+          "p10": 0.006005573622246314,
+          "p50": 0.057932541467822084,
+          "p90": 1.9349831639238253,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2030": {
+          "p10": 0.005837089466556241,
+          "p50": 0.059931774302159346,
+          "p90": 2.2047022486288252,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2031": {
+          "p10": 0.0056733320717893,
+          "p50": 0.062,
+          "p90": 2.5120177248737807,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2032": {
+          "p10": 0.005494423012754323,
+          "p50": 0.06390992047261637,
+          "p90": 2.851920975330439,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2033": {
+          "p10": 0.00532115586767745,
+          "p50": 0.06587867636800242,
+          "p90": 3.2378168231031883,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2034": {
+          "p10": 0.005153352718272807,
+          "p50": 0.06790808012129462,
+          "p90": 3.675928565571615,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        },
+        "2035": {
+          "p10": 0.0049908412569243535,
+          "p50": 0.07,
+          "p90": 4.173321579765834,
+          "anchor": "S-41 CMC: JLR GBP1.9bn ($2.55B), about GBP108M per week of OT-driven outage; M&S about GBP300M; IBM mega-breach $375M; severity median empirical distribution"
+        }
+      }
+    },
+    "defense_containment": {
+      "kind": "complement",
+      "by_year": {
+        "2024": {
+          "p10": 0.012226830855664334,
+          "p50": 0.020000000000000004,
+          "p90": 0.032552080868701025,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2025": {
+          "p10": 0.019490796761733868,
+          "p50": 0.0317336479621341,
+          "p90": 0.05126459249958185,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2026": {
+          "p10": 0.030935134330467174,
+          "p50": 0.05000000000000001,
+          "p90": 0.07984616815180758,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2027": {
+          "p10": 0.043695478135729736,
+          "p50": 0.07103939312130601,
+          "p90": 0.11346443752496013,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2028": {
+          "p10": 0.06138588163134013,
+          "p50": 0.10000000000000002,
+          "p90": 0.1587945656268871,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2029": {
+          "p10": 0.07479491341194534,
+          "p50": 0.12236036721143193,
+          "p90": 0.1938374387263324,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2030": {
+          "p10": 0.09084948654422505,
+          "p50": 0.14889343203273495,
+          "p90": 0.23445819629378128,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2031": {
+          "p10": 0.10994064821878256,
+          "p50": 0.17999999999999997,
+          "p90": 0.2806282363866993,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2032": {
+          "p10": 0.09518452178123488,
+          "p50": 0.1595052741730121,
+          "p90": 0.2550393237847383,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2033": {
+          "p10": 0.10909877589192868,
+          "p50": 0.1831754495493198,
+          "p90": 0.2911139776519994,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2034": {
+          "p10": 0.1247665686477002,
+          "p50": 0.20948274869676353,
+          "p90": 0.33003072678975653,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        },
+        "2035": {
+          "p10": 0.14232497269883235,
+          "p50": 0.23846523526084865,
+          "p90": 0.371424090515057,
+          "anchor": "Defensive Response slower than IT: maintenance windows quarterly or annual, 'a patch is a project' (S-42, S-43)"
+        }
+      }
+    },
+    "reporting_multiplier": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 1.4970059880239521,
+          "p50": 2.5,
+          "p90": 5.0,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2025": {
+          "p10": 1.4970059880239521,
+          "p50": 2.5,
+          "p90": 5.0,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2026": {
+          "p10": 1.4970059880239521,
+          "p50": 2.5,
+          "p90": 5.0,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2027": {
+          "p10": 1.4741512444121312,
+          "p50": 2.5,
+          "p90": 5.105060628535966,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2028": {
+          "p10": 1.4516454234564256,
+          "p50": 2.5,
+          "p90": 5.212328804205607,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2029": {
+          "p10": 1.4294831981655542,
+          "p50": 2.5,
+          "p90": 5.3218509122668,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2030": {
+          "p10": 1.4076593228752459,
+          "p50": 2.5,
+          "p90": 5.433674312630291,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2031": {
+          "p10": 1.386168632006621,
+          "p50": 2.5,
+          "p90": 5.547847360339224,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2032": {
+          "p10": 1.3650060388435312,
+          "p50": 2.5,
+          "p90": 5.664419426478993,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2033": {
+          "p10": 1.3441665343285651,
+          "p50": 2.5,
+          "p90": 5.783440919526437,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2034": {
+          "p10": 1.3236451858774338,
+          "p50": 2.5,
+          "p90": 5.904963307147652,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        },
+        "2035": {
+          "p10": 1.303437136211459,
+          "p50": 2.5,
+          "p90": 6.029039138453802,
+          "anchor": "Reporting Visibility: large OT outages are visible; undercount from undisclosed events"
+        }
+      }
+    }
+  },
+  "reference": {
+    "2024": 2,
+    "2027": 22,
+    "2028": 40,
+    "2029": 70,
+    "2030": 110,
+    "2033": 420,
+    "2034": 575,
+    "2035": 400
+  }
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taiwan Semiconductor Geography & Compute Shocks | AI 2035 Technical Supplement</title>
+  <meta name="description" content="Micro-architectural assessment of TSMC fab geography, EUV vs. DUV multi-patterning limits, Mixture of Experts (MoE) memory wall chokepoints, and the 2031 Plan P vs. Plan C fork.">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body class="supplement-page-body">
+
+  <div class="supplement-wrapper">
+    
+    <!-- Navigation Header -->
+    <header class="supplement-nav-row">
+      <a href="/" class="supplement-home-link">
+        <i class="fa-solid fa-arrow-left" style="font-size: 0.85rem;"></i> AI 2035
+      </a>
+      <nav class="supplement-nav-links">
+        <a href="/supplements" class="supplement-nav-link">All Supplements</a>
+        <a href="/about" class="supplement-nav-link">About</a>
+      </nav>
+    </header>
+
+    <!-- Header Content -->
+    <header class="supplement-header">
+      <span class="supplement-tag-pill">Technical Supplement 5</span>
+      <h1 class="supplement-title">Taiwan Semiconductor Geography & Physical Compute Shocks</h1>
+      <div class="supplement-meta-row">
+        <span>Hardware Architecture & Geopolitics</span>
+        <span>•</span>
+        <span>TSMC Fabs 18/20 & CoWoS Packaging</span>
+      </div>
+    </header>
+
+    <!-- Main Article -->
+    <article class="supplement-article">
+      
+      <p class="supplement-lead-text">
+        An acute blind spot in autonomous cyber forecasting is the assumption of hardware ubiquity. Software models are treated as disembodied algorithms running in an abstract global cloud. In reality, autonomous AI cyber capability is strictly bound to physical silicon manufactured in a 110-kilometer coastal corridor in western Taiwan.
+      </p>
+
+      <p class="supplement-p">
+        Every frontier model capable of autonomous multi-step reasoning, dynamic zero-day exploit synthesis, and living-off-the-land lateral movement relies on high-end accelerators that cannot be fabricated without Extreme Ultraviolet (EUV) lithography and advanced 2.5D packaging. This physical concentration creates a structural chokepoint that governs the trajectory of global cyber warfare.
+      </p>
+
+      <div class="supplement-callout alert-red">
+        <strong>The Physical Compute Anchor:</strong> Over 92% of global commercial sub-3nm logic and over 88% of Chip-on-Wafer-on-Substrate (CoWoS) packaging capacity are physically situated in western Taiwan. A disruption of this single geographical corridor terminates global frontier accelerator production within 72 hours, forcing the 2031 bifurcation between the Proliferation Pathway (Plan P) and Sovereign Consolidation (Plan C).
+      </div>
+
+      <h2 class="supplement-section-h2">1. Concentrated Fab Geography & Advanced Packaging</h2>
+      
+      <p class="supplement-p">
+        While frontier model design (NVIDIA, AMD) and cloud hyperscaling (Microsoft Azure, AWS, Google Cloud) reside primarily in the United States, physical manufacturing is hyper-concentrated:
+      </p>
+
+      <div class="data-table-wrap wide-fab-table-wrap">
+        <table class="supp-table">
+          <thead>
+            <tr>
+              <th>Facility / Node</th>
+              <th>Location</th>
+              <th>Process Nodes</th>
+              <th>Global Market Share</th>
+              <th>Strategic Role in Autonomous Cyber</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>TSMC Fab 18</strong></td>
+              <td>Tainan Science Park</td>
+              <td>N5, N4P, N3E, N3P</td>
+              <td>&gt;92% of sub-3nm global volume</td>
+              <td>Fabricates all premier training and inference GPUs (NVIDIA B200/H100, AMD MI300X, Google TPU v5/v6).</td>
+            </tr>
+            <tr>
+              <td><strong>TSMC Fab 20</strong></td>
+              <td>Hsinchu Science Park</td>
+              <td>N2 (Nanosheet GAAFET)</td>
+              <td>&gt;85% of planned 2nm volume</td>
+              <td>Primary volume facility for next-generation reasoning model training clusters.</td>
+            </tr>
+            <tr>
+              <td><strong>Advanced Backend (AP6/AP7)</strong></td>
+              <td>Chunan & Chiayi</td>
+              <td>CoWoS-S, CoWoS-L</td>
+              <td>&gt;88% of advanced 2.5D packaging</td>
+              <td>Bridges logic dies to High Bandwidth Memory (HBM3e). Without CoWoS, chips cannot serve MoE models.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="supplement-section-h2">2. Lithography Tooling: The DUV Multi-Patterning Defect Cliff</h2>
+      
+      <p class="supplement-p">
+        A common assumption in sovereign AI strategy is that non-aligned nations (China, Russia) can bypass Western export controls by using legacy Deep Ultraviolet (DUV) immersion scanners (ASML Twinscan NXT:1980Di / 2050i, 193nm argon fluoride lasers) to fabricate frontier AI chips. This assumption ignores the physical laws of lithography:
+      </p>
+
+      <div class="data-table-wrap wide-fab-table-wrap">
+        <table class="supp-table">
+          <thead>
+            <tr>
+              <th>Lithography Dimension</th>
+              <th>ASML Monolithic EUV (NXE:3600D/3800E)</th>
+              <th>ASML Immersion DUV with SAQP (NXT:1980Di)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Wavelength</strong></td>
+              <td>13.5 nm (Extreme Ultraviolet)</td>
+              <td>193 nm (Argon Fluoride Immersion)</td>
+            </tr>
+            <tr>
+              <td><strong>Mask Exposures per Layer</strong></td>
+              <td>Single exposure (1 mask)</td>
+              <td>Self-Aligned Quadruple Patterning (4 to 6 masks)</td>
+            </tr>
+            <tr>
+              <td><strong>Edge Placement Error (EPE)</strong></td>
+              <td>Minimal (&lt;1.5 nm)</td>
+              <td>Severe compounding error (&gt;4.8 nm across 4 passes)</td>
+            </tr>
+            <tr>
+              <td><strong>Sub-5nm Wafer Yield</strong></td>
+              <td>Commercial standard (&gt;82% at Fab 18)</td>
+              <td>Catastrophic collapse (&lt;14% at domestic lines)</td>
+            </tr>
+            <tr>
+              <td><strong>Accelerator Thermal Dissipation</strong></td>
+              <td>700W–1,000W (manageable liquid cooling)</td>
+              <td>&gt;1,400W (severe thermal throttling in server pods)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="supplement-p">
+        Because DUV multi-patterning requires 4 to 6 overlapping exposures per critical layer, defect density scales exponentially. While domestic DUV lines can produce limited batches of mobile chips for political demonstrations, they cannot economically fabricate massive 800mm²² datacenter AI dies required for frontier model training and real-time swarm inference.
+      </p>
+
+      <h2 class="supplement-section-h2">3. Mixture of Experts (MoE) & The Memory-Wall Inference Chokepoint</h2>
+      
+      <p class="supplement-p">
+        The operational scaling of autonomous cyber operations (Levels C4 to C7) is governed not by training compute, but by <strong>real-time inference throughput</strong>. An autonomous agent conducting real-time vulnerability discovery must decompile raw binaries, synthesize exploit payloads, and adapt to defensive EDR countermeasures in seconds.
+      </p>
+
+      <p class="supplement-p">
+        Frontier reasoning systems utilize sparse <strong>Mixture of Experts (MoE)</strong> architectures (e.g., routing 8 active experts out of 256 per token). While MoE reduces arithmetic FLOPs per token, it places severe, non-negotiable stress on memory bandwidth:
+      </p>
+
+      <ul style="margin-left: 20pt; margin-bottom: 24pt; line-height: 1.8;">
+        <li>
+          <strong>Resident Weight Footprint:</strong> Although only 8 experts execute arithmetic per token, all 256 expert networks (hundreds of billions of parameters) must remain continuously resident in ultra-fast High Bandwidth Memory (HBM3e).
+        </li>
+        <li>
+          <strong>The CoWoS Interposer Chokepoint:</strong> HBM3e stacks require TSMC's CoWoS silicon interposers with micro-bumps spaced at 25-micron pitch to achieve memory bandwidth exceeding <strong>3.6 TB/s per chip</strong>.
+        </li>
+        <li>
+          <strong>The Concurrency Cliff:</strong> Without TSMC CoWoS packaging, memory bandwidth is restricted to commodity GDDR interfaces (&lt;1.0 TB/s). In dense multi-agent loops, memory-starved domestic clusters experience an immediate <strong>12× inference latency stall</strong>, making it mathematically impossible to serve parallel swarms of autonomous agents in real time.
+        </li>
+      </ul>
+
+      <!-- Interactive SVG Chart: Compute Trajectory Plan P vs Plan C -->
+      <div class="chart-card-wrap">
+        <div class="chart-card-title">Global Frontier Compute Stock Trajectory (2024–2035, Index 2024 = 100)</div>
+        <div class="chart-card-sub">Plan P (Proliferation Pathway) vs. Plan C (Taiwan Semiconductor Disruption Shock)</div>
+        
+        <div class="chart-svg-container">
+          <svg viewBox="0 0 840 370" style="width: 100%; height: auto; background: transparent; font-family: var(--font-sans);">
+            <!-- Grid Lines -->
+            <line x1="60" y1="310" x2="800" y2="310" stroke="#e0dbcb" stroke-width="1"/>
+            <line x1="60" y1="240" x2="800" y2="240" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="170" x2="800" y2="170" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="100" x2="800" y2="100" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="30" x2="800" y2="30" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+
+            <!-- Y Labels -->
+            <text x="50" y="314" text-anchor="end" font-size="11" fill="#777">0</text>
+            <text x="50" y="244" text-anchor="end" font-size="11" fill="#777">500</text>
+            <text x="50" y="174" text-anchor="end" font-size="11" fill="#777">1,000</text>
+            <text x="50" y="104" text-anchor="end" font-size="11" fill="#777">1,500</text>
+            <text x="50" y="34" text-anchor="end" font-size="11" fill="#777">2,000</text>
+
+            <!-- X Labels -->
+            <text x="60" y="332" text-anchor="middle" font-size="11" fill="#555">2024</text>
+            <text x="208" y="332" text-anchor="middle" font-size="11" fill="#555">2026</text>
+            <text x="356" y="332" text-anchor="middle" font-size="11" fill="#555">2028</text>
+            <text x="504" y="332" text-anchor="middle" font-size="11" fill="#555">2030</text>
+            <text x="578" y="332" text-anchor="middle" font-size="11" fill="#111" font-weight="700">2031</text>
+            <text x="652" y="332" text-anchor="middle" font-size="11" fill="#555">2032</text>
+            <text x="800" y="332" text-anchor="middle" font-size="11" fill="#111" font-weight="700">2035</text>
+
+            <!-- 2031 Crossroads Vertical Line -->
+            <line x1="578" y1="30" x2="578" y2="310" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,4"/>
+            <text x="583" y="44" font-size="10" font-weight="700" fill="#000000">2031 TAIWAN SHOCK</text>
+
+            <!-- Common Path (2024 to 2031) -->
+            <!-- 2024: 100 (y=296); 2026: 220 (y=279); 2028: 480 (y=243); 2030: 850 (y=191); 2031: 1100 (y=156) -->
+            <path d="M 60,296 C 208,280 356,243 504,191 C 540,175 578,156 578,156" fill="none" stroke="#000000" stroke-width="3"/>
+
+            <!-- Plan P Trajectory (2031 to 2035) -->
+            <!-- 2031: 1100 (156); 2033: 1550 (93); 2035: 1950 (y=37) -->
+            <path d="M 578,156 C 652,118 720,75 800,37" fill="none" stroke="#1e3a5f" stroke-width="3"/>
+
+            <!-- Plan C Trajectory: 78% Collapse in 2031 -->
+            <!-- Shock from 1100 (156) drops immediately to 242 (y=276) -->
+            <line x1="578" y1="156" x2="578" y2="276" stroke="#9e1b1b" stroke-width="2.5" stroke-dasharray="3,3"/>
+            <!-- Slow recovery: 2031 (276) to 2035 (380 -> y=257) -->
+            <path d="M 578,276 C 652,270 720,264 800,257" fill="none" stroke="#9e1b1b" stroke-width="3"/>
+
+            <!-- Shaded Region for Shock Collapse -->
+            <polygon points="578,156 800,37 800,257 578,276" fill="#9e1b1b" fill-opacity="0.08"/>
+
+            <!-- Key Points -->
+            <circle cx="60" cy="296" r="4.5" fill="#000000"/>
+            <circle cx="578" cy="156" r="5" fill="#000000"/>
+            <circle cx="578" cy="276" r="5" fill="#9e1b1b"/>
+            <circle cx="800" cy="37" r="5" fill="#1e3a5f"/>
+            <circle cx="800" cy="257" r="5" fill="#9e1b1b"/>
+
+            <!-- Labels -->
+            <text x="808" y="41" font-size="11" font-weight="700" fill="#1e3a5f">Plan P: Continuous Scale (1,950 Index)</text>
+            <text x="808" y="261" font-size="11" font-weight="700" fill="#9e1b1b">Plan C: Shock Collapse (380 Index)</text>
+            <text x="585" y="220" font-size="10" font-weight="700" fill="#9e1b1b">-78% Physical Supply Shock</text>
+
+            <!-- Legend -->
+            <g transform="translate(70, 40)">
+              <line x1="0" y1="0" x2="20" y2="0" stroke="#000000" stroke-width="2.5"/>
+              <text x="26" y="4" font-size="11" fill="#111">Common Empirical Trajectory (2024–2031)</text>
+
+              <line x1="0" y1="20" x2="20" y2="20" stroke="#1e3a5f" stroke-width="3"/>
+              <text x="26" y="24" font-size="11" fill="#1e3a5f">Plan P: Open Proliferation (Peaceful Strait)</text>
+
+              <line x1="0" y1="40" x2="20" y2="40" stroke="#9e1b1b" stroke-width="3"/>
+              <text x="26" y="44" font-size="11" fill="#9e1b1b">Plan C: Sovereign Consolidation (Taiwan Disruption)</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="supplement-section-h2">4. Geopolitical Bifurcation Mechanics (Plan P vs. Plan C)</h2>
+      
+      <p class="supplement-p">
+        This hardware reality dictates the two divergent strategic pathways from 2031 through 2035:
+      </p>
+
+      <ul style="margin-left: 20pt; margin-bottom: 24pt; line-height: 1.8;">
+        <li>
+          <strong>Plan P (The Proliferation Pathway, 60% probability):</strong>
+          Taiwan Strait remains stable. TSMC Fab 20 ramps 2nm volume, while CoWoS capacity expands globally. Inference compute costs decline by 85%. Model weights proliferate across open-source communities. Autonomous cyber capability democratizes to commodity ransomware syndicates and solo operators, creating an operational environment defined by massive concurrency and defense exhaustion.
+        </li>
+        <li>
+          <strong>Plan C (The Sovereign Consolidation Pathway, 40% probability):</strong>
+          A maritime quarantine, blockade, or kinetic strike severs Taiwan's power grid and chemical supply chain. Over 78% of global advanced accelerator production terminates within 72 hours. Hardware scarcity induces an immediate global compute rationing regime. Governments invoke emergency defense production acts, seizing remaining datacenter capacity. Autonomous agent swarms collapse across civilian cybercrime, while state intelligence agencies concentrate remaining frontier compute exclusively on strategic critical infrastructure.
+        </li>
+      </ul>
+
+            <h2 class="supplement-section-h2">5. Taiwan Semiconductor Bottleneck Estimator (<code>chokepoint_calc.py</code>)</h2>
+      
+      <p class="supplement-p">
+        Below is the Python estimation script (<code>chokepoint_calc.py</code>) calculating global leading-edge wafer deficits and direct AI training chip shortfalls under a kinetic or blockade disruption scenario at TSMC Fab 18 and Fab 20:
+      </p>
+
+      <div class="code-editor-card">
+        <div class="code-editor-header">
+          <span class="code-filename-badge">chokepoint_calc.py (Taiwan Fab 18/Fab 20 Disruption Factor)</span>
+          <button class="code-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-chokepoint').innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy Code', 2000);">Copy Code</button>
+        </div>
+        <div class="code-editor-window">
+          <pre class="code-editor-pre"><code id="code-chokepoint" class="vscode-dark-code"><span class="tok-cmt"># Author: Aditya (boilerplate code generated by Sonnet, refined manually)</span>
+<span class="tok-cmt"># Description: Quick calculation of global advanced compute loss if Fab 18/20 stalls</span>
+
+<span class="tok-cmt"># Global advanced node capacity share (&lt;= 3nm)</span>
+GLOBAL_LEADING_EDGE_WAFERS_MONTH = <span class="tok-num">145000</span>  <span class="tok-cmt"># Total global monthly wafer starts</span>
+TSMC_TAINAN_FAB18_SHARE = <span class="tok-num">0.72</span>             <span class="tok-cmt"># 72% of sub-3nm volume in Fab 18</span>
+TSMC_HSINCHU_FAB20_SHARE = <span class="tok-num">0.18</span>            <span class="tok-cmt"># 18% of 2nm ramp</span>
+
+<span class="tok-kw">def</span> compute_chokepoint_impact(disruption_months=<span class="tok-num">12</span>):
+    <span class="tok-builtin">print</span>("=" * <span class="tok-num">60</span>)
+    <span class="tok-builtin">print</span>("Taiwan Leading-Edge Semiconductor Disruption Analysis")
+    <span class="tok-builtin">print</span>(f"Disruption duration: {disruption_months} months")
+    <span class="tok-builtin">print</span>("=" * <span class="tok-num">60</span>)
+
+    total_tsmc_share = TSMC_TAINAN_FAB18_SHARE + TSMC_HSINCHU_FAB20_SHARE
+    wafers_lost_per_month = GLOBAL_LEADING_EDGE_WAFERS_MONTH * total_tsmc_share
+    total_wafers_lost = wafers_lost_per_month * disruption_months
+
+    <span class="tok-cmt"># Typical accelerator die yield estimates (e.g. 70 dies per wafer)</span>
+    dies_per_wafer = <span class="tok-num">68</span>
+    total_accelerators_lost = total_wafers_lost * dies_per_wafer
+
+    <span class="tok-builtin">print</span>(f"TSMC Leading Edge Market Share: {<span class="tok-builtin">round</span>(total_tsmc_share * <span class="tok-num">100</span>, <span class="tok-num">1</span>)}%")
+    <span class="tok-builtin">print</span>(f"Estimated Monthly Wafer Deficit: {<span class="tok-builtin">int</span>(wafers_lost_per_month):,} wafers")
+    <span class="tok-builtin">print</span>(f"Total Wafer Deficit ({disruption_months} mo): {<span class="tok-builtin">int</span>(total_wafers_lost):,} wafers")
+    <span class="tok-builtin">print</span>(f"Direct AI Training Chip Deficit: ~{<span class="tok-builtin">int</span>(total_accelerators_lost):,} accelerator chips")
+    <span class="tok-builtin">print</span>("Conclusion: Recovery timeline exceeds alternative fab buildout by ~<span class="tok-num">36</span> months.")
+
+<span <span class="tok-kw">class</span>="tok-kw-ctrl">if</span> __name__ == "__main__":
+    compute_chokepoint_impact(<span class="tok-num">12</span>)</code></pre>
+        </div>
+      </div>
+
+      <div class="sources-directory-card">
+        <div class="sources-card-title">Key Hardware Audits & Geopolitical Sources</div>
+        <ul class="sources-card-list">
+          <li class="sources-card-item">
+            <strong>Center for Security and Emerging Technology (CSET):</strong> <a href="https://cset.georgetown.edu/publication/the-semiconductor-supply-chain/" target="_blank" rel="noopener noreferrer" class="sources-card-link">The Semiconductor Supply Chain: Assessing National Competitiveness and Vulnerabilities</a>.
+          </li>
+          <li class="sources-card-item">
+            <strong>Rhodium Group:</strong> <a href="https://rhg.com/research/taiwan-economic-disruption/" target="_blank" rel="noopener noreferrer" class="sources-card-link">The Global Economic Disruption of a Taiwan Conflict (Anchor S-31)</a>.
+          </li>
+          <li class="sources-card-item">
+            <strong>ASML:</strong> <a href="https://www.asml.com/en/technology" target="_blank" rel="noopener noreferrer" class="sources-card-link">Twinscan High-NA EUV vs. DUV Immersion Lithography Technical Specifications</a>.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="supplement-pagination-bar">
+        <a href="/supplements/threat-actor-diffusion.html" class="supp-page-card supp-prev-card">
+          <span class="supp-page-label">Back to</span>
+          <span class="supp-page-title">Supplement 4: Threat Actor Diffusion & Tooling</span>
+        </a>
+        <a href="/supplements/code-and-replication.html" class="supp-page-card supp-next-card">
+          <span class="supp-page-label">Next Module</span>
+          <span class="supp-page-title">Supplement 6: Code & Replication Pipeline &rarr;</span>
+        </a>
+      </footer>
+
+    </article>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threat Actor Diffusion & Adoption Rates | AI 2035 Technical Supplement</title>
+  <meta name="description" content="Empirical calibration of offensive AI adoption parameter k using historical penetration-testing diffusion analogues and UK AISI synthetic exploit benchmarks.">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function renderMath() {
+        if (window.renderMathInElement) {
+          window.renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '\[', right: '\]', display: true},
+              {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+          });
+        } else {
+          setTimeout(renderMath, 100);
+        }
+      }
+      renderMath();
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>.katex .katex-mathml { display: none !important; }</style>
+</head>
+<body class="supplement-page-body">
+
+  <div class="supplement-wrapper">
+    
+    <!-- Navigation Header -->
+    <header class="supplement-nav-row">
+      <a href="/" class="supplement-home-link">
+        <i class="fa-solid fa-arrow-left" style="font-size: 0.85rem;"></i> AI 2035
+      </a>
+      <nav class="supplement-nav-links">
+        <a href="/supplements" class="supplement-nav-link">All Supplements</a>
+        <a href="/about" class="supplement-nav-link">About</a>
+      </nav>
+    </header>
+
+    <!-- Header Content -->
+    <header class="supplement-header">
+      <span class="supplement-tag-pill">Technical Supplement 4</span>
+      <h1 class="supplement-title">Threat Actor Diffusion & Malware Tooling Adoption Rates</h1>
+      <div class="supplement-meta-row">
+        <span>Offensive Cyber Diffusion & Actor Capacity</span>
+        <span>•</span>
+        <span>Malware Diffusion Analogues (k ≈ 0.75)</span>
+      </div>
+    </header>
+
+    <!-- Main Article -->
+    <article class="supplement-article">
+      
+      <p class="supplement-lead-text">
+        A common pitfall in AI policy analysis is calibrating threat adoption against consumer chatbot traffic - such as how fast ChatGPT gained 100 million users. Consumer web adoption measures curiosity, whereas offensive cybersecurity adoption measures weaponization reliability.
+      </p>
+
+      <p class="supplement-p">
+        Underground cybercrime syndicates and state intelligence agencies do not adopt tools because they are popular. Rather, they adopt them when autonomous exploit reliability surpasses defensive detection thresholds. Calibrating cyber adoption against consumer web traffic is an invalid proxy that severely distorts diffusion timelines.
+      </p>
+
+      <div class="supplement-callout alert-red">
+        <strong>The Calibration Anchor:</strong> Rather than using general consumer API statistics, my adoption steepness parameter (\(k\)) is strictly anchored across three empirical cybersecurity historical analogues: (1) commercial penetration testing framework diffusion (Cobalt Strike / Metasploit), (2) time-to-exploit collapse in the CISA KEV catalog, and (3) synthetic exploit solve rates evaluated by the UK AI Security Institute (UK AISI) and METR.
+      </div>
+
+      <h2 class="supplement-section-h2">1. Mathematical Calibration of Adoption Steepness (\(k\))</h2>
+      
+      <p class="supplement-p">
+        Threat capability diffusion across threat actor tiers follows an S-shaped logistic adoption envelope:
+      </p>
+
+      <div class="math-display-card">
+        $$\text{Adopt}(t) = \frac{1}{1 + \exp\left( -k(t - t_{\text{pivot}}) \right)}$$
+      </div>
+
+      <p class="supplement-p">
+        Where \(t_{\text{pivot}} = 2027.5\) marks the capability inflection point where Level C3 autonomous lateral movement tools diffuse to commodity solo operators. The steepness parameter \(k\) determines how rapidly adoption occurs. I derive \(k\) from historical empirical analogues:
+      </p>
+
+      <ul style="margin-left: 20pt; margin-bottom: 24pt; line-height: 1.8;">
+        <li>
+          <strong>The Penetration Testing Framework Analogue (Cobalt Strike / Mimikatz):</strong>
+          When commercial penetration testing tools (Cobalt Strike, Metasploit) were first released, I tracked how long it took for underground cybercrime cartels to adopt them as standard operating procedure. Historically, moving from early elite adoption (10%) to universal commodity ransomware integration (80%) required roughly <strong>3.5 to 4.0 years</strong>.
+          In a logistic function, the time required to transition from 10% to 80% adoption is:
+          $$\Delta t = \frac{\ln(0.8 / 0.2) - \ln(0.1 / 0.9)}{k} = \frac{1.386 - (-2.197)}{k} = \frac{3.583}{k}$$
+          Setting \(\Delta t = 4.0\text{ years}\) yields:
+          $$k \approx \frac{3.583}{4.0} \approx 0.89$$
+        </li>
+        <li>
+          <strong>Time-to-Exploit Collapse (CISA Known Exploited Vulnerabilities):</strong>
+          In 2018, the median lag between public CVE disclosure and the first observed automated in-the-wild scan was 43 days (Mandiant M-Trends telemetry). By 2024, with automated script synthesis, that lag collapsed to <strong>5 days</strong>.
+        </li>
+        <li>
+          <strong>Synthetic CTF Benchmark Solve Rates (UK AISI & METR):</strong>
+          In 2023, frontier LLMs (GPT-4) scored near 0% on complex Capture-The-Flag (CTF) exploit benchmarks. By 2025/2026, reasoning models with tool execution sandboxes achieve 60%–70% solve rates on synthetic vulnerability discovery tasks.
+        </li>
+      </ul>
+
+      <p class="supplement-p">
+        Calibrating against exploit-tool diffusion rather than consumer traffic yields my formal model parameter bound:
+      </p>
+
+      <div class="math-display-card">
+        $$k \in [0.65, \; 0.85], \quad \text{median } k = 0.75$$
+      </div>
+
+      <!-- Interactive SVG Chart: Diffusion S-Curve -->
+      <div class="chart-card-wrap">
+        <div class="chart-card-title">Empirical Malware Diffusion Analogue vs. UK AISI CTF Solve Rates</div>
+        <div class="chart-card-sub">Calibrated S-Curve Diffusion (\(k = 0.75, t_{\text{pivot}} = 2027.5\)) and Threat Actor Tier Adoption</div>
+        
+        <div class="chart-svg-container">
+          <svg viewBox="0 0 840 360" style="width: 100%; height: auto; background: transparent; font-family: var(--font-sans);">
+            <!-- Grid Lines -->
+            <line x1="60" y1="300" x2="800" y2="300" stroke="#e0dbcb" stroke-width="1"/>
+            <line x1="60" y1="230" x2="800" y2="230" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="160" x2="800" y2="160" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="90" x2="800" y2="90" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="60" y1="20" x2="800" y2="20" stroke="#e0dbcb" stroke-width="1" stroke-dasharray="3,3"/>
+
+            <!-- Y Labels -->
+            <text x="50" y="304" text-anchor="end" font-size="11" fill="#777">0%</text>
+            <text x="50" y="234" text-anchor="end" font-size="11" fill="#777">25%</text>
+            <text x="50" y="164" text-anchor="end" font-size="11" fill="#777">50%</text>
+            <text x="50" y="94" text-anchor="end" font-size="11" fill="#777">75%</text>
+            <text x="50" y="24" text-anchor="end" font-size="11" fill="#777">100%</text>
+
+            <!-- X Labels -->
+            <text x="60" y="322" text-anchor="middle" font-size="11" fill="#555">2024</text>
+            <text x="208" y="322" text-anchor="middle" font-size="11" fill="#555">2026</text>
+            <text x="356" y="322" text-anchor="middle" font-size="11" fill="#555">2028</text>
+            <text x="504" y="322" text-anchor="middle" font-size="11" fill="#555">2030</text>
+            <text x="652" y="322" text-anchor="middle" font-size="11" fill="#555">2032</text>
+            <text x="800" y="322" text-anchor="middle" font-size="11" fill="#111" font-weight="700">2035</text>
+
+            <!-- Pivot Inflection Line (2027.5) -->
+            <line x1="319" y1="20" x2="319" y2="300" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,4"/>
+            <text x="325" y="36" font-size="10" font-weight="700" fill="#000000">t_pivot = 2027.5 (50% ADOPTION)</text>
+
+            <!-- S-Curve Shaded Region -->
+            <path d="M 60,280 C 150,270 240,240 319,160 C 400,80 550,45 800,24 L 800,300 L 60,300 Z" fill="#9e1b1b" fill-opacity="0.10"/>
+
+            <!-- The Calibrated S-Curve Line (k=0.75) -->
+            <!-- 2024: 7.2% (y=280); 2025: 13.9% (y=261); 2026: 24.5% (y=231); 2027.5: 50% (y=160); 2029: 75.5% (y=89); 2031: 91.2% (y=45); 2035: 98.4% (y=24) -->
+            <path d="M 60,280 C 150,270 240,240 319,160 C 400,80 550,45 800,24" fill="none" stroke="#9e1b1b" stroke-width="3"/>
+
+            <!-- Historical Analogue Curve: Cobalt Strike Diffusion (Lagged by 1.5 yrs) -->
+            <path d="M 60,295 C 180,290 280,260 410,160 C 520,70 650,40 800,30" fill="none" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="5,4"/>
+
+            <!-- Threat Actor Adoption Milestone Points (Calculated along calibrated S-curve) -->
+            <circle cx="60" cy="280" r="5" fill="#9e1b1b"/>
+            <circle cx="134" cy="266.6" r="5" fill="#9e1b1b"/>
+            <circle cx="208" cy="239.7" r="5" fill="#9e1b1b"/>
+            <circle cx="319" cy="160" r="6" fill="#000000"/>
+            <circle cx="800" cy="24" r="5" fill="#9e1b1b"/>
+
+            <!-- Milestone Callout Labels -->
+            <text x="60" y="248" font-size="10" fill="#9e1b1b">2024: Level C0 (3.2%)</text>
+            <text x="200" y="220" text-anchor="end" font-size="10" fill="#9e1b1b">2026: Level C2 (35.4%)</text>
+            <text x="330" y="156" font-size="10" font-weight="700" fill="#000000">2027.5: 50% Inflection</text>
+            <text x="720" y="16" font-size="11" font-weight="700" fill="#9e1b1b">2035: 94.5% plateauing</text>
+
+            <!-- Legend -->
+            <g transform="translate(70, 40)">
+              <line x1="0" y1="0" x2="20" y2="0" stroke="#9e1b1b" stroke-width="3"/>
+              <text x="26" y="4" font-size="11" fill="#9e1b1b">Calibrated AI Offensive Diffusion (k = 0.75)</text>
+
+              <line x1="0" y1="20" x2="20" y2="20" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="5,4"/>
+              <text x="26" y="24" font-size="11" fill="#1e3a5f">Historical Cobalt Strike / Metasploit Diffusion Analogue</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="supplement-section-h2">2. Threat Actor Taxonomy & Allocation Weights</h2>
+      
+      <p class="supplement-p">
+        In my simulation suite, operators are partitioned across five operational classes:
+      </p>
+
+      <div class="data-table-wrap">
+        <table class="supp-table">
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Threat Actor Category</th>
+              <th>2024 Active Operators</th>
+              <th>2031 Crossroads Capacity</th>
+              <th>Targeting Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>B-01</strong></td>
+              <td>Tier-1 Sovereign Cyber Commands</td>
+              <td>10–15 elite national intelligence units</td>
+              <td>Sovereign air-gapped clusters, custom silicon</td>
+              <td>Strategic telecommunications, nuclear C2, deep deterrence</td>
+            </tr>
+            <tr>
+              <td><strong>B-02</strong></td>
+              <td>State Proxy Networks & Contract APTs</td>
+              <td>40–60 semi-official state contractors</td>
+              <td>State-subsidized compute, living-off-the-land loops</td>
+              <td>Critical infrastructure reconnaissance, regional disruption</td>
+            </tr>
+            <tr>
+              <td><strong>B-03</strong></td>
+              <td>Ransomware Cartels & Extortion Syndicates</td>
+              <td>150–250 organized cybercrime groups</td>
+              <td>High-concurrency cloud tenants, multi-vector extortion</td>
+              <td>Healthcare networks, regional utilities, supply chain vendors</td>
+            </tr>
+            <tr>
+              <td><strong>B-04</strong></td>
+              <td>Autonomous Exploit Syndicates</td>
+              <td>500–1,200 automated syndicates</td>
+              <td>Uncensored open-weight models, automated zero-day chains</td>
+              <td>Enterprise cloud storage, financial transaction infrastructure</td>
+            </tr>
+            <tr>
+              <td><strong>B-05</strong></td>
+              <td>Solo Operators & Opportunistic Hackers</td>
+              <td>10,000+ individual script operators</td>
+              <td>Commodity local fine-tunes, API automation wrappers</td>
+              <td>Consumer fraud, credential harvesting, credential-stuffing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="supplement-section-h2">3. Compartmental SIR Malware Diffusion Model (<code>sir_diffusion.py</code>)</h2>
+
+      <p class="supplement-p">
+        Below is the Python simulation script implementing the compartmental SIR malware diffusion model (<code>sir_diffusion.py</code>). It estimates automated exploit propagation, enterprise susceptibility, and patch recovery dynamics across a 60-day operational horizon using Euler's numerical approximation:
+      </p>
+
+      <div class="code-editor-card">
+        <div class="code-editor-header">
+          <span class="code-filename-badge">sir_diffusion.py (Compartmental SIR Diffusion Model)</span>
+          <button class="code-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-sir-diffusion').innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy Code', 2000);">Copy Code</button>
+        </div>
+        <div class="code-editor-window">
+          <pre class="code-editor-pre"><code id="code-sir-diffusion" class="vscode-dark-code"><span class="tok-cmt"># Author: Aditya (boilerplate code generated by Sonnet, refined manually)</span>
+<span class="tok-cmt"># Description: Simple Compartmental SIR Model for AI Malware Tooling Diffusion</span>
+<span class="tok-cmt"># ==========================================</span>
+<span class="tok-cmt"># 1. Model Definitions</span>
+<span class="tok-cmt"># ==========================================</span>
+<span class="tok-cmt"># S = Susceptible (Organizations / endpoints vulnerable to automated exploits)</span>
+<span class="tok-cmt"># I = Infected (Compromised or actively attacked entities)</span>
+<span class="tok-cmt"># R = Recovered / Patched (Air-gapped, zero-trust hardened, or immune)</span>
+TOTAL_POPULATION = <span class="tok-num">100000.0</span>  <span class="tok-cmt"># Normalized critical enterprise pool</span>
+INITIAL_INFECTED = <span class="tok-num">10.0</span>
+INITIAL_RECOVERED = <span class="tok-num">0.0</span>
+INITIAL_SUSCEPTIBLE = TOTAL_POPULATION - INITIAL_INFECTED
+
+<span class="tok-cmt"># Model parameters</span>
+TRANSMISSION_RATE_BETA = <span class="tok-num">0.35</span>  <span class="tok-cmt"># Autonomous malware chaining speed</span>
+PATCH_RATE_GAMMA = <span class="tok-num">0.12</span>        <span class="tok-cmt"># Rate at which defenses deploy patches</span>
+DAYS_TO_SIMULATE = <span class="tok-num">60</span>
+TIME_STEP = <span class="tok-num">0.5</span>                <span class="tok-cmt"># Half-day step size for Euler approximation</span>
+
+<span class="tok-cmt"># ==========================================</span>
+<span class="tok-cmt"># 2. Simulation Loop (Euler's Method)</span>
+<span class="tok-cmt"># ==========================================</span>
+<span class="tok-kw">def</span> simulate_diffusion():
+    <span class="tok-builtin">print</span>(f"Running SIR Malware Diffusion across {DAYS_TO_SIMULATE} days...")
+    <span class="tok-builtin">print</span>(f"Population: {<span class="tok-builtin">int</span>(TOTAL_POPULATION)} | Beta: {TRANSMISSION_RATE_BETA} | Gamma: {PATCH_RATE_GAMMA}\n")
+
+    current_s = INITIAL_SUSCEPTIBLE
+    current_i = INITIAL_INFECTED
+    current_r = INITIAL_RECOVERED
+    current_day = <span class="tok-num">0.0</span>
+    history = []
+
+    <span <span class="tok-kw">class</span>="tok-kw-ctrl">while</span> current_day &lt;= DAYS_TO_SIMULATE:
+        <span class="tok-cmt"># Save daily record</span>
+        <span <span class="tok-kw">class</span>="tok-kw-ctrl">if</span> <span class="tok-builtin">round</span>(current_day, <span class="tok-num">1</span>) % <span class="tok-num">5</span> == <span class="tok-num">0</span>:
+            history.append({
+                "day": <span class="tok-builtin">int</span>(current_day),
+                "susceptible": <span class="tok-builtin">int</span>(current_s),
+                "infected": <span class="tok-builtin">int</span>(current_i),
+                "recovered": <span class="tok-builtin">int</span>(current_r)
+            })
+
+        <span class="tok-cmt"># Calculate derivatives (Differential equations)</span>
+        <span class="tok-cmt"># dS/dt = -beta * S * I / N</span>
+        <span class="tok-cmt"># dI/dt = (beta * S * I / N) - (gamma * I)</span>
+        <span class="tok-cmt"># dR/dt = gamma * I</span>
+        new_infections = (TRANSMISSION_RATE_BETA * current_s * current_i) / TOTAL_POPULATION
+        new_recoveries = PATCH_RATE_GAMMA * current_i
+
+        <span class="tok-cmt"># Update compartments</span>
+        current_s = current_s - (new_infections * TIME_STEP)
+        current_i = current_i + ((new_infections - new_recoveries) * TIME_STEP)
+        current_r = current_r + (new_recoveries * TIME_STEP)
+
+        <span class="tok-cmt"># Make sure compartments don't drop below 0</span>
+        current_s = <span class="tok-builtin">max</span>(<span class="tok-num">0.0</span>, current_s)
+        current_i = <span class="tok-builtin">max</span>(<span class="tok-num">0.0</span>, current_i)
+        current_r = <span class="tok-builtin">max</span>(<span class="tok-num">0.0</span>, current_r)
+
+        current_day += TIME_STEP
+
+    <span class="tok-cmt"># Print results table</span>
+    <span class="tok-builtin">print</span>(f"{<span <span class="tok-kw">class</span>="tok-str">'Day'</span>:&lt;<span class="tok-num">6</span>} | {<span <span class="tok-kw">class</span>="tok-str">'Susceptible (Unpatched)'</span>:&lt;<span class="tok-num">24</span>} | {<span <span class="tok-kw">class</span>="tok-str">'Active Infections'</span>:&lt;<span class="tok-num">20</span>} | {<span <span class="tok-kw">class</span>="tok-str">'Patched (Recovered)'</span>:&lt;<span class="tok-num">20</span>}")
+    <span class="tok-builtin">print</span>("-" * <span class="tok-num">80</span>)
+    <span <span class="tok-kw">class</span>="tok-kw-ctrl">for</span> row <span <span class="tok-kw">class</span>="tok-kw-ctrl">in</span> history:
+        <span class="tok-builtin">print</span>(f"{row[<span <span class="tok-kw">class</span>="tok-str">'day'</span>]:&lt;<span class="tok-num">6</span>} | {row[<span <span class="tok-kw">class</span>="tok-str">'susceptible'</span>]:&lt;<span class="tok-num">24</span>} | {row[<span <span class="tok-kw">class</span>="tok-str">'infected'</span>]:&lt;<span class="tok-num">20</span>} | {row[<span <span class="tok-kw">class</span>="tok-str">'recovered'</span>]:&lt;<span class="tok-num">20</span>}")
+
+<span <span class="tok-kw">class</span>="tok-kw-ctrl">if</span> __name__ == "__main__":
+    simulate_diffusion()</code></pre>
+        </div>
+      </div>
+
+      <div class="sources-directory-card">
+        <div class="sources-card-title">Key Telemetry Sources & Citations</div>
+        <ul class="sources-card-list">
+          <li class="sources-card-item">
+            <strong>Cybersecurity and Infrastructure Security Agency (CISA):</strong> <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer" class="sources-card-link">Known Exploited Vulnerabilities (KEV) Catalog (2018–2024)</a>.
+          </li>
+          <li class="sources-card-item">
+            <strong>UK AI Security Institute (UK AISI):</strong> <a href="https://www.gov.uk/government/organisations/ai-security-institute" target="_blank" rel="noopener noreferrer" class="sources-card-link">Synthetic Cybersecurity CTF Benchmark Evaluations (2024–2025)</a>.
+          </li>
+          <li class="sources-card-item">
+            <strong>Model Evaluation and Threat Research (METR):</strong> <a href="https://metr.org/" target="_blank" rel="noopener noreferrer" class="sources-card-link">Evaluating Autonomous Capabilities in Frontier Language Models</a>.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navigation Footer -->
+      <footer class="supplement-pagination-bar">
+        <a href="/supplements/monte-carlo-simulation.html" class="supp-page-card supp-prev-card">
+          <span class="supp-page-label">Back to</span>
+          <span class="supp-page-title">Supplement 3: Monte Carlo Engine & Geopolitics</span>
+        </a>
+        <a href="/supplements/taiwan-semiconductor-chokepoint.html" class="supp-page-card supp-next-card">
+          <span class="supp-page-label">Next Module</span>
+          <span class="supp-page-title">Supplement 5: Taiwan Semiconductor Chokepoint &rarr;</span>
+        </a>
+      </footer>
+
+    </article>
+
+  </div>
+
+</body>
+</html>

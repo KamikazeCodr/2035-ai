@@ -1,0 +1,50 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*).pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Content-Disposition", "value": "inline" }
+      ]
+    },
+    {
+      "source": "/AI-2035.pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Content-Disposition", "value": "inline" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/supplement/:slug",
+      "destination": "/supplements/:slug.html"
+    },
+    {
+      "source": "/supplements/:slug",
+      "destination": "/supplements/:slug.html"
+    },
+    {
+      "source": "/supplements",
+      "destination": "/supplements.html"
+    },
+    {
+      "source": "/supplement",
+      "destination": "/supplements.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/old-version",
+      "destination": "/old-version/index.html"
+    },
+    {
+      "source": "/old-version/",
+      "destination": "/old-version/index.html"
+    }
+  ]
+}
