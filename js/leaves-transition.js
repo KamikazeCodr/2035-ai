@@ -20,7 +20,7 @@ export class MangaWindLeavesTransition {
     if (options.targetUrl) {
       this.targetUrl = options.targetUrl;
     } else if (window.location.protocol === 'file:' || window.location.pathname.endsWith('.html')) {
-      this.targetUrl = 'old-version.html';
+      this.targetUrl = 'old-version/index.html';
     } else {
       this.targetUrl = '/old-version';
     }

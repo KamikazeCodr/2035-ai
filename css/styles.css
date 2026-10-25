@@ -4842,3 +4842,101 @@ sup.footnote-ref:hover {
     padding: 1.75rem 1rem 1.75rem;
   }
 }
+
+/* ==========================================================================
+   Timed Podcast Recommendation Speech Bubble (Manga/Editorial Style)
+   ========================================================================== */
+.podcast-bubble-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.podcast-speech-bubble {
+  position: absolute;
+  top: calc(100% + 9px);
+  right: 4px;
+  width: max-content;
+  max-width: 234px;
+  background: var(--page-bg, #FFFFF8);
+  border-left: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  padding: 7px 12px 8px 22px;
+  box-sizing: border-box;
+  z-index: 1000;
+  pointer-events: auto;
+  opacity: 0;
+  will-change: opacity;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.podcast-bubble-close {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  line-height: 1;
+  color: #777770;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  transition: color 0.15s ease;
+}
+.podcast-bubble-close:hover,
+.podcast-bubble-close:focus-visible {
+  color: #000000;
+  outline: none;
+}
+
+.podcast-bubble-text {
+  margin: 0;
+  font-family: var(--font-serif, "Newsreader", Georgia, serif);
+  font-size: 0.85rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.32;
+  color: #111111;
+  display: block;
+  user-select: none;
+}
+
+.podcast-bubble-tail {
+  position: absolute;
+  top: -9px;
+  right: 10px;
+  width: 14px;
+  height: 10px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .podcast-speech-bubble {
+    right: 0px;
+    max-width: 205px;
+    padding: 6px 10px 7px 20px;
+  }
+  .podcast-bubble-text {
+    font-size: 0.8rem;
+  }
+  .podcast-bubble-tail {
+    right: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .podcast-speech-bubble {
+    transition: none !important;
+  }
+}

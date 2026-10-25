@@ -2585,17 +2585,18 @@ export const INTRO_CARDS_DATA = [
     title: "How did I build it?",
     contentHtml: `
       <p>I built AI 2035 using three layers of evidence, simulation, and physical constraints.</p>
-      
+
       <p><strong>1. Documented evidence baseline (2024–2026)</strong></p>
       <p>I used published reports from OpenAI and Anthropic, alongside UK AI Security Institute evaluations, to establish the starting point for AI-assisted cyber operations and automated technical tasks. These sources informed the scenario's initial capabilities, rather than serving as proof that fully autonomous, cross-sector attacks are already possible.</p>
-      
+
       <p><strong>2. Calibrated Monte Carlo simulation</strong></p>
-      <p>I built an 800,000-run Monte Carlo simulation to estimate how cyber losses could vary under different assumptions. Under Plan P, the model produced a median projected loss of <strong>$2.425 trillion by 2035</strong>. Of this, $1.770 trillion, or 73.1%, came from the growth of the digital economy and existing cyber risks that would remain even without AI's additional impact. The model attributed approximately <strong>$655 billion in additional losses to AI</strong>.</p>
+      <p>I built an 800,000-run Monte Carlo simulation to estimate how cyber losses could vary under different assumptions. Under Plan P, the model produced a median projected total annual cyber loss of <strong>$2.425 trillion in 2035</strong>. Of this, $1.770 trillion, or 73.1%, came from the growth of the digital economy and existing cyber risks that would remain even without AI's additional impact. The model attributed approximately <strong>$655 billion in additional losses to AI</strong>.</p>
+      <p>I report projected losses using percentiles. <strong>P50 is the median</strong>, meaning half of the simulated outcomes fall below this value and half above it. P10 and P90 mark the 10th and 90th percentiles, respectively, defining the central 80% of simulated outcomes. These percentiles describe the distribution of modelled results, not a guarantee that actual losses will fall within that range.</p>
       <p>This distinction matters because not every cyber loss in an AI-enabled world is caused by AI. Separating the existing risks from the estimated additional AI impact makes the model's assumptions and results easier to examine. These are model estimates, not observed losses, and their reliability depends on calibration and the assumptions used.</p>
-      
+
       <p><strong>3. Physical semiconductor constraints</strong></p>
       <p>I incorporated Taiwan's advanced chipmaking capacity, TSMC facilities, semiconductor packaging, ASML's lithography technology, and Dutch export controls to examine how disruptions to hardware supply could constrain frontier AI. The Taiwan blockade creates the scenario's central computing shock, forcing states to respond to growing cyber risks while facing uncertainty over access to advanced chips.</p>
-      
+
       <p>The equations, parameter assumptions, and Python scripts, including <code>model2.py</code>, <code>calib_run.py</code>, and <code>params.py</code>, are available in the Technical Supplements.</p>
     `
   },

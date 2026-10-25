@@ -1398,10 +1398,112 @@ class CybersecurityAppEngine {
 
 }
 
+
+/**
+ * Podcast Recommendation Speech Bubble Controller
+ * - Automatically shown when landing on homepage
+ * - Auto-dismisses smoothly after exactly 6 seconds
+ * - Clicking '×' dismisses immediately
+ * - Clicking headphone icon dismisses immediately (and triggers player)
+ * - Session-guarded so it doesn't reappear on same visit after dismissed
+ * - Respects prefers-reduced-motion
+ */
+function initPodcastRecommendationBubble() {
+  if (window.__podcastBubbleInitialized) return;
+  window.__podcastBubbleInitialized = true;
+
+  if (sessionStorage.getItem('ai2035_podcast_bubble_dismissed') === '1') {
+    return;
+  }
+
+  const isMobile = window.innerWidth <= 768;
+  const targetAnchor = isMobile 
+    ? document.getElementById('podcast-bubble-anchor-mobile') 
+    : document.getElementById('podcast-bubble-anchor-desktop');
+
+  if (!targetAnchor) return;
+
+  const bubble = document.createElement('div');
+  bubble.id = 'podcast-speech-bubble';
+  bubble.className = 'podcast-speech-bubble';
+  bubble.setAttribute('role', 'status');
+  bubble.setAttribute('aria-live', 'polite');
+  bubble.innerHTML = `
+    <button type="button" class="podcast-bubble-close" id="podcast-bubble-close" aria-label="Dismiss podcast recommendation">&times;</button>
+    <span class="podcast-bubble-text">&ldquo;I highly recommend listening to the podcast!&rdquo;</span>
+    <svg class="podcast-bubble-tail" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 10 L12 0 L14 10 Z" fill="#FFFFF8"/>
+      <path d="M0 10 L12 0" stroke="rgba(0,0,0,0.22)" stroke-width="1"/>
+      <path d="M12 0 L14 10" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>
+    </svg>
+  `;
+
+  targetAnchor.appendChild(bubble);
+
+  // Trigger smooth fade-in
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    bubble.style.opacity = '0';
+    requestAnimationFrame(() => {
+      bubble.style.transition = 'opacity 0.28s ease';
+      bubble.style.opacity = '1';
+    });
+  } else {
+    bubble.style.opacity = '1';
+  }
+
+  let dismissTimeout = null;
+
+  const dismissBubble = () => {
+    if (dismissTimeout) clearTimeout(dismissTimeout);
+    sessionStorage.setItem('ai2035_podcast_bubble_dismissed', '1');
+    if (prefersReducedMotion) {
+      bubble.remove();
+    } else {
+      bubble.style.transition = 'opacity 0.35s ease';
+      bubble.style.opacity = '0';
+      bubble.style.pointerEvents = 'none';
+      setTimeout(() => {
+        bubble.remove();
+      }, 360);
+    }
+  };
+
+  // 6 seconds visibility timer
+  dismissTimeout = setTimeout(() => {
+    dismissBubble();
+  }, 6000);
+
+  // Close button click
+  const closeBtn = bubble.querySelector('#podcast-bubble-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dismissBubble();
+    });
+  }
+
+  // Dismiss if headphone button is clicked
+  const audioBtnDesktop = document.getElementById('nav-audio-btn');
+  const audioBtnMobile = document.getElementById('nav-audio-btn-mobile');
+  if (audioBtnDesktop) audioBtnDesktop.addEventListener('click', () => dismissBubble(), { once: true });
+  if (audioBtnMobile) audioBtnMobile.addEventListener('click', () => dismissBubble(), { once: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initPodcastRecommendationBubble();
   window.app = new CybersecurityAppEngine();
-  initLeavesTransition('#nav-old-version-btn', '/old-version/');
-  initLeavesTransition('#nav-old-version-btn-mobile', '/old-version/');
+  // Timed publication metadata swap: after exactly 15 seconds, swap instantly with zero transition
+  setTimeout(() => {
+    const statusEl = document.getElementById('hero-metadata-status');
+    if (statusEl) {
+      statusEl.textContent = 'Updated Oct 26, 2026';
+    }
+  }, 15000);
+
+  initLeavesTransition('#nav-old-version-btn', '/old-version');
+  initLeavesTransition('#nav-old-version-btn-mobile', '/old-version');
 
   // Mobile Drawer toggle handlers (matching Edit Mobile)
   const burgerBtn = document.getElementById('hero-burger-btn');

@@ -26,7 +26,7 @@ The verified file tree ready for Git push is:
 │   └── workflows/
 │       └── ci.yml                 # Automated verification gates
 ├── audio/
-│   └── AI_2035_Full_Podcast.mp3   # Production narrative podcast audio
+│   └── AI_2035_Full_Podcast-compressed.mp3   # Production narrative podcast audio
 ├── cloudflare-worker/             # Serverless feedback API handler
 │   ├── src/
 │   │   └── index.js               # Turnstile & Resend handler

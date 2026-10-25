@@ -103,7 +103,7 @@ The table below presents conditional median ($p_{50}$) and tail-risk ($p_{10} - 
 │   └── workflows/
 │       └── ci.yml                 # Automated CI running diagnostic test gates
 ├── audio/
-│   └── AI_2035_Full_Podcast.mp3   # Production narrative podcast audio
+│   └── AI_2035_Full_Podcast-compressed.mp3   # Production narrative podcast audio
 ├── cloudflare-worker/             # Serverless feedback API handler
 │   ├── src/
 │   │   └── index.js               # CORS, Cloudflare Turnstile, & Resend dispatcher

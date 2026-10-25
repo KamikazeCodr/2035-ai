@@ -435,12 +435,14 @@
 
       <!-- Desktop Navigation -->
       <nav class="hero-top-nav desktop-nav" aria-label="Quick Navigation">
-        <button class="hero-nav-icon-btn" id="nav-audio-btn" aria-label="Listen to Audio Briefing" title="Executive Audio Briefing">
-          <svg class="nav-headset-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-          </svg>
-        </button>
+        <div class="podcast-bubble-anchor" id="podcast-bubble-anchor-desktop">
+          <button class="hero-nav-icon-btn" id="nav-audio-btn" aria-label="Listen to Audio Briefing" title="Executive Audio Briefing">
+            <svg class="nav-headset-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </button>
+        </div>
         <a href="/AI-2035.pdf" class="hero-nav-link" target="_blank" rel="noopener noreferrer" title="View Complete 22-Page Research Report (PDF)">PDF</a>
         <div class="nav-dropdown-wrapper" id="supplements-dropdown-wrapper">
           <a href="/supplements.html" class="hero-nav-link nav-dropdown-trigger" id="nav-supplements-link" title="Explore all 6 Standalone Technical Supplements">
@@ -529,12 +531,14 @@
 
       <!-- Mobile Right Navigation Controls (Headset + Burger Menu matching Edit Mobile) -->
       <div class="hero-mobile-nav-group">
-        <button class="hero-nav-icon-btn mobile-audio-btn" id="nav-audio-btn-mobile" aria-label="Listen to Audio Briefing" title="Executive Audio Briefing">
-          <svg class="nav-headset-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-          </svg>
-        </button>
+        <div class="podcast-bubble-anchor" id="podcast-bubble-anchor-mobile">
+          <button class="hero-nav-icon-btn mobile-audio-btn" id="nav-audio-btn-mobile" aria-label="Listen to Audio Briefing" title="Executive Audio Briefing">
+            <svg class="nav-headset-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </button>
+        </div>
         <button class="hero-burger-btn" id="hero-burger-btn" aria-label="Toggle Navigation Menu">
           <span class="burger-line"></span>
           <span class="burger-line"></span>
@@ -628,14 +632,11 @@
       <h1 class="hero-title">Plan P & C</h1>
       <div class="hero-author">Aditya Singh</div>
       
-      <p class="hero-lead-text">
-        Most people worried about AI focus on ASI, that is, future systems that are smarter than human experts at everything. In AI 2035, I instead look at a crisis that arrives much earlier, &ldquo;What happens when a single operator can spin up thousands of AI agents to find zero-days, break into enterprise networks, and shut down power grids and water systems ?&rdquo;
+            <p class="hero-lead-text">
+        Most public debate about AI risk focuses on ASI, future systems that are smarter than human experts at everything. In AI 2035, I examine an immediate crisis that could arrive much earlier. What happens when a single operator can deploy thousands of AI agents to find zero-day vulnerabilities, break into enterprise networks, and shut down power grids and water systems?
       </p>
       <p class="hero-sublead-text">
-        Plan P & C are the two paths the world can take when machine-speed cyber warfare collides with a global chip shortage.
-      </p>
-      <p class="hero-third-text">
-        In these competing scenarios, AI agents automate interdependent cross-sector cascades by 2030: offensive models no longer target utilities in isolation, as they understand how telecommunications backbones, electrical grids, municipal water distribution, and maritime logistics depend on one another. A 2031 blockade of Taiwan cuts off the world’s supply of advanced chips, and superpowers are forced to choose between secretly hardening their own grids while dumping open-source cyber weapons onto the internet (Plan P) or signing an emergency treaty that locks every frontier model like nuclear warheads in a silo (Plan C).
+        I examine a scenario in which, by 2030, offensive AI models can exploit the dependencies between telecommunications backbones, electrical grids, municipal water distribution, and maritime logistics, triggering cascading failures across sectors rather than attacking utilities in isolation. A 2031 blockade of Taiwan cuts off the world's supply of advanced chips, forcing superpowers to choose between secretly hardening their own grids while releasing open-source cyber weapons onto the internet under Plan P, or signing an emergency treaty that restricts frontier models as tightly as nuclear weapons under Plan C.
       </p>
       
       <!-- 4 Introductory Tabs (Inactive: #FFFFF8 + black text; Active: black + #FFFFF8 text) -->
@@ -653,12 +654,12 @@
 
       <!-- Metadata Row Directly Below Intro Tabs -->
       <div class="hero-metadata-row">
-        <span>Published August 27th 2026</span>
+        <span id="hero-metadata-status">Published August 27, 2026</span>
         <span class="meta-separator">|</span>
         <span>Inspired by <a href="https://europe2031.ai/" target="_blank" rel="noopener noreferrer" class="meta-link">Europe 2031</a></span>
         <span class="meta-separator">|</span>
         <a href="https://www.youtube.com/watch?v=C84Lnyv0gTs" target="_blank" rel="noopener noreferrer" class="meta-link meta-yt-link">
-          <i class="fa-brands fa-youtube meta-yt-icon"></i> Hoog video
+          <i class="fa-brands fa-youtube meta-yt-icon"></i> Hoog Video
         </a>
       </div>
     </div>
@@ -749,7 +750,7 @@
       <div class="inbuilt-podcast-player" id="inbuilt-podcast-player" aria-label="In-Browser Podcast Audio Player" style="display: none;">
         <button class="podcast-close-btn" id="podcast-close-btn" aria-label="Close podcast player" title="Close player">&times;</button>
         <audio id="podcast-audio" preload="metadata">
-          <source src="audio/AI_2035_Full_Podcast.mp3" type="audio/mpeg">
+          <source src="audio/AI_2035_Full_Podcast-compressed.mp3" type="audio/mpeg">
         </audio>
 
         <!-- Segmented Timeline Progress Bar with Hover Section Dividers -->
