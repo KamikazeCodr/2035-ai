@@ -1,5 +1,5 @@
 /**
- * AI-2035 (Cybersecurity Standpoint)
+ * AI 2035: Plan P & C
  * Author: Aditya Singh
  * Interactive SVG Chart Engine with continuous curves, dual-lens economic loss models,
  * clean tooltips, touch scrubbing, and click-to-jump navigation.

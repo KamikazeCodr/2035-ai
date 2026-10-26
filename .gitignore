@@ -25,3 +25,6 @@ temp/
 .DS_Store
 Thumbs.db
 *.tmp
+
+# Upload instructions
+instruction_to_upload_on_github.md

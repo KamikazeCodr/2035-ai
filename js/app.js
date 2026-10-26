@@ -1,6 +1,6 @@
 import { initLeavesTransition } from './leaves-transition.js';
 /**
- * AI-2035 (Cybersecurity Standpoint)
+ * AI 2035: Plan P & C
  * Author: Aditya Singh
  * Scrollytelling engine, decision tree, HUD dock manager, dual-lens economic loss switcher,
  * and AI 2027-style source references.
@@ -198,14 +198,28 @@ class CybersecurityAppEngine {
       }
     }
 
-    // Show/hide dual lens switcher bars
+    // Show/hide dual lens switcher bars (only pop up when Annual Cyber Losses is selected)
     const desktopLensBar = document.getElementById('lens-switcher-bar');
     if (desktopLensBar) {
-      desktopLensBar.style.display = mode === 'losses' ? 'flex' : 'none';
+      if (mode === 'losses') {
+        desktopLensBar.style.display = 'flex';
+        desktopLensBar.style.animation = 'none';
+        desktopLensBar.offsetHeight; /* trigger reflow */
+        desktopLensBar.style.animation = '';
+      } else {
+        desktopLensBar.style.display = 'none';
+      }
     }
     const modalLensBar = document.getElementById('modal-lens-switcher-bar');
     if (modalLensBar) {
-      modalLensBar.style.display = mode === 'losses' ? 'flex' : 'none';
+      if (mode === 'losses') {
+        modalLensBar.style.display = 'flex';
+        modalLensBar.style.animation = 'none';
+        modalLensBar.offsetHeight; /* trigger reflow */
+        modalLensBar.style.animation = '';
+      } else {
+        modalLensBar.style.display = 'none';
+      }
     }
 
     if (mode === 'losses') {
@@ -1498,7 +1512,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     const statusEl = document.getElementById('hero-metadata-status');
     if (statusEl) {
-      statusEl.textContent = 'Updated Oct 26, 2026';
+      statusEl.textContent = 'Updated Oct 26th 2026';
     }
   }, 15000);
 

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Every one of 15 factor specifications passes loss_mc.validate",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "name": "loss_mc.validate raises ValidationError on invalid factor kind",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "(i) Baseline pathway spec p50 matches anchored p50 across all factors and years",
+    "ok": true,
+    "detail": "252 factor-years, worst deviation 8.88e-16"
+  },
+  {
+    "name": "(iii) Calibration scalars within stable range [0.1, 10]",
+    "ok": true,
+    "detail": "{'fraud': 2.3314406483397914, 'it': 2.6192461509954352, 'ics': 1.0}"
+  },
+  {
+    "name": "(iv) Fractions strictly inside (0, 1): specifications and 400k sample draws each",
+    "ok": true,
+    "detail": "draw range [7.22e-05, 0.997152]"
+  },
+  {
+    "name": "(v) Analytical calculation of fraud 2026 p50 within 5% of simulated model",
+    "ok": true,
+    "detail": "analytical 16.545, model 16.454, deviation -0.55%"
+  },
+  {
+    "name": "(ii) Median of factor product vs product of medians within expected skew bounds",
+    "ok": true,
+    "detail": "worst ('ics', 2035): -5.78%"
+  },
+  {
+    "name": "(ii-b1) Sampled median of every factor equals its spec p50 within 1%",
+    "ok": true,
+    "detail": "189 factor-years, worst 0.24%"
+  },
+  {
+    "name": "(ii-b2) Mean log(product) equals exact quadrature sum within 0.02 log units",
+    "ok": true,
+    "detail": "worst deviation 0.0068"
+  },
+  {
+    "name": "(vi) Factor component decomposition matches aggregate sampler output",
+    "ok": true,
+    "detail": "worst difference 0.0e+00"
+  },
+  {
+    "name": "Branch weights sum to 1.0",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "Plateau branch B-04 never raises median product above baseline B-03",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "name": "Proliferation pathway B-01 never lowers capable_actors vs baseline B-03",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "name": "Sovereign cap B-02 capable actors do not exceed proliferation B-01 actors",
+    "ok": true,
+    "detail": "[]"
+  },
+  {
+    "name": "Geopolitical conflict branches degrade defensive containment as well as attacker success",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "Independent re-implementation fraud 2026: p10/p50/p90 match within 3%",
+    "ok": true,
+    "detail": "deviations: +0.11%, -0.35%, -0.00%"
+  },
+  {
+    "name": "Independent re-implementation it 2030: p10/p50/p90 match within 3%",
+    "ok": true,
+    "detail": "deviations: -0.19%, -0.65%, +0.21%"
+  },
+  {
+    "name": "Independent re-implementation ics 2035: p10/p50/p90 match within 3%",
+    "ok": true,
+    "detail": "deviations: +0.36%, -0.77%, +0.44%"
+  }
+]

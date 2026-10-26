@@ -1,4 +1,6 @@
-# AI 2035: Autonomous Cyber Capabilities, Critical Infrastructure, and Strategic Crossroads
+# AI 2035: Plan P & C
+
+> **A scenario assessment of autonomous AI cyber operations, critical infrastructure risk, and two strategic paths following a Taiwan Strait semiconductor shock.**
 
 [![Paper PDF](https://img.shields.io/badge/Whitepaper-22_Pages_PDF-8B0000?style=flat-square&logo=adobeacrobatreader&logoColor=white)](AI-2035.pdf)
 [![Interactive Platform](https://img.shields.io/badge/Live_Platform-2035--ai.com-0052cc?style=flat-square&logo=googlechrome&logoColor=white)](https://2035-ai.com)
@@ -14,7 +16,7 @@ Discussions about artificial intelligence and cybersecurity often swing between 
 
 **AI 2035** was built to examine the operational ground in between: **what happens when autonomous agent architectures scale offensive operations across enterprise networks and industrial control systems faster than defensive capacity can scale?**
 
-Rather than treating AI as a monolithic variable, this research decomposes cyber capability development into concrete operational thresholds—from natural-language reconnaissance in 2024 to multi-agent zero-day synthesis in 2028 and autonomous industrial SCADA disruption in 2031. 
+Rather than treating AI as a monolithic variable, this research decomposes cyber capability development into concrete operational thresholds, from natural-language reconnaissance in 2024 to multi-agent zero-day synthesis in 2028 and autonomous industrial SCADA disruption in 2031. 
 
 Following a catastrophic semiconductor supply disruption in the Taiwan Strait in late 2031, the scenario traces two divergent structural trajectories:
 - **Plan P (Proliferation)**: Uncontrolled diffusion of frontier open-weight cyber offensive models across non-state actors, privateers, and transnational cartels, driving compounding infrastructure failures.
@@ -150,7 +152,6 @@ The table below presents conditional median ($p_{50}$) and tail-risk ($p_{10} - 
 ├── icon-192.png                   # PWA icon (192x192)
 ├── icon-512.png                   # PWA icon (512x512)
 ├── index.html                     # Primary interactive scenario platform
-├── instruction_to_upload_on_github.md # Complete terminal instructions & pre-flight checklist
 ├── package.json                   # Web platform metadata
 ├── README.md                      # Comprehensive research documentation
 ├── serve.py                       # Local development server with clean URLs
@@ -240,7 +241,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. Clean URLs 
 
 ## About the Author & Acknowledgments
 
-This research initiative grew out of my work in the **AGI Strategy Course at BlueDot Impact**, where the curriculum and cohort discussions challenged me to ground broad claims about AI capability trajectories into concrete operational milestones, diffusion curves, and economic bounds.
+I began developing AI 2035 while taking the **AGI Strategy Course at BlueDot Impact,** where the curriculum and cohort discussions challenged my approach to studying AI capability trajectories, modelling how advanced capabilities might spread through diffusion curves, and estimating their potential economic impact under different scenarios.
 
 I researched, authored, designed, and coded this project independently.
 
@@ -268,4 +269,4 @@ If you reference the AI 2035 scenario, quantitative loss model, or technical rep
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) — free for academic, policy, and commercial research with attribution.
+This project is licensed under the [MIT License](LICENSE), free for academic, policy, and commercial research with attribution.

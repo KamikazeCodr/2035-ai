@@ -1,0 +1,572 @@
+{
+  "metric": "AI-attributable increment, it, branch B-04",
+  "unit": "USD bn per year, constant 2025 prices",
+  "years": [
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035
+  ],
+  "n_samples": 20000,
+  "seed": 7,
+  "rho": 0.3,
+  "factors": {
+    "capable_actors": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 999.9999999999999,
+          "p50": 1999.9999999999998,
+          "p90": 3999.9999999999995,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2025": {
+          "p10": 1732.050807568878,
+          "p50": 3464.101615137756,
+          "p90": 6928.203230275512,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2026": {
+          "p10": 3000.0,
+          "p50": 6000.0,
+          "p90": 12000.0,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2027": {
+          "p10": 3751.7647856163217,
+          "p50": 7661.194677831027,
+          "p90": 15644.345326937786,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2028": {
+          "p10": 4691.913002196895,
+          "p50": 9782.317315271073,
+          "p90": 20395.461725706667,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2029": {
+          "p10": 5227.483045070681,
+          "p50": 11127.954164907453,
+          "p90": 23688.525209670348,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2030": {
+          "p10": 5824.187058393088,
+          "p50": 12658.694244457718,
+          "p90": 27513.288699020326,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2031": {
+          "p10": 6489.003330797978,
+          "p50": 14400.0,
+          "p90": 31955.600795553928,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2032": {
+          "p10": 7635.487805201283,
+          "p50": 17300.242181770238,
+          "p90": 39198.33115888426,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2033": {
+          "p10": 8984.534457960894,
+          "p50": 20784.60969082652,
+          "p90": 48082.62487292473,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2034": {
+          "p10": 10571.93220468495,
+          "p50": 24970.74870172688,
+          "p90": 58980.54193428083,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        },
+        "2035": {
+          "p10": 12439.793187216626,
+          "p50": 30000.000000000004,
+          "p90": 72348.46966144563,
+          "anchor": "D-07 (>=C3 operators 2k/20k/100k in 2027/29/31) plus lower-tier crews; calibrated workforce baseline"
+        }
+      }
+    },
+    "campaigns_per_actor": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 1309.6230754977175,
+          "p50": 3928.869226493153,
+          "p90": 15715.476905972611,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2025": {
+          "p10": 1789.285756878627,
+          "p50": 5367.857270635881,
+          "p90": 21471.429082543524,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2026": {
+          "p10": 2444.629740929073,
+          "p50": 7333.889222787218,
+          "p90": 29335.556891148874,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2027": {
+          "p10": 2302.228684768314,
+          "p50": 7138.111920447406,
+          "p90": 29764.949096473134,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2028": {
+          "p10": 2168.122570150723,
+          "p50": 6947.560869956659,
+          "p90": 30200.626427615087,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2029": {
+          "p10": 1940.6979288538207,
+          "p50": 6427.174776790111,
+          "p90": 29124.970930420553,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2030": {
+          "p10": 1737.1289349179604,
+          "p50": 5945.766634451203,
+          "p90": 28087.627047437712,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2031": {
+          "p10": 1554.9132565475625,
+          "p50": 5500.416917090414,
+          "p90": 27087.23023417492,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2032": {
+          "p10": 1644.8186382398076,
+          "p50": 6013.413927520359,
+          "p90": 30871.08466938034,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2033": {
+          "p10": 1739.922366285585,
+          "p50": 6574.255662573347,
+          "p90": 35183.51121266204,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2034": {
+          "p10": 1840.5250100646397,
+          "p50": 7187.404365942242,
+          "p90": 40098.34686758878,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        },
+        "2035": {
+          "p10": 1946.9445179357028,
+          "p50": 7857.738452986299,
+          "p90": 45699.74303573237,
+          "anchor": "Calibrated Prior: AI-enabled intrusion attempts per operator-year, saturating at target population; C3->C6 parallelism"
+        }
+      }
+    },
+    "exposed_share": {
+      "kind": "fraction",
+      "by_year": {
+        "2024": {
+          "p10": 0.20631248967548751,
+          "p50": 0.30000000000000004,
+          "p90": 0.4140378359026325,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2025": {
+          "p10": 0.20631248967548751,
+          "p50": 0.30000000000000004,
+          "p90": 0.4140378359026325,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2026": {
+          "p10": 0.20631248967548751,
+          "p50": 0.30000000000000004,
+          "p90": 0.41403783590263243,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2027": {
+          "p10": 0.19609533620241404,
+          "p50": 0.28989794855663564,
+          "p90": 0.4059147333089385,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2028": {
+          "p10": 0.1862654183955823,
+          "p50": 0.2800000000000001,
+          "p90": 0.3978427951034911,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2029": {
+          "p10": 0.16846717322629914,
+          "p50": 0.25893143323198,
+          "p90": 0.3760073581442688,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2030": {
+          "p10": 0.15205182298277525,
+          "p50": 0.23892210764665084,
+          "p90": 0.35466448761941494,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2031": {
+          "p10": 0.13697250083663312,
+          "p50": 0.22000000000000003,
+          "p90": 0.33388485158081355,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2032": {
+          "p10": 0.12207773451419313,
+          "p50": 0.20054364383183904,
+          "p90": 0.31154631321354337,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2033": {
+          "p10": 0.10859885175529183,
+          "p50": 0.18240558163087714,
+          "p90": 0.2900515462114397,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2034": {
+          "p10": 0.09644471242788383,
+          "p50": 0.1655682600669752,
+          "p90": 0.2694593396639356,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        },
+        "2035": {
+          "p10": 0.08552033438056292,
+          "p50": 0.15,
+          "p90": 0.249814652071567,
+          "anchor": "S-40 DBIR 2026: exploitation is #1 vector (31%), median patch 43 days (32 in 2025), 26% of KEVs fully patched; falls as AI find-and-fix scales"
+        }
+      }
+    },
+    "success_given_exposure": {
+      "kind": "fraction",
+      "by_year": {
+        "2024": {
+          "p10": 0.0004968354180424487,
+          "p50": 0.0009999999999999996,
+          "p90": 0.0020117133276379285,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2025": {
+          "p10": 0.0008610929582795445,
+          "p50": 0.0017325159017997954,
+          "p90": 0.0034827417000721983,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2026": {
+          "p10": 0.0014920092094629956,
+          "p50": 0.0030000000000000014,
+          "p90": 0.006022940804768129,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2027": {
+          "p10": 0.0018716562977812478,
+          "p50": 0.0038414439645816354,
+          "p90": 0.007867954358370708,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2028": {
+          "p10": 0.0023476788171001854,
+          "p50": 0.004917733121144491,
+          "p90": 0.010272311846675488,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2029": {
+          "p10": 0.002383461466117429,
+          "p50": 0.005097902567309316,
+          "p90": 0.010870042188227694,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2030": {
+          "p10": 0.0024197881812047795,
+          "p50": 0.005284637769682059,
+          "p90": 0.01150214934858592,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2031": {
+          "p10": 0.0024566671941203444,
+          "p50": 0.005478175383902241,
+          "p90": 0.01217056208639019,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2032": {
+          "p10": 0.002586624705894237,
+          "p50": 0.0058887142384891475,
+          "p90": 0.013349835380572344,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2033": {
+          "p10": 0.002723438191324993,
+          "p50": 0.006329823387161049,
+          "p90": 0.01464168134385347,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2034": {
+          "p10": 0.002867467303170132,
+          "p50": 0.006803748796954012,
+          "p90": 0.01605650315137366,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        },
+        "2035": {
+          "p10": 0.0030190903398268454,
+          "p50": 0.007312896724348229,
+          "p90": 0.017605596122971794,
+          "anchor": "Stage 2 TLO solves 6-7/10 undefended (S-07, S-22); defended range unmeasured, discount empirical defense factor"
+        }
+      }
+    },
+    "loss_per_success": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 1.499999999999999e-05,
+          "p50": 5.999999999999996e-05,
+          "p90": 0.0004799999999999997,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2025": {
+          "p10": 1.5247950681976899e-05,
+          "p50": 6.0991802727907595e-05,
+          "p90": 0.00048793442182326076,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2026": {
+          "p10": 1.55e-05,
+          "p50": 6.2e-05,
+          "p90": 0.000496,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2027": {
+          "p10": 1.5340729827726965e-05,
+          "p50": 6.39687423668779e-05,
+          "p90": 0.0005446913758747665,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2028": {
+          "p10": 1.5183096235310438e-05,
+          "p50": 6.6e-05,
+          "p90": 0.0005981626914361818,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2029": {
+          "p10": 1.4993213730079638e-05,
+          "p50": 6.794228089441174e-05,
+          "p90": 0.0006554026730691688,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2030": {
+          "p10": 1.4805705929272386e-05,
+          "p50": 6.99417201990175e-05,
+          "p90": 0.0007181201201881405,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2031": {
+          "p10": 1.4620543134412242e-05,
+          "p50": 7.2e-05,
+          "p90": 0.0007868391878905317,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2032": {
+          "p10": 1.4399290028772671e-05,
+          "p50": 7.392168691778456e-05,
+          "p90": 0.0008598408096993206,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2033": {
+          "p10": 1.4181385152833243e-05,
+          "p50": 7.589466384404102e-05,
+          "p90": 0.0009396153996936416,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2034": {
+          "p10": 1.3966777837736307e-05,
+          "p50": 7.79202997140237e-05,
+          "p90": 0.0010267913425162714,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        },
+        "2035": {
+          "p10": 1.3755418181397438e-05,
+          "p50": 8e-05,
+          "p90": 0.001122055323284525,
+          "anchor": "S-38 IBM avg breach $4.99M (large, surveyed firms) vs UK survey mean about $1k-8k for all firms (S-39); mixture median $60k, mean about $120k; heavy tail"
+        }
+      }
+    },
+    "defense_containment": {
+      "kind": "complement",
+      "by_year": {
+        "2024": {
+          "p10": 0.06313732617918665,
+          "p50": 0.10000000000000002,
+          "p90": 0.15482809896025465,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2025": {
+          "p10": 0.07542068452719401,
+          "p50": 0.11854751241761163,
+          "p90": 0.18149412775231813,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2026": {
+          "p10": 0.08986454437863262,
+          "p50": 0.13999999999999999,
+          "p90": 0.21160298763487628,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2027": {
+          "p10": 0.10953709660873165,
+          "p50": 0.17072777215208107,
+          "p90": 0.2562639618932531,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2028": {
+          "p10": 0.13288743630199965,
+          "p50": 0.20657976984813708,
+          "p90": 0.30668434209169326,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2029": {
+          "p10": 0.14678597517891276,
+          "p50": 0.22881140492500013,
+          "p90": 0.3384890374146761,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2030": {
+          "p10": 0.1618667914399511,
+          "p50": 0.25267363289999234,
+          "p90": 0.37182316659960635,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2031": {
+          "p10": 0.17817345682999183,
+          "p50": 0.27812691504544435,
+          "p90": 0.4064231575184861,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2032": {
+          "p10": 0.19216208960999734,
+          "p50": 0.30026795704132997,
+          "p90": 0.43634178976685195,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2033": {
+          "p10": 0.2069723962588478,
+          "p50": 0.3233819945981963,
+          "p90": 0.4667310784978196,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2034": {
+          "p10": 0.2226096190531667,
+          "p50": 0.347391959785605,
+          "p90": 0.4973692755778685,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        },
+        "2035": {
+          "p10": 0.23907210678087215,
+          "p50": 0.37220395083807584,
+          "p90": 0.5280272416219167,
+          "anchor": "S-38 IBM 2026: $1.93M saving, 65 days faster; corporate defense adoption follows empirical trajectory"
+        }
+      }
+    },
+    "reporting_multiplier": {
+      "kind": "lognormal",
+      "by_year": {
+        "2024": {
+          "p10": 3.0,
+          "p50": 6.0,
+          "p90": 10.2,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2025": {
+          "p10": 3.0,
+          "p50": 6.0,
+          "p90": 10.2,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2026": {
+          "p10": 3.0,
+          "p50": 6.0,
+          "p90": 10.2,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2027": {
+          "p10": 2.9382608927607805,
+          "p50": 6.0,
+          "p90": 10.363671519492362,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2028": {
+          "p10": 2.877792357975793,
+          "p50": 6.0,
+          "p90": 10.529969349405603,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2029": {
+          "p10": 2.818568247642035,
+          "p50": 6.0,
+          "p90": 10.698935632113956,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2030": {
+          "p10": 2.760562951874625,
+          "p50": 6.0,
+          "p90": 10.870613186217788,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2031": {
+          "p10": 2.703751387832491,
+          "p50": 6.0,
+          "p90": 11.04504551739445,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2032": {
+          "p10": 2.648108988871965,
+          "p50": 6.0,
+          "p90": 11.2222768294233,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2033": {
+          "p10": 2.5936116939235956,
+          "p50": 6.0,
+          "p90": 11.40235203538758,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2034": {
+          "p10": 2.5402359370875818,
+          "p50": 6.0,
+          "p90": 11.585316769056082,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        },
+        "2035": {
+          "p10": 2.487958637443325,
+          "p50": 6.0,
+          "p90": 11.77121739644743,
+          "anchor": "S-39: business reporting 10-18%; undetected campaigns (Volt Typhoon, up to 5 years)"
+        }
+      }
+    }
+  },
+  "reference": {
+    "2024": 2,
+    "2027": 22,
+    "2028": 40,
+    "2029": 70,
+    "2030": 110,
+    "2033": 420,
+    "2034": 575,
+    "2035": 400
+  }
+}

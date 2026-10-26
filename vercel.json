@@ -71,5 +71,27 @@
       "source": "/old-version/",
       "destination": "/old-version/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/code",
+      "destination": "https://github.com/KamikazeCodr/2035-ai",
+      "permanent": true
+    },
+    {
+      "source": "/audio",
+      "destination": "https://open.spotify.com/episode/4KZn62TiEdh95sh589PWgk",
+      "permanent": true
+    },
+    {
+      "source": "/pdf",
+      "destination": "https://2035-ai.com/AI-2035.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/docs",
+      "destination": "https://2035-ai.com/supplements",
+      "permanent": true
+    }
   ]
 }

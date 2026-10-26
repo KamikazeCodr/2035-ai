@@ -1,5 +1,5 @@
 /**
- * AI-2035 (Cybersecurity Standpoint)
+ * AI 2035: Plan P & C
  * Author: Aditya Singh
  * Plain-language narrative dataset, national capability comparisons, footnotes data, and 2031 geopolitical branching
  */
@@ -2571,7 +2571,7 @@ export const INTRO_CARDS_DATA = [
     id: "what-is-this",
     title: "What is Plan P & C?",
     contentHtml: `
-      <p>Plan P and Plan C are two competing strategies for responding to machine-speed cyber warfare during a global semiconductor crisis.</p>
+      <p>When a 2031 semiconductor shock cuts off the world's supply of advanced chips, global powers can no longer train new frontier models, just as autonomous cyber warfare reaches cross-sector cascade capability. Plan P and Plan C represent the two opposing doctrines that emerge from this hardware freeze.</p>
       
       <p><strong>Plan P (Proliferation)</strong> imagines a state that cannot match the United States and China in advanced computing trying to offset that disadvantage. It isolates its own critical infrastructure from external networks, then releases powerful offensive cyber models to the public. The aim is to multiply the number of capable attackers and overwhelm rival defences. However, once these capabilities spread, the state cannot reliably control who uses them or what infrastructure they target.</p>
       
