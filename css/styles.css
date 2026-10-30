@@ -5,7 +5,7 @@
    Exact Page Background #FFFFF8 · True Black Typography · Solid Black Structural Borders
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap');
+
 
 :root {
   /* Exact ivory/parchment background matching AI 2027 & AI 2027 */
@@ -1333,6 +1333,24 @@ sup.footnote-ref:hover {
   text-align: left;
 }
 
+.footer-license-note {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #333333;
+  margin-top: 0.5rem;
+}
+
+.footer-license-note a {
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-license-note a:hover {
+  opacity: 0.75;
+}
+
 .desktop-br {
   display: inline;
 }
@@ -1979,6 +1997,24 @@ sup.footnote-ref:hover {
   margin-top: 48px;
   padding-top: 28px;
   border-top: 1px solid #000000;
+}
+
+.about-license-note {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #444444;
+  margin-top: 10px;
+}
+
+.about-license-note a {
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.about-license-note a:hover {
+  opacity: 0.75;
 }
 
 /* About-page responsive adjustments */

@@ -238,10 +238,6 @@ export const CARD_TERMS_DICTIONARY = {
             {
                 "title": "Wikipedia: Default Password Vulnerabilities",
                 "url": "https://en.wikipedia.org/wiki/Default_password"
-            },
-            {
-                "title": "CISA Guidance: Stop Using Known and Default Passwords",
-                "url": "https://www.cisa.gov/resources-tools/resources/stop-using-known-and-default-passwords"
             }
         ]
   },
@@ -463,10 +459,6 @@ export const CARD_TERMS_DICTIONARY = {
             {
                 "title": "Project Glasswing: Defensive AI Collaboration",
                 "url": "https://www.anthropic.com/glasswing"
-            },
-            {
-                "title": "CISA: Vulnerability Management and Triage Framework",
-                "url": "https://www.cisa.gov/resources-tools/services/vulnerability-scanning-and-management"
             }
         ]
   },
@@ -568,10 +560,6 @@ export const CARD_TERMS_DICTIONARY = {
             {
                 "title": "Mandiant M-Trends Report: Global Dwell Time Metrics",
                 "url": "https://www.mandiant.com/m-trends"
-            },
-            {
-                "title": "Wikipedia: Mean time to detect",
-                "url": "https://en.wikipedia.org/wiki/Mean_time_to_detect"
             }
         ]
   },
@@ -718,10 +706,6 @@ export const CARD_TERMS_DICTIONARY = {
             {
                 "title": "Wikipedia: Protective relay (Power Transmission)",
                 "url": "https://en.wikipedia.org/wiki/Protective_relay"
-            },
-            {
-                "title": "CISA Advisory: CRASHOVERRIDE / Industroyer Malware Targeting Power Relays",
-                "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/ics-alert-17-206-01"
             }
         ]
   },
@@ -730,10 +714,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2029",
     explanation: "Critical public infrastructure converges on specific routing nodes (such as regional water filtration pumps or fiber distribution hubs). Threat actors pre-position malware specifically in these bottleneck facilities to maximize societal impact during an escalation.",
     sources: [
-            {
-                "title": "CISA: Critical Infrastructure Sectors Overview",
-                "url": "https://www.cisa.gov/topics/critical-infrastructure-sectors"
-            },
             {
                 "title": "Wikipedia: Critical infrastructure protection",
                 "url": "https://en.wikipedia.org/wiki/Critical_infrastructure_protection"
@@ -745,10 +725,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2029",
     explanation: "Modern shipping ports use automated ship-to-shore gantry cranes controlled by programmable logic controllers and optical positioning systems. Remote cyber manipulation freezes crane motors, shutting down seaport container offloading and stalling global trade logistics.",
     sources: [
-            {
-                "title": "The White House: Executive Order on Strengthening Maritime Cybersecurity",
-                "url": "https://www.whitehouse.gov/briefing-room/presidential-actions/2024/02/21/executive-order-on-amending-regulations-relating-to-the-safeguarding-of-vessels-harbors-ports-and-waterfront-facilities-of-the-united-states/"
-            },
             {
                 "title": "Wikipedia: Container crane",
                 "url": "https://en.wikipedia.org/wiki/Container_crane"
@@ -851,10 +827,6 @@ export const CARD_TERMS_DICTIONARY = {
     explanation: "Modern telecommunications cell towers and fiber routing switches require continuous electrical power. When an electric substation fails due to cyber intrusion, battery backups deplete in hours, collapsing telephone, cellular, and internet connectivity across the region.",
     sources: [
             {
-                "title": "CISA: Interdependence of Energy and Communications Sectors",
-                "url": "https://www.cisa.gov/topics/critical-infrastructure-sectors"
-            },
-            {
                 "title": "Wikipedia: Infrastructure interdependency",
                 "url": "https://en.wikipedia.org/wiki/Critical_infrastructure"
             }
@@ -865,10 +837,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2031",
     explanation: "Large-scale thermal power generating stations and cloud datacenters require millions of gallons of continuous cooling water. If a municipal water pumping facility trips offline, power plants must perform emergency emergency shutdowns to avoid turbine overheating, causing rolling blackouts.",
     sources: [
-            {
-                "title": "US Department of Energy: The Energy-Water Nexus Architecture",
-                "url": "https://www.energy.gov/energy-water-nexus"
-            },
             {
                 "title": "Wikipedia: Cooling tower operational dynamics",
                 "url": "https://en.wikipedia.org/wiki/Cooling_tower"
@@ -895,10 +863,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2031",
     explanation: "TSMC's advanced semiconductor fabrication facilities in Tainan and Hsinchu produce the overwhelming majority of the world's frontier AI training processors. A maritime blockade or geopolitical conflict in the Taiwan Strait physically cuts off global deliveries of cutting-edge silicon.",
     sources: [
-            {
-                "title": "Center for Strategic and International Studies (CSIS): The Taiwan Semiconductor Chokepoint",
-                "url": "https://www.csis.org/analysis/semiconductors-and-taiwan-risk-exposure"
-            },
             {
                 "title": "Wikipedia: TSMC (Taiwan Semiconductor Manufacturing Company)",
                 "url": "https://en.wikipedia.org/wiki/TSMC"
@@ -1078,10 +1042,6 @@ export const CARD_TERMS_DICTIONARY = {
             {
                 "title": "Office of the Director of National Intelligence: Cyber Attribution Guide",
                 "url": "https://www.dni.gov/index.php"
-            },
-            {
-                "title": "Wikipedia: Cyberattack attribution",
-                "url": "https://en.wikipedia.org/wiki/Attribution_(cybersecurity)"
             }
         ]
   },
@@ -1136,10 +1096,6 @@ export const CARD_TERMS_DICTIONARY = {
     explanation: "Attacks repeatedly open and close breakers under peak load, inducing intense magnetic flux and thermal overloads inside power transformers. Because custom high-voltage transformers take 12 to 24 months to manufacture, burnouts cause long-term regional outages.",
     sources: [
             {
-                "title": "US Department of Energy: Large Power Transformers and the US Electric Grid",
-                "url": "https://www.energy.gov/oe/articles/large-power-transformers-and-us-electric-grid"
-            },
-            {
                 "title": "Wikipedia: Transformer (Electric power transmission)",
                 "url": "https://en.wikipedia.org/wiki/Transformer"
             }
@@ -1150,10 +1106,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2034",
     explanation: "When regional electricity and water systems experience rolling outages, nearby chemical packaging factories, cold food storage warehouses, and shipping rail hubs shut down, creating cross-sector supply chain halts.",
     sources: [
-            {
-                "title": "CISA: Critical Infrastructure Sector Interdependencies",
-                "url": "https://www.cisa.gov/topics/critical-infrastructure-sectors"
-            },
             {
                 "title": "Wikipedia: Cascading failure",
                 "url": "https://en.wikipedia.org/wiki/Cascading_failure"
@@ -1303,10 +1255,6 @@ export const CARD_TERMS_DICTIONARY = {
             {
                 "title": "NIST AI Risk Management Framework: Datacenter Compute Auditing",
                 "url": "https://www.nist.gov/itl/ai-risk-management-framework"
-            },
-            {
-                "title": "Wikipedia: Arms control treaty verification",
-                "url": "https://en.wikipedia.org/wiki/Verification_(arms_control)"
             }
         ]
   },
@@ -1315,10 +1263,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2032",
     explanation: "Governments criminalize the public dissemination of raw model weights for AI models trained above a specific computational threshold (such as 10^26 FLOPs), preventing advanced autonomous hacking models from leaking onto the open internet.",
     sources: [
-            {
-                "title": "White House Executive Order on Safe, Secure, and Trustworthy Artificial Intelligence",
-                "url": "https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/"
-            },
             {
                 "title": "Wikipedia: Artificial intelligence regulation",
                 "url": "https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence"
@@ -1330,10 +1274,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2032",
     explanation: "Superpowers establish explicit bilateral red lines declaring that any cyberattack causing physical damage to civilian power grids or municipal water treatment facilities will be legally treated as an act of war triggering immediate kinetic retaliation.",
     sources: [
-            {
-                "title": "UN Group of Governmental Experts (GGE): Responsible State Behavior in Cyberspace",
-                "url": "https://disarmament.unoda.org/topics/cyber/"
-            },
             {
                 "title": "Wikipedia: Cyber deterrence",
                 "url": "https://en.wikipedia.org/wiki/Deterrence_theory"
@@ -1421,10 +1361,6 @@ export const CARD_TERMS_DICTIONARY = {
     explanation: "Major participating powers formally ratify a binding cyber non-aggression pact, pledging that neither state's military will target, probe, or plant malware inside the other's civilian power grids, hospitals, or municipal water networks.",
     sources: [
             {
-                "title": "UN General Assembly: Norms for Responsible State Behavior in Cyberspace",
-                "url": "https://disarmament.unoda.org/topics/cyber/"
-            },
-            {
                 "title": "Wikipedia: Non-aggression pact",
                 "url": "https://en.wikipedia.org/wiki/Non-aggression_pact"
             }
@@ -1496,10 +1432,6 @@ export const CARD_TERMS_DICTIONARY = {
     explanation: "Governments prioritize national security over commercial applications, strictly rationing electrical power and silicon capacity so that the vast majority of high-end datacenter compute is reserved for national cyber defense and intelligence models.",
     sources: [
             {
-                "title": "CSIS: National Compute Governance and Strategic Silicon Allocation",
-                "url": "https://www.csis.org/analysis/semiconductors-and-taiwan-risk-exposure"
-            },
-            {
                 "title": "Wikipedia: Strategic reserve",
                 "url": "https://en.wikipedia.org/wiki/Strategic_reserve"
             }
@@ -1526,10 +1458,6 @@ export const CARD_TERMS_DICTIONARY = {
     explanation: "Rigorous military counterintelligence, physical hardware isolation, and biometric server controls successfully prevent any trained model weights or training datasets from leaking into the public domain or cybercrime underground.",
     sources: [
             {
-                "title": "RAND Corporation: Securing AI Model Weights Against Nation-State Espionage",
-                "url": "https://www.rand.org/pubs/research_reports/RRA2844-1.html"
-            },
-            {
                 "title": "Wikipedia: Information security (Data loss prevention)",
                 "url": "https://en.wikipedia.org/wiki/Data_loss_prevention_software"
             }
@@ -1555,10 +1483,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2034",
     explanation: "Because high-end models are locked in sovereign enclaves and commodity ransomware gangs lack autonomous exploit generators, public utilities, hospitals, and transportation grids operate with minimal cyber downtime.",
     sources: [
-            {
-                "title": "CISA: Annual Critical Infrastructure Resilience Review",
-                "url": "https://www.cisa.gov/topics/critical-infrastructure-sectors"
-            },
             {
                 "title": "FBI IC3: Annual Cyber Loss Report",
                 "url": "https://www.ic3.gov/Media/PDF/AnnualReport/2024_IC3Report.pdf"
@@ -1615,10 +1539,6 @@ export const CARD_TERMS_DICTIONARY = {
     year: "2035",
     explanation: "Private frontier AI research laboratories are brought under direct defense ministry governance, integrating commercial researchers into state national security structures and eliminating private commercial release of frontier models.",
     sources: [
-            {
-                "title": "CSIS: National Security Defense Production Act in Critical Technologies",
-                "url": "https://www.csis.org/analysis/semiconductors-and-taiwan-risk-exposure"
-            },
             {
                 "title": "Wikipedia: Nationalization and defense production",
                 "url": "https://en.wikipedia.org/wiki/Nationalization"

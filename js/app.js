@@ -1,3 +1,8 @@
+/**
+ * SPDX-License-Identifier: AGPL-3.0-only
+ * Copyright (c) 2026 Aditya Singh
+ */
+
 import { initLeavesTransition } from './leaves-transition.js';
 /**
  * AI 2035: Plan P & C

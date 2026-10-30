@@ -1,4 +1,7 @@
 {
+  "name": "ai-2035",
+  "version": "1.0.0",
+  "license": "AGPL-3.0-only",
   "dependencies": {
     "@vercel/analytics": "^2.0.1"
   }

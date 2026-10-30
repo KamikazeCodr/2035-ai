@@ -1,4 +1,9 @@
 /**
+ * SPDX-License-Identifier: AGPL-3.0-only
+ * Copyright (c) 2026 Aditya Singh
+ */
+
+/**
  * AI 2035: Plan P & C
  * Author: Aditya Singh
  * Interactive SVG Chart Engine with continuous curves, dual-lens economic loss models,

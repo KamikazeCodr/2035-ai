@@ -5,7 +5,7 @@
 [![Paper PDF](https://img.shields.io/badge/Whitepaper-22_Pages_PDF-8B0000?style=flat-square&logo=adobeacrobatreader&logoColor=white)](AI-2035.pdf)
 [![Interactive Platform](https://img.shields.io/badge/Live_Platform-2035--ai.com-0052cc?style=flat-square&logo=googlechrome&logoColor=white)](https://2035-ai.com)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python&logoColor=white)](pipeline/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![License: AGPL v3](https://img.shields.io/badge/Code_License-GNU_AGPLv3-blue.svg?style=flat-square)](LICENSE.md) [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/Research_License-CC_BY--NC--ND_4.0-lightgrey.svg?style=flat-square)](LICENSE.md)
 [![Verification Gates](https://img.shields.io/badge/Diagnostic_Gates-18%2F18_Passing-success?style=flat-square)](pipeline/tests.py)
 
 ---
@@ -269,4 +269,8 @@ If you reference the AI 2035 scenario, quantitative loss model, or technical rep
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE), free for academic, policy, and commercial research with attribution.
+This project is licensed under a dual-licensing framework:
+- **Executable Code & Simulation Models**: [GNU Affero General Public License v3.0 (GNU AGPLv3)](LICENSE.md)
+- **Research Narrative, Scenario Analysis & Visual Assets**: [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (CC BY-NC-ND 4.0)](LICENSE.md)
+
+See [LICENSE.md](LICENSE.md) for full terms, conditions, and citation format.
